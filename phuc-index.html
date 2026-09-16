@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Branding - Hoàng Phúc (LHU IT)</title>
+  <style>
+    /* ================= RESET & CẤU HÌNH CƠ BẢN ================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+      color: #102a43;
+      min-height: 100vh;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ================= HEADER HỒ SƠ ================= */
+    .profile-header {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      margin-bottom: 30px;
+      border-top: 5px solid #2563eb;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .profile-header h1 {
+      font-size: 28px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .profile-header .subtitle {
+      font-size: 16px;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tag {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* ================= DANH SÁCH 3 PHIÊN BẢN ================= */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-btn {
+      background: #f8fafc;
+      color: #2563eb;
+      border: 1px solid #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    .card-content {
+      font-size: 15px;
+      color: #334155;
+      white-space: pre-line;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header Thông tin cá nhân -->
+    <header class="profile-header">
+      <div class="avatar">HP</div>
+      <h1>Hoàng Phúc</h1>
+      <p class="subtitle">Sinh viên Khoa CNTT - Trường Đại học Lạc Hồng (LHU)</p>
+      <div class="tags">
+        <span class="tag">🎯 Mục tiêu: Thực tập Frontend / Web Developer</span>
+        <span class="tag">⚡ Lập trình Web</span>
+        <span class="tag">🎨 Figma & UI-UX</span>
+        <span class="tag">🧩 Tư duy Logic & Tự học</span>
+      </div>
+    </header>
+
+    <div class="cards-grid">
+
+      <!-- PHIÊN BẢN 1: PITCH 30 GIÂY -->
+      <article class="card">
+        <div class="card-header">
+          <div class="card-title">⏱️ Phiên Bản 1: Pitch 30 Giây (Phỏng Vấn & Networking)</div>
+          <button class="copy-btn" onclick="copyText('pitch-text', this)">Sao chép</button>
+        </div>
+        <p class="card-content" id="pitch-text">"Chào anh/chị, em là Hoàng Phúc, sinh viên năm cuối chuyên ngành Công nghệ Thông tin tại Trường Đại học Lạc Hồng. 
+
+Với niềm đam mê lớn dành cho lập trình web và trải nghiệm người dùng, em tập trung phát triển kỹ năng xây dựng giao diện chuẩn responsive với HTML5, CSS Grid/Flexbox, JavaScript và hiện thực hóa thiết kế từ Figma. Điểm mạnh của em là tư duy logic tốt, khả năng tự học công nghệ mới nhanh và sự tỉ mỉ trong từng chi tiết sản phẩm. 
+
+Em đang tìm kiếm cơ hội thực tập vị trí Frontend Developer để đem sự nhiệt huyết cùng kiến thức nền tảng của mình đóng góp vào các dự án thực tế của quý công ty, đồng thời học hỏi từ các chuyên gia đi trước."</p>
+      </article>
+
+      <!-- PHIÊN BẢN 2: LINKEDIN & CV -->
+      <article class="card">
+        <div class="card-header">
+          <div class="card-title">💼 Phiên Bản 2: LinkedIn & CV (Chuyên Nghiệp & Định Hướng)</div>
+          <button class="copy-btn" onclick="copyText('linkedin-text', this)">Sao chép</button>
+        </div>
+        <p class="card-content" id="linkedin-text">Xin chào, tôi là Hoàng Phúc – Sinh viên Khoa Công nghệ Thông tin, Trường Đại học Lạc Hồng (LHU), theo đuổi định hướng trở thành một Frontend Developer chuyên nghiệp.
+
+🚀 Về tôi:
+Tôi đam mê việc biến các bản vẽ thiết kế trên Figma thành những giao diện web trực quan, mượt mà và tối ưu trên mọi kích thước màn hình. Nền tảng kỹ thuật chính của tôi tập trung vào lập trình web hiện đại (HTML5, CSS3/Flexbox/Grid, JavaScript) cùng việc chú trọng tối đa vào trải nghiệm người dùng (UI/UX).
+
+💡 Thế mạnh cốt lõi:
+• Tư duy logic giải quyết vấn đề mạch lạc, có khả năng phân tích và bẻ nhỏ bài toán kỹ thuật.
+• Tinh thần tự học cao, chủ động nghiên cứu các công nghệ và giải pháp mới.
+• Tinh thần làm việc nhóm trách nhiệm, cởi mở tiếp nhận phản hồi để hoàn thiện sản phẩm.
+
+🎯 Mục tiêu hiện tại:
+Tôi đang tích cực tìm kiếm cơ hội Thực tập sinh Frontend Developer / Web Developer tại một môi trường doanh nghiệp năng động. Mong muốn được đem năng lượng trẻ, nền tảng học thuật vững chắc để cống hiến cho các dự án thực tiễn và phát triển chuyên môn sâu sắc.</p>
+      </article>
+
+      <!-- PHIÊN BẢN 3: MẠNG XÃ HỘI -->
+      <article class="card">
+        <div class="card-header">
+          <div class="card-title">📱 Phiên Bản 3: Mạng Xã Hội (Facebook / Threads / Instagram)</div>
+          <button class="copy-btn" onclick="copyText('social-text', this)">Sao chép</button>
+        </div>
+        <p class="card-content" id="social-text">👋 Hello mọi người, mình là Hoàng Phúc – một bạn trẻ đang 'lăn lộn' cùng code tại Khoa CNTT, Đại học Lạc Hồng (LHU) 💻✨.
+
+Hằng ngày ngoài việc làm bạn với bug và deadline, niềm vui của mình là biến những dòng code HTML/CSS tưởng chừng khô khan thành những giao diện web vừa mắt, mượt mà và thân thiện với người dùng. Mình tin rằng giao diện đẹp không chỉ để ngắm, mà là để người dùng cảm thấy tiện lợi nhất!
+
+🎯 Hiện tại mình đang chuẩn bị cho chặng đường mới: Tìm kiếm cơ hội thực tập vị trí Frontend Developer để 'thực chiến' nhiều hơn và học hỏi từ các tiền bối trong ngành.
+
+Rất vui được kết nối, giao lưu học hỏi với các anh chị và các bạn có cùng đam mê công nghệ! ✨
+
+📍 Let's connect and create cool things together! 🚀</p>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Javascript hỗ trợ nút bấm Sao Chép 1-chạm -->
+  <script>
+    function copyText(elementId, btn) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Đã chép!';
+        btn.style.background = '#16a34a';
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = '#16a34a';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '#f8fafc';
+          btn.style.color = '#2563eb';
+          btn.style.borderColor = '#cbd5e1';
+        }, 1800);
+      });
+    }
+  </script>
+
+</body>
+</html>
