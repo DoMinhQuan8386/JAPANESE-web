@@ -1,0 +1,62 @@
+/* Reset CSS */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Hộp bao quanh danh mục Skills */
+.skills-container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+}
+
+.skills-title {
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 24px;
+}
+
+/* THIẾT LẬP FLEXBOX CHO CÁC ITEM THEO ĐÚNG YÊU CẦU */
+.skills-list {
+  display: flex;             /* 1. Hiển thị dạng hàng ngang */
+  flex-wrap: wrap;          /* 2. Tự động xuống dòng khi màn hình nhỏ */
+  gap: 15px;                /* 3. Khoảng cách giữa các item là 15px */
+  justify-content: center;  /* 4. Căn giữa các item theo trục ngang */
+  align-items: center;      /* Căn giữa theo trục dọc */
+}
+
+/* Định dạng từng thẻ kỹ năng */
+.skill-item {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #bfdbfe;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hiệu ứng khi rê chuột vào thẻ */
+.skill-item:hover {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);
+}

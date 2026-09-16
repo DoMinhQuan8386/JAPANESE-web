@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 1: Bố cục CSS Grid</title>
+  <link rel="stylesheet" href="bai1-grid.css">
+</head>
+<body>
+
+  <div class="grid-layout">
+    <!-- Header chiếm toàn bộ chiều ngang -->
+    <header class="header">
+      <h1>Header - Portfolio Cá Nhân</h1>
+      <p>Khu vực đầu trang chiếm 100% chiều rộng</p>
+    </header>
+
+    <!-- Sidebar cố định 250px bên trái -->
+    <aside class="sidebar">
+      <h3>Sidebar (250px)</h3>
+      <ul>
+        <li>Thông tin cá nhân</li>
+        <li>Kinh nghiệm làm việc</li>
+        <li>Dự án tiêu biểu</li>
+        <li>Liên hệ</li>
+      </ul>
+    </aside>
+
+    <!-- Main content chiếm phần còn lại bên phải -->
+    <main class="main-content">
+      <h2>Main Content</h2>
+      <p>Khu vực nội dung chính tự động co giãn chiếm trọn phần diện tích còn lại của màn hình (1fr).</p>
+    </main>
+
+    <!-- Footer chiếm toàn bộ chiều ngang ở dưới cùng -->
+    <footer class="footer">
+      <p>Footer - Bản quyền &copy; 2026</p>
+    </footer>
+  </div>
+
+</body>
+</html>
