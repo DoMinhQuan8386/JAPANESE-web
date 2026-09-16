@@ -1,0 +1,64 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    padding: 40px 20px;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #0f172a;
+}
+
+/* =========================================================
+   CSS GRID: Bố cục lưới gồm 3 cột bằng nhau
+   - display: grid kích hoạt mô hình lưới CSS Grid
+   - grid-template-columns: repeat(3, 1fr) tạo 3 cột bằng nhau
+   - gap: 20px khoảng cách giữa các cột là 20px
+   ========================================================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột có kích thước bằng nhau */
+    gap: 20px;                             /* Khoảng cách giữa các cột là 20px */
+}
+
+/* Mỗi cột chứa 1 thẻ có màu nền xám nhạt và bo góc 10px */
+.grid-card {
+    background-color: #f0f0f0;             /* Màu nền xám nhạt */
+    border-radius: 10px;                   /* Bo góc 10px */
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+}
+
+.grid-card h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.grid-card p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Hỗ trợ responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Hiển thị 1 cột trên điện thoại */
+    }
+}
