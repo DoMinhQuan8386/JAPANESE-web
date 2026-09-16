@@ -1,0 +1,181 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio - Đỗ Minh Quân</title>
+</head>
+
+<body>
+
+    <!--
+        HEADER:
+        Chứa phần đầu của trang Portfolio.
+        Đây là nơi giới thiệu tên website và thanh điều hướng chính.
+    -->
+    <header>
+        <h1>Portfolio - Đỗ Minh Quân</h1>
+
+        <!--
+            NAV:
+            Chứa các liên kết giúp người dùng di chuyển
+            nhanh đến các khu vực khác nhau của trang.
+        -->
+        <nav>
+            <a href="#about">Giới thiệu</a> |
+            <a href="#skills">Kỹ năng</a> |
+            <a href="#projects">Dự án</a> |
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+
+
+    <!--
+        MAIN:
+        Chứa toàn bộ nội dung chính của trang Portfolio.
+        Các nội dung chính được chia thành nhiều SECTION.
+    -->
+    <main>
+
+        <!--
+            SECTION 1 - GIỚI THIỆU:
+            Cung cấp thông tin cơ bản về sinh viên và mục tiêu cá nhân.
+        -->
+        <section id="about">
+            <h2>Giới thiệu</h2>
+
+            <h3>Đỗ Minh Quân</h3>
+
+            <p>
+                Xin chào! Tôi là Đỗ Minh Quân, sinh viên lớp 25CT111
+                tại Đại học Lạc Hồng.
+            </p>
+
+            <p>
+                Tôi yêu thích lập trình Web, công nghệ và đặc biệt quan tâm
+                đến việc xây dựng những website hỗ trợ việc học tập.
+            </p>
+
+            <p><strong>Ngày sinh:</strong> 15/04/2007</p>
+            <p><strong>Lớp:</strong> 25CT111</p>
+            <p><strong>Trường:</strong> Đại học Lạc Hồng</p>
+            <p><strong>Chuyên ngành:</strong> Công nghệ thông tin</p>
+        </section>
+
+
+        <!--
+            SECTION 2 - KỸ NĂNG:
+            Liệt kê những công nghệ và kỹ năng mà sinh viên đang học tập.
+        -->
+        <section id="skills">
+            <h2>Kỹ năng</h2>
+
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>SQL Server</li>
+                <li>Git và GitHub</li>
+            </ul>
+        </section>
+
+
+        <!--
+            SECTION 3 - DỰ ÁN:
+            Giới thiệu các dự án đã thực hiện.
+            Dự án chính của Portfolio là website học tiếng Nhật cơ bản.
+        -->
+        <section id="projects">
+            <h2>Dự án</h2>
+
+            <article>
+                <h3>Website học tiếng Nhật cơ bản</h3>
+
+                <p>
+                    Đây là dự án website hỗ trợ người mới bắt đầu học tiếng Nhật.
+                    Website tập trung vào việc giúp người dùng làm quen với
+                    hai bảng chữ cái Hiragana và Katakana.
+                </p>
+
+                <p>
+                    Người dùng có thể xem từng chữ cái, ghi nhớ cách viết
+                    và nhập đáp án để kiểm tra khả năng ghi nhớ của mình.
+                </p>
+
+                <p>
+                    <strong>Công nghệ sử dụng:</strong>
+                    HTML, CSS và JavaScript.
+                </p>
+            </article>
+
+            <article>
+                <h3>Portfolio cá nhân</h3>
+
+                <p>
+                    Website giới thiệu thông tin cá nhân, kỹ năng,
+                    dự án học tập và quá trình phát triển bản thân.
+                </p>
+            </article>
+
+            <article>
+                <h3>Website quản lý sân bóng</h3>
+
+                <p>
+                    Dự án mô phỏng hệ thống quản lý sân bóng,
+                    hỗ trợ quản lý thông tin sân và lịch đặt sân.
+                </p>
+            </article>
+        </section>
+
+
+        <!--
+            SECTION 4 - LIÊN HỆ:
+            Cung cấp biểu mẫu để người dùng có thể gửi thông tin liên hệ.
+        -->
+        <section id="contact">
+            <h2>Liên hệ</h2>
+
+            <p>
+                Nếu bạn muốn trao đổi về dự án hoặc học tập,
+                hãy gửi tin nhắn cho tôi.
+            </p>
+
+            <form>
+                <p>
+                    <label for="name">Họ và tên:</label><br>
+                    <input type="text" id="name" name="name">
+                </p>
+
+                <p>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email">
+                </p>
+
+                <p>
+                    <label for="message">Nội dung:</label><br>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </p>
+
+                <button type="submit">Gửi</button>
+            </form>
+        </section>
+
+    </main>
+
+
+    <!--
+        FOOTER:
+        Là phần cuối của trang.
+        Thường dùng để chứa thông tin bản quyền hoặc thông tin bổ sung.
+    -->
+    <footer>
+        <p>© 2026 Đỗ Minh Quân - Portfolio cá nhân</p>
+        <p>Học từng chữ - Nhớ từng câu - Tiến bộ từng ngày 🇯🇵</p>
+    </footer>
+
+</body>
+</html>
+
