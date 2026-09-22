@@ -1,0 +1,2649 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light" data-accent="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân của Hoàng Phúc - Sinh viên năm 2 Khoa Công nghệ Thông tin, Đại học Lạc Hồng (LHU). Bảng mã màu thông minh đa sắc: Xanh dương, Đỏ, Hồng, Vàng, Tím.">
+  <title>Hoàng Phúc | Frontend Developer Portfolio - LHU IT</title>
+
+  <style>
+    /* ==========================================================================
+       BẢNG MÃ MÀU THÔNG MINH (INTELLIGENT COLOR SYSTEM) TẠI :root
+       Bao gồm: Primary, Secondary, 3 Mức Xám, Nền và Hệ 5 Màu Đa Sắc:
+       - XANH DƯƠNG (Blue)
+       - ĐỎ (Red)
+       - HỒNG (Pink)
+       - VÀNG (Yellow)
+       - TÍM (Purple)
+       ========================================================================== */
+    :root {
+      /* ================= [1] BẢNG 5 MÃ MÀU CỐT LÕI (5 SIGNATURE COLORS) ================= */
+      /* 1. XANH DƯƠNG (Blue - Màu công nghệ, kỹ thuật, uy tín & đáng tin cậy) */
+      --color-blue: #2563eb;
+      --color-blue-hover: #1d4ed8;
+      --color-blue-subtle: #eff6ff;
+      --color-blue-border: #bfdbfe;
+      --color-blue-glow: rgba(37, 99, 235, 0.28);
+
+      /* 2. ĐỎ (Red - Màu quyết tâm, nhiệt huyết lập trình, giải quyết bài toán khó) */
+      --color-red: #ef4444;
+      --color-red-hover: #dc2626;
+      --color-red-subtle: #fef2f2;
+      --color-red-border: #fecaca;
+      --color-red-glow: rgba(239, 68, 68, 0.28);
+
+      /* 3. HỒNG (Pink - Màu trẻ trung, tươi mới, sự sáng tạo và kết nối mạng xã hội) */
+      --color-pink: #ec4899;
+      --color-pink-hover: #db2777;
+      --color-pink-subtle: #fdf2f8;
+      --color-pink-border: #fbcfe8;
+      --color-pink-glow: rgba(236, 72, 153, 0.28);
+
+      /* 4. VÀNG (Yellow/Amber - Màu năng lượng tích cực, thành tích, dấu ấn học thuật) */
+      --color-yellow: #f59e0b;
+      --color-yellow-hover: #d97706;
+      --color-yellow-subtle: #fffbeb;
+      --color-yellow-border: #fde68a;
+      --color-yellow-glow: rgba(245, 158, 11, 0.28);
+
+      /* 5. TÍM (Purple/Violet - Màu chiều sâu tư duy, thiết kế UI/UX & thẩm mỹ hiện đại) */
+      --color-purple: #8b5cf6;
+      --color-purple-hover: #7c3aed;
+      --color-purple-subtle: #f5f3ff;
+      --color-purple-border: #ddd6fe;
+      --color-purple-glow: rgba(139, 92, 246, 0.28);
+
+      /* ================= [2] PRIMARY & SECONDARY TOKENS (ĐIỀU HƯỚNG THEME) ================= */
+      /* Mặc định: Primary là Xanh Dương, Secondary là Tím */
+      --color-primary: var(--color-blue);
+      --color-primary-hover: var(--color-blue-hover);
+      --color-primary-subtle: var(--color-blue-subtle);
+      --color-primary-border: var(--color-blue-border);
+      --color-primary-glow: var(--color-blue-glow);
+
+      --color-secondary: var(--color-purple);
+      --color-secondary-hover: var(--color-purple-hover);
+      --color-secondary-subtle: var(--color-purple-subtle);
+      --color-secondary-border: var(--color-purple-border);
+      --color-secondary-glow: var(--color-purple-glow);
+
+      /* ================= [3] 3 MỨC XÁM (GRAYSCALE VISUAL HIERARCHY) ================= */
+      --color-gray-light: #e2e8f0;    /* Mức 1 - Xám nhạt: Viền card, đường ranh giới, separator */
+      --color-gray-medium: #64748b;   /* Mức 2 - Xám trung tính: Phụ đề, subtitle, caption (WCAG AA) */
+      --color-gray-dark: #0f172a;     /* Mức 3 - Xám đậm: Tiêu đề chính, card heading, text tương phản cao */
+
+      /* ================= [4] HỆ THỐNG MÀU NỀN (BACKGROUNDS) ================= */
+      --color-bg-page: #f8fafc;
+      --color-bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+      --color-bg-surface: #ffffff;
+      --color-bg-surface-glass: rgba(255, 255, 255, 0.88);
+      --color-bg-subtle: #f1f5f9;
+      --color-divider: #e2e8f0;
+
+      /* ================= [5] TEXT & TRẠNG THÁI ================= */
+      --color-text-main: #0f172a;
+      --color-text-body: #334155;
+      --color-text-muted: #64748b;
+      --color-text-inverse: #ffffff;
+      --color-success: #16a34a;
+
+      /* Hiệu ứng bóng đổ & Bo góc */
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.1);
+      --shadow-glow: 0 0 24px var(--color-primary-glow);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ================= CÁC CHỦ ĐỀ MÀU NĂNG ĐỘNG (ACCENT SWITCHING) ================= */
+    /* 1. Theme Xanh Dương (Mặc định) */
+    [data-accent="blue"] {
+      --color-primary: var(--color-blue);
+      --color-primary-hover: var(--color-blue-hover);
+      --color-primary-subtle: var(--color-blue-subtle);
+      --color-primary-border: var(--color-blue-border);
+      --color-primary-glow: var(--color-blue-glow);
+      --color-secondary: var(--color-purple);
+    }
+
+    /* 2. Theme Đỏ (Quyết tâm) */
+    [data-accent="red"] {
+      --color-primary: var(--color-red);
+      --color-primary-hover: var(--color-red-hover);
+      --color-primary-subtle: var(--color-red-subtle);
+      --color-primary-border: var(--color-red-border);
+      --color-primary-glow: var(--color-red-glow);
+      --color-secondary: var(--color-yellow);
+    }
+
+    /* 3. Theme Hồng (Sáng tạo) */
+    [data-accent="pink"] {
+      --color-primary: var(--color-pink);
+      --color-primary-hover: var(--color-pink-hover);
+      --color-primary-subtle: var(--color-pink-subtle);
+      --color-primary-border: var(--color-pink-border);
+      --color-primary-glow: var(--color-pink-glow);
+      --color-secondary: var(--color-purple);
+    }
+
+    /* 4. Theme Vàng (Năng lượng) */
+    [data-accent="yellow"] {
+      --color-primary: var(--color-yellow);
+      --color-primary-hover: var(--color-yellow-hover);
+      --color-primary-subtle: var(--color-yellow-subtle);
+      --color-primary-border: var(--color-yellow-border);
+      --color-primary-glow: var(--color-yellow-glow);
+      --color-secondary: var(--color-red);
+    }
+
+    /* 5. Theme Tím (UI/UX Đẳng cấp) */
+    [data-accent="purple"] {
+      --color-primary: var(--color-purple);
+      --color-primary-hover: var(--color-purple-hover);
+      --color-primary-subtle: var(--color-purple-subtle);
+      --color-primary-border: var(--color-purple-border);
+      --color-primary-glow: var(--color-purple-glow);
+      --color-secondary: var(--color-pink);
+    }
+
+    /* ================= DARK MODE TỰ ĐỘNG ================= */
+    [data-theme="dark"] {
+      /* Bảng màu pastel rực rỡ hơn trên nền tối */
+      --color-blue: #3b82f6;
+      --color-blue-hover: #60a5fa;
+      --color-blue-subtle: rgba(59, 130, 246, 0.16);
+      --color-blue-border: rgba(59, 130, 246, 0.35);
+
+      --color-red: #f87171;
+      --color-red-hover: #fca5a5;
+      --color-red-subtle: rgba(248, 113, 113, 0.16);
+      --color-red-border: rgba(248, 113, 113, 0.35);
+
+      --color-pink: #f472b6;
+      --color-pink-hover: #f9a8d4;
+      --color-pink-subtle: rgba(244, 114, 182, 0.16);
+      --color-pink-border: rgba(244, 114, 182, 0.35);
+
+      --color-yellow: #fbbf24;
+      --color-yellow-hover: #fde68a;
+      --color-yellow-subtle: rgba(251, 191, 36, 0.16);
+      --color-yellow-border: rgba(251, 191, 36, 0.35);
+
+      --color-purple: #a78bfa;
+      --color-purple-hover: #c4b5fd;
+      --color-purple-subtle: rgba(167, 139, 250, 0.16);
+      --color-purple-border: rgba(167, 139, 250, 0.35);
+
+      /* 3 Mức Xám Dark Mode */
+      --color-gray-light: #1e293b;
+      --color-gray-medium: #94a3b8;
+      --color-gray-dark: #f8fafc;
+
+      /* Nền Dark Mode */
+      --color-bg-page: #0b1120;
+      --color-bg-gradient: radial-gradient(circle at 50% 0%, #172554 0%, #0b1120 75%);
+      --color-bg-surface: #111827;
+      --color-bg-surface-glass: rgba(17, 24, 39, 0.88);
+      --color-bg-subtle: #1e293b;
+      --color-divider: #1f2937;
+
+      --color-text-main: #f8fafc;
+      --color-text-body: #cbd5e1;
+      --color-text-muted: #94a3b8;
+      --color-text-inverse: #0b1120;
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 28px var(--color-primary-glow);
+    }
+
+    /* ================= RESET & TYPOGRAPHY ================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: var(--color-bg-page);
+      background-image: var(--color-bg-gradient);
+      background-attachment: fixed;
+      color: var(--color-text-body);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header chung cho các Section */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary-border);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--color-gray-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-title span.highlight {
+      background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--color-gray-medium);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ================= BẢNG CHỌN MÀU THÔNG MINH (COLOR PALETTE SWITCHER) ================= */
+    .color-switcher-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-bg-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-gray-light);
+    }
+
+    .switcher-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-gray-medium);
+      text-transform: uppercase;
+      margin-right: 4px;
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .switcher-label { display: inline-block; }
+    }
+
+    .color-swatch-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      position: relative;
+    }
+
+    .color-swatch-btn.swatch-blue   { background: #2563eb; }
+    .color-swatch-btn.swatch-red    { background: #ef4444; }
+    .color-swatch-btn.swatch-pink   { background: #ec4899; }
+    .color-swatch-btn.swatch-yellow { background: #f59e0b; }
+    .color-swatch-btn.swatch-purple { background: #8b5cf6; }
+
+    .color-swatch-btn:hover {
+      transform: scale(1.25);
+    }
+
+    .color-swatch-btn.active {
+      transform: scale(1.3);
+      border-color: var(--color-bg-surface);
+      box-shadow: 0 0 0 2px currentColor;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      z-index: 1000;
+      background: var(--color-bg-surface-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-gray-light);
+      transition: all var(--transition-normal);
+    }
+
+    .navbar.scrolled {
+      height: 68px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-gray-dark);
+    }
+
+    .brand-logo .logo-tag {
+      color: var(--color-primary);
+    }
+
+    .brand-logo .logo-badge {
+      background: var(--color-secondary-subtle);
+      color: var(--color-secondary);
+      border: 1px solid var(--color-secondary-border);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-item {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-gray-medium);
+      position: relative;
+      padding: 6px 0;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--color-primary);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width var(--transition-fast);
+      border-radius: var(--radius-full);
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-subtle);
+      color: var(--color-gray-dark);
+      border: 1px solid var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all var(--transition-fast);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      border-color: var(--color-primary-border);
+    }
+
+    .btn-primary-sm {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 12px var(--color-primary-glow);
+    }
+
+    .btn-primary-sm:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      color: var(--color-gray-dark);
+      font-size: 24px;
+      padding: 6px;
+    }
+
+    /* ================= HERO SECTION ================= */
+    .hero {
+      padding: 140px 0 90px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-gray-dark);
+      width: fit-content;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--color-success);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    .hero-title {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--color-gray-dark);
+      letter-spacing: -1px;
+    }
+
+    .hero-title .name-highlight {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .typewriter-wrap {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-primary);
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 24px;
+      background: var(--color-primary);
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 13px 26px;
+      border-radius: var(--radius-full);
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px var(--color-primary-glow);
+      transition: all var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--color-primary-glow);
+    }
+
+    .btn-secondary {
+      background: var(--color-bg-surface);
+      color: var(--color-gray-dark);
+      border: 1px solid var(--color-gray-light);
+      padding: 13px 24px;
+      border-radius: var(--radius-full);
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-subtle);
+      transform: translateY(-2px);
+    }
+
+    /* Thống kê đa màu sắc (Multi-color Stat Items) */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-item.stat-blue   { border-top: 3px solid var(--color-blue); }
+    .stat-item.stat-yellow { border-top: 3px solid var(--color-yellow); }
+    .stat-item.stat-pink   { border-top: 3px solid var(--color-pink); }
+
+    .stat-number {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--color-gray-dark);
+      line-height: 1.2;
+    }
+
+    .stat-item.stat-blue .stat-number span   { color: var(--color-blue); }
+    .stat-item.stat-yellow .stat-number span { color: var(--color-yellow); }
+    .stat-item.stat-pink .stat-number span   { color: var(--color-pink); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--color-gray-medium);
+      margin-top: 4px;
+    }
+
+    /* Hero Visual Card với Avatar phối màu Đa Sắc (Mesh Gradient) */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .profile-interactive-card {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      text-align: center;
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .profile-interactive-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow), var(--shadow-lg);
+    }
+
+    .avatar-large {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      /* Phối gradient công nghệ: Xanh dương -> Tím -> Hồng */
+      background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-purple) 50%, var(--color-pink) 100%);
+      color: #ffffff;
+      font-size: 42px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 8px 24px var(--color-primary-glow);
+      position: relative;
+    }
+
+    .avatar-large::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px dashed var(--color-yellow);
+      animation: spin 18s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .card-dev-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-gray-dark);
+    }
+
+    .card-dev-role {
+      font-size: 14px;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .card-dev-school {
+      font-size: 13px;
+      color: var(--color-gray-medium);
+      margin-top: 2px;
+      margin-bottom: 18px;
+    }
+
+    /* Các thẻ kỹ năng đa sắc phong phú */
+    .tech-badges-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .badge-color {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid transparent;
+      transition: transform var(--transition-fast);
+    }
+
+    .badge-color:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Định nghĩa 5 sắc thái Badge */
+    .badge-blue {
+      background: var(--color-blue-subtle);
+      color: var(--color-blue-hover);
+      border-color: var(--color-blue-border);
+    }
+    .badge-purple {
+      background: var(--color-purple-subtle);
+      color: var(--color-purple-hover);
+      border-color: var(--color-purple-border);
+    }
+    .badge-pink {
+      background: var(--color-pink-subtle);
+      color: var(--color-pink-hover);
+      border-color: var(--color-pink-border);
+    }
+    .badge-yellow {
+      background: var(--color-yellow-subtle);
+      color: var(--color-yellow-hover);
+      border-color: var(--color-yellow-border);
+    }
+    .badge-red {
+      background: var(--color-red-subtle);
+      color: var(--color-red-hover);
+      border-color: var(--color-red-border);
+    }
+
+    /* ================= ABOUT SECTION ================= */
+    .about {
+      padding: 90px 0;
+      background: var(--color-bg-surface);
+      border-top: 1px solid var(--color-gray-light);
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .about-lead {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-gray-dark);
+      line-height: 1.6;
+    }
+
+    .about-desc {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+
+    .about-principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .principle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-gray-light);
+    }
+
+    .principle-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .principle-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      margin-bottom: 2px;
+    }
+
+    .principle-desc {
+      font-size: 12px;
+      color: var(--color-gray-medium);
+    }
+
+    .about-details-card {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-details-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-gray-light);
+      font-size: 14px;
+    }
+
+    .info-label {
+      color: var(--color-gray-medium);
+      font-weight: 600;
+    }
+
+    .info-value {
+      color: var(--color-gray-dark);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* ================= SKILLS SECTION (ÁP DỤNG ĐA SẮC CHO THANH TIẾN ĐỘ) ================= */
+    .skills {
+      padding: 90px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .skill-category-card {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .skill-category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary-border);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .category-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .category-icon.icon-blue   { background: var(--color-blue-subtle); color: var(--color-blue); }
+    .category-icon.icon-purple { background: var(--color-purple-subtle); color: var(--color-purple); }
+    .category-icon.icon-red    { background: var(--color-red-subtle); color: var(--color-red); }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .skill-name {
+      color: var(--color-gray-dark);
+    }
+
+    .skill-percent {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--color-bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 1s ease-in-out;
+    }
+
+    /* Gradient thanh kỹ năng theo từng màu sắc */
+    .fill-blue   { background: linear-gradient(90deg, var(--color-blue), #60a5fa); }
+    .fill-purple { background: linear-gradient(90deg, var(--color-purple), var(--color-pink)); }
+    .fill-yellow { background: linear-gradient(90deg, var(--color-yellow), #fcd34d); }
+    .fill-red    { background: linear-gradient(90deg, var(--color-red), var(--color-yellow)); }
+    .fill-pink   { background: linear-gradient(90deg, var(--color-pink), #f472b6); }
+
+    /* ================= PROJECTS SECTION ================= */
+    .projects {
+      padding: 90px 0;
+      background: var(--color-bg-surface);
+      border-top: 1px solid var(--color-gray-light);
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-subtle);
+      color: var(--color-gray-medium);
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--color-gray-light);
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px var(--color-primary-glow);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .project-card {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary-border);
+    }
+
+    .project-mockup {
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Các màu nền mockup khác nhau */
+    .mockup-bg-blue   { background: linear-gradient(135deg, #1e3a8a, #0f172a); }
+    .mockup-bg-purple { background: linear-gradient(135deg, #4c1d95, #0f172a); }
+    .mockup-bg-yellow { background: linear-gradient(135deg, #78350f, #0f172a); }
+    .mockup-bg-pink   { background: linear-gradient(135deg, #831843, #0f172a); }
+
+    .mockup-window {
+      width: 90%;
+      height: 85%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .mockup-header {
+      height: 28px;
+      background: rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 6px;
+    }
+
+    .mockup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .mockup-dot.red    { background: var(--color-red); }
+    .mockup-dot.yellow { background: var(--color-yellow); }
+    .mockup-dot.green  { background: var(--color-success); }
+
+    .mockup-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .mockup-body-icon {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .mockup-body-title {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .project-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--color-text-body);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-gray-light);
+    }
+
+    .link-btn {
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-primary);
+      transition: color var(--transition-fast);
+    }
+
+    .link-btn:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+
+    /* ================= TIMELINE SECTION ================= */
+    .timeline-section {
+      padding: 90px 0;
+    }
+
+    .timeline-wrap {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 28px;
+      width: 2px;
+      background: var(--color-gray-light);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 72px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 17px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-bg-surface);
+      border: 4px solid var(--color-blue);
+      box-shadow: 0 0 0 4px var(--color-blue-subtle);
+      z-index: 2;
+    }
+
+    .timeline-item.current .timeline-marker {
+      border-color: var(--color-yellow);
+      box-shadow: 0 0 0 6px var(--color-yellow-subtle);
+    }
+
+    .timeline-item.future .timeline-marker {
+      border-color: var(--color-purple);
+      box-shadow: 0 0 0 4px var(--color-purple-subtle);
+    }
+
+    .timeline-card {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .timeline-card:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-period {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+    }
+
+    .period-blue   { background: var(--color-blue-subtle); color: var(--color-blue); }
+    .period-yellow { background: var(--color-yellow-subtle); color: var(--color-yellow); }
+    .period-purple { background: var(--color-purple-subtle); color: var(--color-purple); }
+
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      margin-bottom: 6px;
+    }
+
+    .timeline-institution {
+      font-size: 13px;
+      color: var(--color-gray-medium);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--color-text-body);
+      line-height: 1.6;
+    }
+
+    /* ================= PITCH SECTION ================= */
+    .pitch-section {
+      padding: 90px 0;
+      background: var(--color-bg-surface);
+      border-top: 1px solid var(--color-gray-light);
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .pitch-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .pitch-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .pitch-tab-btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-subtle);
+      color: var(--color-gray-medium);
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--color-gray-light);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .pitch-tab-btn:hover,
+    .pitch-tab-btn.active {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      border-color: var(--color-primary-border);
+    }
+
+    .pitch-box {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .pitch-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .pitch-scenario {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+    }
+
+    .copy-btn-action {
+      background: var(--color-bg-surface);
+      color: var(--color-primary);
+      border: 1px solid var(--color-gray-light);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+    }
+
+    .copy-btn-action:hover {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+    }
+
+    .copy-btn-action.copied {
+      background: var(--color-success) !important;
+      color: #ffffff !important;
+      border-color: var(--color-success) !important;
+    }
+
+    .pitch-body-text {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    /* ================= CONTACT SECTION ================= */
+    .contact {
+      padding: 90px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+    }
+
+    .contact-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-card-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .contact-card-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-card-label {
+      font-size: 12px;
+      color: var(--color-gray-medium);
+      font-weight: 600;
+    }
+
+    .contact-card-val {
+      font-size: 15px;
+      color: var(--color-gray-dark);
+      font-weight: 700;
+    }
+
+    .social-links-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      color: var(--color-gray-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all var(--transition-fast);
+    }
+
+    .social-btn:hover {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .contact-form-box {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-gray-light);
+      color: var(--color-gray-dark);
+      font-family: inherit;
+      font-size: 14px;
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      background: var(--color-bg-surface);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-subtle);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: var(--color-bg-surface);
+      border-top: 1px solid var(--color-gray-light);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-gray-dark);
+      margin-bottom: 8px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: var(--color-gray-medium);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-gray-medium);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    /* ================= TOAST & BACK-TO-TOP ================= */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-gray-light);
+      border-left: 4px solid var(--color-primary);
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-gray-dark);
+      pointer-events: auto;
+      animation: slideInRight 0.3s ease forwards;
+      max-width: 320px;
+    }
+
+    .toast.toast-success {
+      border-left-color: var(--color-success);
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-surface);
+      color: var(--color-gray-dark);
+      border: 1px solid var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+      transform: translateY(-3px);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .status-pill { margin: 0 auto; }
+      .typewriter-wrap { justify-content: center; }
+      .hero-buttons { justify-content: center; }
+      .about-grid, .skills-grid, .projects-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger-btn { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--color-bg-surface);
+        border-bottom: 1px solid var(--color-gray-light);
+        flex-direction: column;
+        padding: 24px;
+        gap: 18px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all var(--transition-normal);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .hero { padding: 110px 0 60px; }
+      .hero-title { font-size: 32px; }
+      .hero-stats { grid-template-columns: 1fr; gap: 12px; }
+      .about-principles { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 1. STICKY NAVBAR CÓ BẢNG CHỌN 5 MÀU ================= -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo">
+        <span class="logo-tag">&lt;</span>HP.Dev<span class="logo-tag"> /&gt;</span>
+        <span class="logo-badge">LHU IT</span>
+      </a>
+
+      <!-- Menu điều hướng -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-item">Về Tôi</a>
+        <a href="#skills" class="nav-item">Kỹ Năng</a>
+        <a href="#projects" class="nav-item">Dự Án</a>
+        <a href="#journey" class="nav-item">Hành Trình</a>
+        <a href="#pitch" class="nav-item">Pitch 30s</a>
+        <a href="#contact" class="nav-item">Liên Hệ</a>
+      </nav>
+
+      <!-- Nút chức năng & Bảng chọn 5 màu thông minh -->
+      <div class="nav-actions">
+        <!-- Widget chọn màu Accent (Xanh dương, Đỏ, Hồng, Vàng, Tím) -->
+        <div class="color-switcher-bar" title="Chọn bảng màu chủ đạo">
+          <span class="switcher-label">Màu:</span>
+          <button class="color-swatch-btn swatch-blue active" data-color="blue" title="Xanh Dương (Tech & Uy Tín)" aria-label="Xanh Dương"></button>
+          <button class="color-swatch-btn swatch-purple" data-color="purple" title="Màu Tím (Sáng Tạo & UI/UX)" aria-label="Màu Tím"></button>
+          <button class="color-swatch-btn swatch-pink" data-color="pink" title="Màu Hồng (Năng Động & Trẻ Trung)" aria-label="Màu Hồng"></button>
+          <button class="color-swatch-btn swatch-yellow" data-color="yellow" title="Màu Vàng (Năng Lượng & Tỏa Sáng)" aria-label="Màu Vàng"></button>
+          <button class="color-swatch-btn swatch-red" data-color="red" title="Màu Đỏ (Quyết Tâm & Đam Mê)" aria-label="Màu Đỏ"></button>
+        </div>
+
+        <button class="theme-toggle-btn" id="theme-toggle-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Đổi theme sáng tối">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <a href="#contact" class="btn-primary-sm">Liên Hệ</a>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Mở menu di động">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. HERO SECTION ================= -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        
+        <!-- Cột thông điệp -->
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            <span>Sẵn sàng thực tập (Internship Ready 2024 - 2025)</span>
+          </div>
+
+          <h1 class="hero-title">
+            Xin chào, mình là <br>
+            <span class="name-highlight">Hoàng Phúc</span> 👋
+          </h1>
+
+          <div class="typewriter-wrap">
+            <span>&gt; </span>
+            <span id="typewriter-text"></span>
+            <span class="cursor-blink"></span>
+          </div>
+
+          <p class="hero-desc">
+            Sinh viên năm 2 Khoa Công nghệ Thông tin, <strong>Trường Đại học Lạc Hồng (LHU)</strong>. 
+            Đam mê biến các ý tưởng và bản thiết kế Figma thành những giao diện website chuẩn responsive, 
+            mượt mà và giàu trải nghiệm người dùng. Luôn chủ động nâng cao tư duy thuật toán và cập nhật công nghệ web hiện đại.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn-primary">
+              <span>🚀 Khám Phá Dự Án</span>
+            </a>
+            <a href="#pitch" class="btn-secondary">
+              <span>⏱️ Xem Bản Pitch 30s</span>
+            </a>
+          </div>
+
+          <!-- Thống kê nhanh đa sắc (Xanh dương, Vàng, Hồng) -->
+          <div class="hero-stats">
+            <div class="stat-item stat-blue">
+              <div class="stat-number">Năm <span>2</span></div>
+              <div class="stat-label">Khoa CNTT - ĐH Lạc Hồng</div>
+            </div>
+            <div class="stat-item stat-yellow">
+              <div class="stat-number">10<span>+</span></div>
+              <div class="stat-label">Bài tập lớn & Mini Project</div>
+            </div>
+            <div class="stat-item stat-pink">
+              <div class="stat-number">100<span>%</span></div>
+              <div class="stat-label">Nhiệt huyết & Tự học nhanh</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột Card tương tác với Avatar ngũ sắc -->
+        <div class="hero-visual">
+          <div class="profile-interactive-card">
+            <div class="avatar-large">HP</div>
+            <h2 class="card-dev-name">Hoàng Phúc</h2>
+            <p class="card-dev-role">Frontend Web Developer</p>
+            <p class="card-dev-school">📍 LHU IT Student • Biên Hòa, Đồng Nai</p>
+
+            <!-- Bộ thẻ Tag ứng dụng trọn vẹn 5 màu: Xanh dương, Tím, Hồng, Vàng, Đỏ -->
+            <div class="tech-badges-grid">
+              <span class="badge-color badge-blue">⚡ HTML5 / CSS3</span>
+              <span class="badge-color badge-yellow">💻 JavaScript ES6+</span>
+              <span class="badge-color badge-purple">🎨 Figma & UI/UX</span>
+              <span class="badge-color badge-pink">📱 Responsive Web</span>
+              <span class="badge-color badge-red">🧩 Git & Problem Solving</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. ABOUT ME SECTION ================= -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Giới Thiệu Bản Thân</div>
+          <h2 class="section-title">Hành Trình & <span class="highlight">Định Hướng Nghề Nghiệp</span></h2>
+          <p class="section-subtitle">Hiểu rõ hơn về tinh thần học tập, tư duy giải quyết vấn đề và mục tiêu phát triển của mình.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-lead">
+              "Lập trình giao diện không chỉ là viết các dòng code cho máy tính hiểu, mà là nghệ thuật tạo nên sự kết nối mượt mà và tiện lợi nhất cho người dùng."
+            </p>
+            <p class="about-desc">
+              Bước vào năm thứ 2 chuyên ngành Công nghệ Thông tin tại Trường Đại học Lạc Hồng, mình dành trọn sự tập trung vào lập trình Frontend và thiết kế trải nghiệm người dùng (UI/UX). Nhờ nền tảng toán học và tư duy logic được rèn luyện từ các môn cấu trúc dữ liệu và giải thuật, mình có khả năng phân tích bài toán kỹ thuật mạch lạc và bẻ nhỏ thành các module xử lý tối ưu.
+            </p>
+            <p class="about-desc">
+              Mục tiêu trước mắt của mình là tìm kiếm vị trí <strong>Thực tập sinh Frontend Developer / Web Developer</strong> để cọ xát với các dự án thực tế, đóng góp năng lượng tuổi trẻ và học hỏi từ các tiền bối giàu kinh nghiệm trong ngành.
+            </p>
+
+            <div class="about-principles">
+              <div class="principle-item" style="border-left: 3px solid var(--color-blue);">
+                <div class="principle-icon">🎯</div>
+                <div>
+                  <div class="principle-title">User-Centric</div>
+                  <div class="principle-desc">Lấy trải nghiệm thực tế của người dùng làm trọng tâm thiết kế.</div>
+                </div>
+              </div>
+              <div class="principle-item" style="border-left: 3px solid var(--color-purple);">
+                <div class="principle-icon">✨</div>
+                <div>
+                  <div class="principle-title">Pixel-Perfect</div>
+                  <div class="principle-desc">Chuyển hóa chính xác 100% từ bản vẽ Figma sang web mượt mà.</div>
+                </div>
+              </div>
+              <div class="principle-item" style="border-left: 3px solid var(--color-yellow);">
+                <div class="principle-icon">🚀</div>
+                <div>
+                  <div class="principle-title">Tự Học Nhanh</div>
+                  <div class="principle-desc">Chủ động nghiên cứu tài liệu chính thống và framework mới.</div>
+                </div>
+              </div>
+              <div class="principle-item" style="border-left: 3px solid var(--color-red);">
+                <div class="principle-icon">🤝</div>
+                <div>
+                  <div class="principle-title">Trách Nhiệm</div>
+                  <div class="principle-desc">Lắng nghe phản hồi tích cực và kiên trì giải quyết triệt để bug.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-details-card">
+            <h3><span>📋</span> Thông Tin Nhanh</h3>
+            <div class="info-list">
+              <div class="info-row">
+                <span class="info-label">Họ và tên:</span>
+                <span class="info-value">Hoàng Phúc</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Trường:</span>
+                <span class="info-value">Đại học Lạc Hồng (LHU)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Khoa / Ngành:</span>
+                <span class="info-value">Khoa Công nghệ Thông tin</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Năm học:</span>
+                <span class="info-value">Sinh viên Năm 2 (Niên khóa 2023 - 2027)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Định hướng chuyên môn:</span>
+                <span class="info-value">Frontend Developer / Web UI</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Khu vực làm việc:</span>
+                <span class="info-value">Biên Hòa, TP.HCM hoặc Remote</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Ngoại ngữ:</span>
+                <span class="info-value">Tiếng Anh đọc hiểu tài liệu kỹ thuật</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. SKILLS & TECH STACK (ĐA MÀU SẮC) ================= -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Hộp Đồ Nghề Kỹ Thuật</div>
+          <h2 class="section-title">Kỹ Năng & <span class="highlight">Công Nghệ Sử Dụng</span></h2>
+          <p class="section-subtitle">Bộ kỹ năng được trau dồi qua các môn học chuyên ngành tại LHU và các dự án tự nghiên cứu thực tế.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Cột 1: Frontend Core (Tông Xanh Dương & Cyan) -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon icon-blue">💻</div>
+              <div>
+                <h3 class="category-title">Frontend Core</h3>
+                <span style="font-size: 13px; color: var(--color-gray-medium);">Lập trình giao diện web</span>
+              </div>
+            </div>
+
+            <div class="skills-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">HTML5 Semantic & SEO</span>
+                  <span class="skill-percent" style="color: var(--color-blue);">90%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width: 90%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">CSS3, Flexbox & CSS Grid</span>
+                  <span class="skill-percent" style="color: var(--color-blue);">88%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width: 88%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript (ES6+, DOM, Async)</span>
+                  <span class="skill-percent" style="color: var(--color-blue);">82%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width: 82%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Responsive Design</span>
+                  <span class="skill-percent" style="color: var(--color-blue);">85%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width: 85%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">React.js Fundamentals</span>
+                  <span class="skill-percent" style="color: var(--color-blue);">65%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width: 65%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột 2: UI/UX & Công Cụ (Tông Tím & Hồng) -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon icon-purple">🎨</div>
+              <div>
+                <h3 class="category-title">UI/UX & Công Cụ</h3>
+                <span style="font-size: 13px; color: var(--color-gray-medium);">Thiết kế & Quản lý mã nguồn</span>
+              </div>
+            </div>
+
+            <div class="skills-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Figma (UI Design & Prototype)</span>
+                  <span class="skill-percent" style="color: var(--color-purple);">85%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width: 85%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Git & GitHub Workflow</span>
+                  <span class="skill-percent" style="color: var(--color-purple);">80%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width: 80%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">VS Code Ecosystem</span>
+                  <span class="skill-percent" style="color: var(--color-purple);">90%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width: 90%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Chrome DevTools & Debug</span>
+                  <span class="skill-percent" style="color: var(--color-pink);">82%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-pink" style="width: 82%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Postman & RESTful API</span>
+                  <span class="skill-percent" style="color: var(--color-pink);">70%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-pink" style="width: 70%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột 3: Nền tảng Học thuật LHU (Tông Vàng & Đỏ) -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon icon-red">🎓</div>
+              <div>
+                <h3 class="category-title">Nền Tảng CNTT LHU</h3>
+                <span style="font-size: 13px; color: var(--color-gray-medium);">Học thuật & Thuật toán</span>
+              </div>
+            </div>
+
+            <div class="skills-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Cấu trúc dữ liệu & Giải thuật</span>
+                  <span class="skill-percent" style="color: var(--color-red);">80%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width: 80%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Lập trình hướng đối tượng (OOP)</span>
+                  <span class="skill-percent" style="color: var(--color-red);">82%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width: 82%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Cơ sở dữ liệu SQL / MySQL</span>
+                  <span class="skill-percent" style="color: var(--color-yellow);">78%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-yellow" style="width: 78%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Mạng máy tính & HTTP Protocol</span>
+                  <span class="skill-percent" style="color: var(--color-yellow);">75%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-yellow" style="width: 75%;"></div></div>
+              </div>
+
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Tư duy gỡ lỗi (Debugging)</span>
+                  <span class="skill-percent" style="color: var(--color-red);">85%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width: 85%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. FEATURED PROJECTS SECTION (MỖI CARD MỘT SẮC THÁI) ================= -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Sản Phẩm & Bài Tập Thực Tế</div>
+          <h2 class="section-title">Dự Án <span class="highlight">Tiêu Biểu</span></h2>
+          <p class="section-subtitle">Các dự án cá nhân và bài tập lớn được thiết kế chỉn chu từ khâu lên ý tưởng đến hiện thực hóa mã nguồn.</p>
+        </div>
+
+        <!-- Bộ lọc dự án -->
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Tất Cả Dự Án</button>
+          <button class="filter-btn" data-filter="web">Web Application</button>
+          <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
+          <button class="filter-btn" data-filter="academic">Đồ Án LHU</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Dự án 1: Tông Xanh Dương (Blue) -->
+          <article class="project-card" data-category="academic" style="border-top: 4px solid var(--color-blue);">
+            <div class="project-mockup mockup-bg-blue">
+              <div class="mockup-window">
+                <div class="mockup-header">
+                  <div class="mockup-dot red"></div>
+                  <div class="mockup-dot yellow"></div>
+                  <div class="mockup-dot green"></div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-body-icon">🎓</div>
+                  <div class="mockup-body-title">LHU IT Club Portal Dashboard</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="badge-color badge-blue">HTML5/CSS3</span>
+                <span class="badge-color badge-blue">JavaScript ES6</span>
+                <span class="badge-color badge-yellow">LocalStorage</span>
+                <span class="badge-color badge-blue">Đồ án LHU</span>
+              </div>
+              <h3 class="project-title">Cổng Quản Lý Hoạt Động CLB Tin Học LHU</h3>
+              <p class="project-desc">
+                Hệ thống web hỗ trợ sinh viên Khoa CNTT Trường Đại học Lạc Hồng đăng ký thành viên câu lạc bộ, theo dõi các buổi workshop công nghệ, xem bảng xếp hạng và tích điểm hoạt động.
+              </p>
+              <div class="project-links">
+                <a href="#pitch" class="link-btn" style="color: var(--color-blue);"><span>🔗 Xem Chi Tiết</span></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn"><span>📁 Mã Nguồn GitHub</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dự án 2: Tông Tím (Purple) -->
+          <article class="project-card" data-category="web" style="border-top: 4px solid var(--color-purple);">
+            <div class="project-mockup mockup-bg-purple">
+              <div class="mockup-window">
+                <div class="mockup-header">
+                  <div class="mockup-dot red"></div>
+                  <div class="mockup-dot yellow"></div>
+                  <div class="mockup-dot green"></div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-body-icon">✨</div>
+                  <div class="mockup-body-title">Hoàng Phúc Personal Portfolio</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="badge-color badge-purple">CSS Variables</span>
+                <span class="badge-color badge-pink">5 Bảng Màu</span>
+                <span class="badge-color badge-purple">Dark/Light Mode</span>
+                <span class="badge-color badge-blue">Vanilla JS</span>
+              </div>
+              <h3 class="project-title">Interactive Personal Portfolio Website</h3>
+              <p class="project-desc">
+                Website portfolio cá nhân xây dựng với Design System màu thông minh tại :root, tích hợp bảng chọn 5 chủ đề màu (Xanh dương, Đỏ, Hồng, Vàng, Tím) và Dark/Light mode tự động.
+              </p>
+              <div class="project-links">
+                <a href="#home" class="link-btn" style="color: var(--color-purple);"><span>🔗 Trải Nghiệm Ngay</span></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn"><span>📁 Mã Nguồn GitHub</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dự án 3: Tông Vàng (Yellow) -->
+          <article class="project-card" data-category="web" style="border-top: 4px solid var(--color-yellow);">
+            <div class="project-mockup mockup-bg-yellow">
+              <div class="mockup-window">
+                <div class="mockup-header">
+                  <div class="mockup-dot red"></div>
+                  <div class="mockup-dot yellow"></div>
+                  <div class="mockup-dot green"></div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-body-icon">🛒</div>
+                  <div class="mockup-body-title">TechGadget E-Commerce Store</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="badge-color badge-yellow">JavaScript DOM</span>
+                <span class="badge-color badge-red">Shopping Cart</span>
+                <span class="badge-color badge-yellow">CSS Flexbox</span>
+                <span class="badge-color badge-blue">Realtime Filter</span>
+              </div>
+              <h3 class="project-title">TechStore - Cửa Hàng Phụ Kiện Công Nghệ</h3>
+              <p class="project-desc">
+                Ứng dụng web bán đồ phụ kiện cho lập trình viên (bàn phím cơ, chuột công thái học). Tích hợp tìm kiếm realtime, lọc theo mức giá và giỏ hàng tính tiền tự động.
+              </p>
+              <div class="project-links">
+                <a href="#pitch" class="link-btn" style="color: var(--color-yellow);"><span>🔗 Xem Bản Demo</span></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn"><span>📁 Mã Nguồn GitHub</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dự án 4: Tông Hồng & Đỏ (Pink & Red) -->
+          <article class="project-card" data-category="uiux" style="border-top: 4px solid var(--color-pink);">
+            <div class="project-mockup mockup-bg-pink">
+              <div class="mockup-window">
+                <div class="mockup-header">
+                  <div class="mockup-dot red"></div>
+                  <div class="mockup-dot yellow"></div>
+                  <div class="mockup-dot green"></div>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-body-icon">📱</div>
+                  <div class="mockup-body-title">Figma UI/UX: LHU Mobile Student App</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="badge-color badge-pink">Figma Prototype</span>
+                <span class="badge-color badge-red">UI/UX Case Study</span>
+                <span class="badge-color badge-purple">User Research</span>
+                <span class="badge-color badge-yellow">LHU Exam</span>
+              </div>
+              <h3 class="project-title">UI/UX Case Study: Ứng Dụng Tra Cứu Lịch Thi LHU</h3>
+              <p class="project-desc">
+                Bản thiết kế giao diện ứng dụng di động giải quyết bài toán tra cứu lịch thi, phòng thi và nhắc báo lịch học cho sinh viên Đại học Lạc Hồng với quy chuẩn thiết kế Material Design trực quan.
+              </p>
+              <div class="project-links">
+                <a href="#contact" class="link-btn" style="color: var(--color-pink);"><span>🎨 Xem Figma Prototype</span></a>
+                <a href="#about" class="link-btn"><span>📑 Đọc Case Study</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. ACADEMIC JOURNEY (TIMELINE) ================= -->
+    <section class="timeline-section" id="journey">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Quá Trình Phát Triển</div>
+          <h2 class="section-title">Hành Trình Học Tập <span class="highlight">Tại LHU</span></h2>
+          <p class="section-subtitle">Dấu mốc ghi nhận sự trưởng thành về tư duy lập trình và kiến thức chuyên ngành qua từng kỳ học.</p>
+        </div>
+
+        <div class="timeline-wrap">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card" style="border-left: 4px solid var(--color-blue);">
+              <span class="timeline-period period-blue">2023 - 2024 (Năm 1)</span>
+              <h3 class="timeline-title">Xây Dựng Nền Tảng Thuật Toán & Khám Phá Công Nghệ</h3>
+              <div class="timeline-institution">Khoa Công nghệ Thông tin - Đại học Lạc Hồng</div>
+              <p class="timeline-desc">
+                Làm quen với tư duy lập trình cấu trúc qua ngôn ngữ C/C++, giải các bài toán thuật toán nền tảng, học cách tư duy logic phân tích bài toán. Bắt đầu tự tìm tòi tài liệu HTML5, CSS3 và xây dựng những trang web tĩnh đầu tiên.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item current">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card" style="border-left: 4px solid var(--color-yellow);">
+              <span class="timeline-period period-yellow">2024 - 2025 (Năm 2 - Hiện Tại)</span>
+              <h3 class="timeline-title">Bứt Phá Lập Trình Web Chuyên Sâu & Tư Duy UI/UX</h3>
+              <div class="timeline-institution">Khoa Công nghệ Thông tin - Đại học Lạc Hồng</div>
+              <p class="timeline-desc">
+                Đào sâu lập trình hướng đối tượng (OOP), cấu trúc dữ liệu, cơ sở dữ liệu SQL. Tập trung phát triển kỹ năng Frontend thực chiến: JavaScript hiện đại (ES6+), CSS Grid/Flexbox nâng cao, thiết kế giao diện với Figma và hiện thực hóa các bài tập lớn mô phỏng dự án doanh nghiệp.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item future">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card" style="border-left: 4px solid var(--color-purple);">
+              <span class="timeline-period period-purple">Mục Tiêu Sắp Tới (Cuối Năm 2 - Năm 3)</span>
+              <h3 class="timeline-title">Thực Tập Sinh Frontend Developer Tại Doanh Nghiệp</h3>
+              <div class="timeline-institution">Môi trường Doanh nghiệp Năng động</div>
+              <p class="timeline-desc">
+                Tham gia vào các dự án sản phẩm thực tế, làm quen với quy trình Gitflow chuyên nghiệp, mở rộng làm chủ React.js, TypeScript và nâng cao kỹ năng làm việc nhóm để sẵn sàng trở thành kỹ sư Frontend chính thức.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. INTERACTIVE ELEVATOR PITCH ================= -->
+    <section class="pitch-section" id="pitch">
+      <div class="container pitch-container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Bộ Bản Giới Thiệu Nhanh</div>
+          <h2 class="section-title">Personal <span class="highlight">Elevator Pitch</span></h2>
+          <p class="section-subtitle">Ba phiên bản tự giới thiệu được tinh chỉnh cho các tình huống giao tiếp khác nhau, sẵn sàng sao chép 1-chạm.</p>
+        </div>
+
+        <div class="pitch-tabs">
+          <button class="pitch-tab-btn active" data-pitch="interview">⏱️ Phỏng Vấn & Networking (30 Giây)</button>
+          <button class="pitch-tab-btn" data-pitch="linkedin">💼 LinkedIn & Hồ Sơ CV</button>
+          <button class="pitch-tab-btn" data-pitch="social">📱 Mạng Xã Hội (Facebook/Threads)</button>
+        </div>
+
+        <div class="pitch-box">
+          <div class="pitch-box-header">
+            <div class="pitch-scenario" id="pitch-scenario">⏱️ Phiên Bản 1: Phỏng Vấn & Networking (Pitch 30 Giây)</div>
+            <button class="copy-btn-action" id="pitch-copy-btn">
+              <span>📋 Sao chép</span>
+            </button>
+          </div>
+
+          <p class="pitch-body-text" id="pitch-text-display">"Chào anh/chị, em là Hoàng Phúc, sinh viên năm 2 chuyên ngành Công nghệ Thông tin tại Trường Đại học Lạc Hồng (LHU).
+
+Với niềm đam mê lớn dành cho lập trình web và trải nghiệm người dùng, em tập trung phát triển kỹ năng xây dựng giao diện chuẩn responsive với HTML5, CSS Grid/Flexbox, JavaScript và hiện thực hóa thiết kế từ Figma. Điểm mạnh của em là tư duy logic mạch lạc, khả năng tự học công nghệ mới nhanh và sự tỉ mỉ trong từng chi tiết sản phẩm.
+
+Em đang tìm kiếm cơ hội thực tập vị trí Frontend Developer để đem sự nhiệt huyết cùng kiến thức nền tảng của mình đóng góp vào các dự án thực tế của quý công ty, đồng thời học hỏi từ các anh chị đi trước."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. CONTACT SECTION ================= -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-badge">Kết Nối Với Tôi</div>
+          <h2 class="section-title">Sẵn Sàng Hợp Tác & <span class="highlight">Thực Tập</span></h2>
+          <p class="section-subtitle">Bạn đang tìm kiếm một thực tập sinh Frontend nhiệt huyết hoặc muốn trao đổi về dự án? Đừng ngần ngại nhắn tin cho mình nhé!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Thông tin liên hệ trực tiếp -->
+          <div class="contact-info-col">
+            <div class="contact-card-item" style="border-left: 4px solid var(--color-blue);">
+              <div class="contact-card-icon" style="background: var(--color-blue-subtle); color: var(--color-blue);">📧</div>
+              <div class="contact-card-text">
+                <span class="contact-card-label">Email liên hệ:</span>
+                <span class="contact-card-val">hoangphuc.lhu.it@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="contact-card-item" style="border-left: 4px solid var(--color-yellow);">
+              <div class="contact-card-icon" style="background: var(--color-yellow-subtle); color: var(--color-yellow);">📞</div>
+              <div class="contact-card-text">
+                <span class="contact-card-label">Số điện thoại / Zalo:</span>
+                <span class="contact-card-val">0987 654 321</span>
+              </div>
+            </div>
+
+            <div class="contact-card-item" style="border-left: 4px solid var(--color-purple);">
+              <div class="contact-card-icon" style="background: var(--color-purple-subtle); color: var(--color-purple);">📍</div>
+              <div class="contact-card-text">
+                <span class="contact-card-label">Trường học & Địa điểm:</span>
+                <span class="contact-card-val">Khoa CNTT - ĐH Lạc Hồng, TP. Biên Hòa, Đồng Nai</span>
+              </div>
+            </div>
+
+            <div class="contact-card-item" style="border-left: 4px solid var(--color-pink);">
+              <div class="contact-card-icon" style="background: var(--color-pink-subtle); color: var(--color-pink);">🎯</div>
+              <div class="contact-card-text">
+                <span class="contact-card-label">Mục tiêu hiện tại:</span>
+                <span class="contact-card-val">Frontend Developer Internship (2024 - 2025)</span>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--color-gray-dark); margin-bottom: 10px;">
+                MẠNG XÃ HỘI & MÃ NGUỒN:
+              </div>
+              <div class="social-links-row">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub Profile">🐙</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn Profile">💼</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook cá nhân">🌐</a>
+                <a href="mailto:hoangphuc.lhu.it@gmail.com" class="social-btn" title="Gửi Email">✉️</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form liên hệ -->
+          <div class="contact-form-box">
+            <form id="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Họ và tên của bạn *</label>
+                <input class="form-input" type="text" id="form-name" placeholder="Ví dụ: Anh Nam (HR Tech Corp)" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-email">Email phản hồi *</label>
+                <input class="form-input" type="email" id="form-email" placeholder="email@congty.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-subject">Tiêu đề tin nhắn</label>
+                <input class="form-input" type="text" id="form-subject" placeholder="Cơ hội thực tập Frontend / Trao đổi dự án">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-message">Nội dung tin nhắn *</label>
+                <textarea class="form-textarea" id="form-message" placeholder="Chào Hoàng Phúc, công ty mình đang tìm thực tập sinh..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                <span>✉️ Gửi Tin Nhắn Cho Phúc</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 9. FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">&lt;Hoàng Phúc /&gt;</div>
+      <p class="footer-text">Sinh viên Khoa Công nghệ Thông tin - Trường Đại học Lạc Hồng (LHU)</p>
+      <div class="footer-links">
+        <a href="#home">Trang Chủ</a>
+        <a href="#about">Về Tôi</a>
+        <a href="#skills">Kỹ Năng</a>
+        <a href="#projects">Dự Án</a>
+        <a href="#journey">Hành Trình</a>
+        <a href="#contact">Liên Hệ</a>
+      </div>
+      <p style="font-size: 12px; color: var(--color-gray-medium); margin-top: 20px;">
+        © 2024 - 2025 Hoàng Phúc. Tự hào thiết kế với Hệ thống Màu Thông Minh (Xanh Dương, Đỏ, Hồng, Vàng, Tím) & CSS Variables.
+      </p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" title="Cuộn lên đầu trang" aria-label="Cuộn lên đầu trang">↑</button>
+  <div class="toast-container"></div>
+
+  <!-- ================= JAVASCRIPT XỬ LÝ TƯƠNG TÁC ================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* 1. BẢNG ĐIỀU KHIỂN CHỌN MÀU THÔNG MINH (ACCENT COLOR SWITCHER) */
+      const colorSwatches = document.querySelectorAll('.color-swatch-btn');
+      const savedAccent = localStorage.getItem('hp_portfolio_accent') || 'blue';
+
+      function setAccent(color) {
+        document.documentElement.setAttribute('data-accent', color);
+        localStorage.setItem('hp_portfolio_accent', color);
+        colorSwatches.forEach(swatch => {
+          swatch.classList.toggle('active', swatch.getAttribute('data-color') === color);
+        });
+      }
+
+      setAccent(savedAccent);
+
+      const colorNames = {
+        blue: 'Xanh Dương (Tech & Uy Tín)',
+        red: 'Màu Đỏ (Quyết Tâm & Đam Mê)',
+        pink: 'Màu Hồng (Năng Động & Trẻ Trung)',
+        yellow: 'Màu Vàng (Năng Lượng & Tỏa Sáng)',
+        purple: 'Màu Tím (Sáng Tạo & UI/UX)'
+      };
+
+      colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', () => {
+          const chosenColor = swatch.getAttribute('data-color');
+          setAccent(chosenColor);
+          showToast(`Đã áp dụng bảng màu: ${colorNames[chosenColor]} ✨`, 'info');
+        });
+      });
+
+      /* 2. DARK / LIGHT MODE TOGGLE */
+      const themeToggleBtn = document.getElementById('theme-toggle-btn');
+      const themeIcon = themeToggleBtn.querySelector('.theme-icon');
+      const savedTheme = localStorage.getItem('hp_portfolio_theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('hp_portfolio_theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        showToast(`Đã chuyển sang ${newTheme === 'dark' ? 'Giao diện Tối 🌙' : 'Giao diện Sáng ☀️'}`, 'info');
+      });
+
+      /* 3. TYPEWRITER EFFECT Ở HERO */
+      const typewriterElement = document.getElementById('typewriter-text');
+      const words = [
+        'Sinh viên CNTT @ Đại học Lạc Hồng',
+        'Frontend Web Developer',
+        'Đam mê UI/UX & Figma',
+        'Tư duy logic & Tự học nhanh'
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeEffect() {
+        if (!typewriterElement) return;
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+          typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let nextSpeed = isDeleting ? 45 : 90;
+        if (!isDeleting && charIndex === currentWord.length) {
+          nextSpeed = 1800;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          nextSpeed = 400;
+        }
+        setTimeout(typeEffect, nextSpeed);
+      }
+      typeEffect();
+
+      /* 4. STICKY NAVBAR & MOBILE MENU */
+      const navbar = document.querySelector('.navbar');
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const navLinks = document.getElementById('nav-links');
+      const navItems = document.querySelectorAll('.nav-item');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+          if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        }
+      });
+
+      if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('open');
+          hamburgerBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+        });
+
+        navItems.forEach(item => {
+          item.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburgerBtn.textContent = '☰';
+          });
+        });
+      }
+
+      /* 5. LỌC DỰ ÁN (PROJECT FILTER) */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filterValue = btn.getAttribute('data-filter');
+
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filterValue === 'all' || filterValue === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      /* 6. TABS ELEVATOR PITCH & SAO CHÉP */
+      const pitchTabs = document.querySelectorAll('.pitch-tab-btn');
+      const pitchScenario = document.getElementById('pitch-scenario');
+      const pitchTextEl = document.getElementById('pitch-text-display');
+      const pitchCopyBtn = document.getElementById('pitch-copy-btn');
+
+      const pitchData = {
+        interview: {
+          title: "⏱️ Phiên Bản 1: Phỏng Vấn & Networking (Pitch 30 Giây)",
+          text: `"Chào anh/chị, em là Hoàng Phúc, sinh viên năm 2 chuyên ngành Công nghệ Thông tin tại Trường Đại học Lạc Hồng (LHU).\n\nVới niềm đam mê lớn dành cho lập trình web và trải nghiệm người dùng, em tập trung phát triển kỹ năng xây dựng giao diện chuẩn responsive với HTML5, CSS Grid/Flexbox, JavaScript và hiện thực hóa thiết kế từ Figma. Điểm mạnh của em là tư duy logic mạch lạc, khả năng tự học công nghệ mới nhanh và sự tỉ mỉ trong từng chi tiết sản phẩm.\n\nEm đang tìm kiếm cơ hội thực tập vị trí Frontend Developer để đem sự nhiệt huyết cùng kiến thức nền tảng của mình đóng góp vào các dự án thực tế của quý công ty, đồng thời học hỏi từ các anh chị đi trước."`
+        },
+        linkedin: {
+          title: "💼 Phiên Bản 2: LinkedIn & Hồ Sơ CV (Chuyên Nghiệp & Định Hướng)",
+          text: `Xin chào, tôi là Hoàng Phúc – Sinh viên Khoa Công nghệ Thông tin, Trường Đại học Lạc Hồng (LHU), theo đuổi định hướng trở thành một Frontend Developer chuyên nghiệp.\n\n🚀 Về tôi:\nTôi đam mê việc biến các bản vẽ thiết kế trên Figma thành những giao diện web trực quan, mượt mà và tối ưu trên mọi kích thước màn hình. Nền tảng kỹ thuật chính của tôi tập trung vào lập trình web hiện đại (HTML5, CSS3/Flexbox/Grid, JavaScript) cùng việc chú trọng tối đa vào trải nghiệm người dùng (UI/UX).\n\n💡 Thế mạnh cốt lõi:\n• Tư duy logic giải quyết vấn đề mạch lạc, có khả năng phân tích và bẻ nhỏ bài toán kỹ thuật.\n• Tinh thần tự học cao, chủ động nghiên cứu các công nghệ và giải pháp mới.\n• Tinh thần làm việc nhóm trách nhiệm, cởi mở tiếp nhận phản hồi để hoàn thiện sản phẩm.\n\n🎯 Mục tiêu hiện tại:\nTôi đang tích cực tìm kiếm cơ hội Thực tập sinh Frontend Developer / Web Developer tại một môi trường doanh nghiệp năng động. Mong muốn được đem năng lượng trẻ, nền tảng học thuật vững chắc để cống hiến cho các dự án thực tiễn và phát triển chuyên môn sâu sắc.`
+        },
+        social: {
+          title: "📱 Phiên Bản 3: Mạng Xã Hội (Facebook / Threads / Instagram)",
+          text: `👋 Hello mọi người, mình là Hoàng Phúc – một bạn trẻ đang 'lăn lộn' cùng code tại Khoa CNTT, Đại học Lạc Hồng (LHU) 💻✨.\n\nHằng ngày ngoài việc làm bạn với bug và deadline, niềm vui của mình là biến những dòng code HTML/CSS tưởng chừng khô khan thành những giao diện web vừa mắt, mượt mà và thân thiện với người dùng. Mình tin rằng giao diện đẹp không chỉ để ngắm, mà là để người dùng cảm thấy tiện lợi nhất!\n\n🎯 Hiện tại mình đang chuẩn bị cho chặng đường mới: Tìm kiếm cơ hội thực tập vị trí Frontend Developer để 'thực chiến' nhiều hơn và học hỏi từ các tiền bối trong ngành.\n\nRất vui được kết nối, giao lưu học hỏi với các anh chị và các bạn có cùng đam mê công nghệ! ✨\n\n📍 Let's connect and create cool things together! 🚀`
+        }
+      };
+
+      pitchTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          pitchTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const targetKey = tab.getAttribute('data-pitch');
+          if (pitchData[targetKey]) {
+            pitchScenario.textContent = pitchData[targetKey].title;
+            pitchTextEl.textContent = pitchData[targetKey].text;
+          }
+        });
+      });
+
+      if (pitchCopyBtn) {
+        pitchCopyBtn.addEventListener('click', () => {
+          const textToCopy = pitchTextEl.textContent;
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            pitchCopyBtn.classList.add('copied');
+            pitchCopyBtn.innerHTML = `✓ Đã chép!`;
+            showToast('Đã sao chép pitch vào clipboard!', 'success');
+            setTimeout(() => {
+              pitchCopyBtn.classList.remove('copied');
+              pitchCopyBtn.innerHTML = `<span>📋 Sao chép</span>`;
+            }, 2000);
+          });
+        });
+      }
+
+      /* 7. CONTACT FORM VALIDATION */
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('form-name').value.trim();
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const orig = submitBtn.innerHTML;
+          submitBtn.innerHTML = '⏳ Đang gửi...';
+          submitBtn.disabled = true;
+
+          setTimeout(() => {
+            submitBtn.innerHTML = '✓ Gửi thành công!';
+            showToast(`Cảm ơn ${name}! Hoàng Phúc đã nhận được tin nhắn và sẽ phản hồi sớm nhất.`, 'success');
+            contactForm.reset();
+            setTimeout(() => {
+              submitBtn.innerHTML = orig;
+              submitBtn.disabled = false;
+            }, 2500);
+          }, 800);
+        });
+      }
+
+      /* 8. TOAST NOTIFICATION */
+      function showToast(message, type = 'info') {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.className = 'toast-container';
+          document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = `toast ${type === 'success' ? 'toast-success' : ''}`;
+        let icon = type === 'success' ? '✅' : '🔔';
+        toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateX(100%)';
+          toast.style.transition = 'all 0.3s ease';
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+
+      /* 9. BACK TO TOP */
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
