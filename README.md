@@ -3,7 +3,7 @@
   <!-- LOGO HOẶC BANNER DỰ ÁN -->
   <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Project Logo" width="100" height="100" />
 
-  # 🎌 JAPANESE-web
+  # Lương Minh Thảo
   ### Nền Tảng Học Tiếng Nhật Trực Tuyến & Tương Tác Hiện Đại
 
   <p align="center">
