@@ -1,0 +1,124 @@
+/* =========================
+   CÀI ĐẶT CHUNG
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+
+/* =========================
+   BÀI 1: FLEXBOX
+========================= */
+
+.flex-section {
+    height: 100vh;
+
+    /* Kích hoạt Flexbox */
+    display: flex;
+
+    /* Căn giữa theo chiều ngang */
+    justify-content: center;
+
+    /* Căn giữa theo chiều dọc */
+    align-items: center;
+
+    background-color: #e8f4ff;
+}
+
+.container {
+    width: 400px;
+    padding: 40px;
+
+    text-align: center;
+
+    background-color: white;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.container h1 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.container p {
+    color: #555;
+}
+
+
+/* =========================
+   BÀI 2: CSS GRID
+========================= */
+
+.grid-section {
+    padding: 60px 10%;
+
+    background-color: #f8f8f8;
+}
+
+.grid-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Tạo 3 cột bằng nhau */
+
+.grid-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Khoảng cách giữa các cột */
+    gap: 20px;
+}
+
+
+/* Các ô trong Grid */
+
+.column {
+    padding: 30px;
+
+    background-color: #eeeeee;
+
+    /* Bo góc 10px */
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.column h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.column p {
+    color: #666;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Trên điện thoại chuyển thành 1 cột */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 80%;
+    }
+}
