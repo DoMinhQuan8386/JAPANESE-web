@@ -1,186 +1,142 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Đỗ Minh Quân</title>
+    <title>Giới Thiệu Bản Thân - Nguyễn Thành Công | Đại Học Lạc Hồng</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="container">
+        <!-- Profile Card chính -->
+        <main class="profile-card">
+            <!-- Header / Banner -->
+            <div class="card-header">
+                <div class="header-overlay"></div>
+                <div class="school-badge">
+                    <i class="fa-solid fa-graduation-cap"></i> Đại Học Lạc Hồng (LHU)
+                </div>
+            </div>
 
-    <!--
-        HEADER:
-        Đây là phần đầu của trang Portfolio.
-        Header dùng để giới thiệu tên và thông tin chính của website.
-    -->
-    <header>
-        <h1>Portfolio - Đỗ Minh Quân</h1>
+            <!-- Avatar & Tên -->
+            <div class="profile-info">
+                <div class="avatar-container">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" alt="Ảnh đại diện Nguyễn Thành Công" class="avatar" id="avatarImg">
+                </div>
+                <h1 class="student-name">NGUYỄN THÀNH CÔNG</h1>
+                <p class="student-tagline">Sinh viên Khoa Công Nghệ Thông Tin - Đại học Lạc Hồng</p>
+                <div class="status-badge">
+                    <span class="dot"></span> Đang theo học khóa 2022 - 2026
+                </div>
+            </div>
 
-        <!--
-            NAV:
-            Thanh điều hướng giúp người dùng di chuyển
-            đến các phần khác nhau trong trang.
-        -->
-        <nav>
-            <a href="#about">Giới thiệu</a> |
-            <a href="#skills">Kỹ năng</a> |
-            <a href="#projects">Dự án</a> |
-            <a href="#contact">Liên hệ</a>
-        </nav>
-    </header>
+            <!-- Nội dung chi tiết -->
+            <div class="card-body">
+                <!-- Thông tin cơ bản -->
+                <section class="info-section">
+                    <h2 class="section-title"><i class="fa-solid fa-id-card"></i> Thông Tin Sinh Viên</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-barcode"></i> Mã SV:</span>
+                            <span class="value">123456789</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-users"></i> Lớp:</span>
+                            <span class="value">22CT111</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-laptop-code"></i> Chuyên ngành:</span>
+                            <span class="value">Kỹ thuật phần mềm</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-envelope"></i> Email SV:</span>
+                            <span class="value">thanhcong@lhu.edu.vn</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-location-dot"></i> Nơi học tập:</span>
+                            <span class="value">TP. Biên Hòa, Đồng Nai</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label"><i class="fa-solid fa-phone"></i> Điện thoại:</span>
+                            <span class="value">0901 234 567</span>
+                        </div>
+                    </div>
+                </section>
 
+                <!-- Giới thiệu ngắn -->
+                <section class="info-section">
+                    <h2 class="section-title"><i class="fa-solid fa-user"></i> Về Bản Thân</h2>
+                    <p class="about-text">
+                        Xin chào thầy cô và các bạn! Mình tên là <strong>Nguyễn Thành Công</strong>, hiện đang là sinh viên trường Đại học Lạc Hồng. Mình có niềm đam mê lớn với lập trình, công nghệ thông tin và luôn nỗ lực tìm tòi, học hỏi các công nghệ mới. Mục tiêu của mình là trở thành một lập trình viên giỏi, hoàn thiện kỹ năng chuyên môn và phát triển bản thân vững vàng từ mái trường LHU.
+                    </p>
+                </section>
 
-    <!--
-        MAIN:
-        Chứa toàn bộ nội dung chính của Portfolio.
-        Nội dung được chia thành nhiều section để dễ tổ chức.
-    -->
-    <main>
+                <!-- Kỹ năng -->
+                <section class="info-section">
+                    <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Kỹ Năng</h2>
+                    <div class="skills-list">
+                        <span class="skill-pill"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</span>
+                        <span class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span class="skill-pill"><i class="fa-brands fa-react"></i> React / Web Dev</span>
+                        <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="skill-pill"><i class="fa-solid fa-database"></i> SQL / Database</span>
+                        <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git / GitHub</span>
+                    </div>
+                </section>
 
-        <!--
-            SECTION 1 - GIỚI THIỆU:
-            Giới thiệu thông tin cá nhân, quá trình học tập
-            và sở thích của Đỗ Minh Quân.
-        -->
-        <section id="about">
-            <h2>Giới thiệu bản thân</h2>
+                <!-- Sở thích & Hoạt động -->
+                <section class="info-section">
+                    <h2 class="section-title"><i class="fa-solid fa-heart"></i> Sở Thích</h2>
+                    <div class="hobbies-list">
+                        <div class="hobby-card">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Lập trình</span>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Đọc sách</span>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fa-solid fa-futbol"></i>
+                            <span>Thể thao</span>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fa-solid fa-music"></i>
+                            <span>Âm nhạc</span>
+                        </div>
+                    </div>
+                </section>
 
-            <h3>Xin chào! Tôi là Đỗ Minh Quân 👋</h3>
+                <!-- Liên kết mạng xã hội -->
+                <section class="info-section">
+                    <h2 class="section-title"><i class="fa-solid fa-share-nodes"></i> Kết Nối Với Tôi</h2>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                            <i class="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://github.com" target="_blank" class="social-btn git">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-btn in">
+                            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                        </a>
+                        <a href="mailto:thanhcong@lhu.edu.vn" class="social-btn mail">
+                            <i class="fa-solid fa-paper-plane"></i> Gửi Mail
+                        </a>
+                    </div>
+                </section>
+            </div>
 
-            <p>
-                Tôi là sinh viên ngành Công nghệ thông tin
-                tại Trường Đại học Lạc Hồng.
-            </p>
-
-            <p>
-                Tôi yêu thích lập trình Web và luôn muốn tìm hiểu
-                những công nghệ mới để nâng cao kỹ năng của bản thân.
-                Bên cạnh việc học lập trình, tôi cũng có sở thích
-                học tiếng Nhật và khám phá văn hóa Nhật Bản.
-            </p>
-
-            <p><strong>Ngày sinh:</strong> 15/04/2007</p>
-            <p><strong>Lớp:</strong> 25CT111</p>
-            <p><strong>Trường:</strong> Đại học Lạc Hồng</p>
-            <p><strong>Ngành:</strong> Công nghệ thông tin</p>
-
-            <h3>Mục tiêu</h3>
-
-            <p>
-                Mục tiêu của tôi là xây dựng nền tảng lập trình Web
-                vững chắc, đặc biệt là HTML, CSS và JavaScript,
-                đồng thời phát triển khả năng làm việc với Git và GitHub.
-            </p>
-        </section>
-
-
-        <!--
-            SECTION 2 - KỸ NĂNG:
-            Liệt kê những kỹ năng và công nghệ mà tôi đang học tập.
-        -->
-        <section id="skills">
-            <h2>Kỹ năng</h2>
-
-            <ul>
-                <li>HTML5 - Xây dựng cấu trúc website</li>
-                <li>CSS3 - Thiết kế giao diện website</li>
-                <li>JavaScript - Tạo tính năng tương tác</li>
-                <li>Python - Lập trình cơ bản</li>
-                <li>SQL Server - Quản lý cơ sở dữ liệu</li>
-                <li>Git & GitHub - Quản lý mã nguồn</li>
-            </ul>
-        </section>
-
-
-        <!--
-            SECTION 3 - DỰ ÁN:
-            Giới thiệu dự án Website học tiếng Nhật cơ bản.
-            Đây là dự án chính của Portfolio.
-        -->
-        <section id="projects">
-            <h2>Dự án</h2>
-
-            <article>
-                <h3>🇯🇵 Website học tiếng Nhật cơ bản</h3>
-
-                <p>
-                    Đây là dự án Website hỗ trợ người mới bắt đầu
-                    học tiếng Nhật.
-                </p>
-
-                <h4>Nội dung website</h4>
-
-                <ul>
-                    <li>Học bảng chữ cái Hiragana.</li>
-                    <li>Học bảng chữ cái Katakana.</li>
-                    <li>Ô học thuộc giúp người dùng luyện nhớ chữ.</li>
-                    <li>Học từ vựng tiếng Nhật trình độ N5.</li>
-                    <li>Học các mẫu ngữ pháp cơ bản N5.</li>
-                </ul>
-
-                <h4>Công nghệ sử dụng</h4>
-
-                <p>
-                    HTML5, CSS3 và JavaScript.
-                </p>
-
-                <p>
-                    <strong>Mục tiêu:</strong>
-                    Tạo ra một website học tiếng Nhật đơn giản,
-                    trực quan và có tính tương tác, giúp người mới
-                    bắt đầu dễ dàng ghi nhớ kiến thức.
-                </p>
-            </article>
-        </section>
-
-
-        <!--
-            SECTION 4 - LIÊN HỆ:
-            Cung cấp thông tin và biểu mẫu để người dùng
-            có thể gửi tin nhắn liên hệ.
-        -->
-        <section id="contact">
-            <h2>Liên hệ</h2>
-
-            <p>
-                Nếu bạn muốn trao đổi về học tập hoặc dự án,
-                hãy gửi tin nhắn cho tôi.
-            </p>
-
-            <form>
-                <p>
-                    <label for="name">Họ và tên:</label><br>
-                    <input type="text" id="name" name="name">
-                </p>
-
-                <p>
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email">
-                </p>
-
-                <p>
-                    <label for="message">Nội dung:</label><br>
-                    <textarea id="message" name="message" rows="5"></textarea>
-                </p>
-
-                <button type="submit">Gửi liên hệ</button>
-            </form>
-        </section>
-
-    </main>
-
-
-    <!--
-        FOOTER:
-        Đây là phần cuối của trang Portfolio.
-        Footer thường chứa thông tin bản quyền và lời nhắn bổ sung.
-    -->
-    <footer>
-        <p>© 2026 Đỗ Minh Quân - Portfolio cá nhân</p>
-        <p>🇯🇵 Học từng chữ - Nhớ từng câu - Tiến bộ từng ngày!</p>
-    </footer>
-
+            <!-- Footer -->
+            <footer class="card-footer">
+                <p>© 2026 Bản quyền thuộc về Nguyễn Thành Công - Sinh viên Đại Học Lạc Hồng</p>
+            </footer>
+        </main>
+    </div>
 </body>
 </html>
-
