@@ -1,0 +1,575 @@
+/* =========================================
+   HOẠT ĐỘNG 1
+   BẢNG MÀU THÔNG MINH - CSS VARIABLES
+   ========================================= */
+
+   :root {
+    /* Màu chính */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    /* Màu phụ */
+    --secondary-color: #0f172a;
+
+    /* 3 mức màu xám */
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-500: #64748b;
+
+    /* Màu nền */
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+
+    /* Màu chữ */
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+
+    /* Border */
+    --border-color: #e2e8f0;
+
+    /* Khoảng cách */
+    --spacing-small: 10px;
+    --spacing-medium: 20px;
+    --spacing-large: 40px;
+
+    /* Bo góc */
+    --border-radius: 12px;
+
+    /* Font */
+    --font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================
+   CÀI ĐẶT CHUNG
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTAINER
+   ========================================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+header {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-hover)
+    );
+
+    color: white;
+    padding: var(--spacing-large) 0;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: var(--spacing-medium);
+}
+
+
+/* =========================================
+   NAV
+   ========================================= */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-medium);
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MAIN
+   ========================================= */
+
+main {
+    padding-top: var(--spacing-large);
+    padding-bottom: var(--spacing-large);
+}
+
+
+/* =========================================
+   SECTION
+   ========================================= */
+
+section {
+    background-color: var(--card-bg);
+
+    margin-bottom: 30px;
+    padding: 35px;
+
+    border-radius: var(--border-radius);
+
+    border: 1px solid var(--border-color);
+
+    box-shadow:
+        0 5px 20px rgba(15, 23, 42, 0.06);
+}
+
+section h2 {
+    color: var(--primary-color);
+
+    font-size: 28px;
+
+    margin-bottom: var(--spacing-medium);
+
+    border-bottom: 3px solid var(--primary-color);
+
+    padding-bottom: 8px;
+}
+
+section h3 {
+    font-size: 21px;
+    margin: 18px 0 10px;
+}
+
+section h4 {
+    color: var(--primary-color);
+    margin-top: var(--spacing-medium);
+    margin-bottom: 8px;
+}
+
+section p {
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   THÔNG TIN CÁ NHÂN
+   ========================================= */
+
+#about p strong {
+    color: var(--primary-color);
+}
+
+
+/* =========================================
+   KỸ NĂNG
+   ========================================= */
+
+.skill-list {
+    list-style: none;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--spacing-small);
+}
+
+.skill-list li {
+    flex: 1 1 45%;
+
+    background-color: var(--gray-100);
+
+    padding: 14px;
+
+    border-left: 4px solid var(--primary-color);
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.skill-list li:hover {
+    background-color: #dbeafe;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HOẠT ĐỘNG 3
+   BREAKPOINT CHALLENGE
+   CSS GRID
+   Desktop: 4 cột
+   ========================================= */
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: var(--spacing-medium);
+}
+
+
+/* Card dịch vụ */
+
+.service-card {
+    background-color: var(--gray-100);
+
+    padding: var(--spacing-medium);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--border-radius);
+
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.1);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   DỰ ÁN
+   ========================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+/* Mỗi dự án là một ô riêng */
+
+.project-card {
+    background-color: var(--gray-100);
+
+    padding: 25px;
+
+    border-radius: var(--border-radius);
+
+    border: 1px solid var(--border-color);
+
+    min-height: 320px;
+
+    transition: 0.3s ease;
+}
+
+
+/* Tiêu đề dự án */
+
+.project-card h3 {
+    color: var(--primary-color);
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Tiêu đề nhỏ */
+
+.project-card h4 {
+    color: var(--primary-color);
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+/* Nội dung */
+
+.project-card p {
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+
+/* Danh sách */
+
+.project-card ul {
+    padding-left: 25px;
+
+    line-height: 1.7;
+}
+
+
+/* Icon */
+
+.project-icon {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Hiệu ứng rê chuột */
+
+.project-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--primary-color);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+form {
+    margin-top: var(--spacing-medium);
+}
+
+form p {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+button {
+    background-color: var(--primary-color);
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 24px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    background-color: var(--secondary-color);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+
+/* =========================================
+   HOẠT ĐỘNG 2
+   RESPONSIVE PORTFOLIO
+   Desktop → Mobile
+   ========================================= */
+
+
+/* TABLET
+   4 cột → 2 cột
+*/
+
+@media (max-width: 900px) {
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* MOBILE
+   2 cột → 1 cột
+*/
+
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    .skill-list li {
+        flex: 1 1 100%;
+    }
+
+    /* Dịch vụ thành 1 cột */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE NHỎ
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 94%;
+    }
+
+    header {
+        padding: 25px 0;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    nav a {
+        padding: 6px 8px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+}
