@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của Front-end Developer - Giới thiệu bản thân, kỹ năng, các dự án tiêu biểu và thông tin liên hệ.">
+    <title>Portfolio Cá Nhân | Front-end Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+/* ==========================================================================
+   DESIGN SYSTEM: Báº¢NG MÃƒ MÃ€U & Há»† THá»NG KHOáº¢NG CÃCH CHUáº¨N (DESIGN TOKENS)
+   ========================================================================== */
+
+:root {
+    /* ==========================================================================
+       1. COLOR SYSTEM TOKENS (Há»† THá»NG MÃƒ MÃ€U)
+       ========================================================================== */
+    /* MÃ u chá»§ Ä‘áº¡o (Primary) */
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-primary-light: #eef2ff;
+    --color-primary-border: rgba(79, 70, 229, 0.15);
+    --color-primary-glow: rgba(79, 70, 229, 0.18);
+    --color-primary-shadow: rgba(79, 70, 229, 0.25);
+    --color-primary-shadow-lg: rgba(79, 70, 229, 0.35);
+
+    /* MÃ u phá»¥ (Secondary) */
+    --color-secondary: #06b6d4;
+    --color-secondary-hover: #0891b2;
+    --color-secondary-light: #ecfeff;
+    --color-secondary-shadow: rgba(6, 182, 212, 0.25);
+    --color-secondary-shadow-lg: rgba(6, 182, 212, 0.35);
+
+    /* MÃ u nháº¥n & Chuyá»ƒn sáº¯c (Accent & Gradients) */
+    --color-accent-purple: #7c3aed;
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-purple) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+
+    /* 3 Má»©c xÃ¡m & MÃ u trung tÃ­nh (Neutrals) */
+    --color-white: #ffffff;
+    --color-gray-light: #e2e8f0;    /* Má»©c 1: Viá»n, dáº£i phÃ¢n cÃ¡ch, input border */
+    --color-gray-medium: #64748b;   /* Má»©c 2: Chá»¯ phá»¥, placeholder, chÃº thÃ­ch */
+    --color-gray-dark: #0f172a;     /* Má»©c 3: Chá»¯ chÃ­nh, tiÃªu Ä‘á» h1-h4 */
+
+    /* Há»‡ mÃ u ná»n (Backgrounds) */
+    --color-bg: #f8fafc;            /* Ná»n trang tá»•ng thá»ƒ */
+    --color-bg-surface: #ffffff;    /* Ná»n tháº» Card, Form, Section */
+    --color-bg-subtle: #f1f5f9;     /* Ná»n tháº» phá»¥ kiá»‡n */
+    --color-header-bg: rgba(255, 255, 255, 0.88); /* Ná»n kÃ­nh má» header */
+
+    /* Äá»• bÃ³ng trung tÃ­nh */
+    --color-shadow-subtle: rgba(0, 0, 0, 0.05);
+    --color-shadow-card: rgba(15, 23, 42, 0.05);
+    --color-shadow-card-dark: rgba(15, 23, 42, 0.08);
+
+    /* ==========================================================================
+       2. SPACING SYSTEM TOKENS (Há»† THá»NG KHOáº¢NG CÃCH CHUáº¨N)
+       Quy chuáº©n thang 4px/8px: dÃ¹ng cho margin, padding, gap
+       ========================================================================== */
+    --space-3xs: 0.25rem;  /* 4px   - Viá»n áº£nh, khoáº£ng cÃ¡ch siÃªu nhá» */
+    --space-2xs: 0.35rem;  /* ~6px  - Padding badge nhá» */
+    --space-xs:  0.5rem;   /* 8px   - Khoáº£ng cÃ¡ch nhá» (padding nÃºt nhá», gap icon) */
+    --space-sm:  0.75rem;  /* 12px  - Khoáº£ng cÃ¡ch vá»«a nhá» (gap tháº» badge, margin phá»¥) */
+    --space-md:  1rem;     /* 16px  - Khoáº£ng cÃ¡ch cÆ¡ sá»Ÿ (Base spacing: gap form, padding input) */
+    --space-lg:  1.25rem;  /* 20px  - Khoáº£ng cÃ¡ch vá»«a lá»›n (padding tháº» dá»‹ch vá»¥, gap vá»«a) */
+    --space-xl:  1.5rem;   /* 24px  - Khoáº£ng cÃ¡ch lá»›n (gap lÆ°á»›i grid, margin tiÃªu Ä‘á») */
+    --space-2xl: 2rem;     /* 32px  - Khoáº£ng cÃ¡ch ráº¥t lá»›n (padding tháº» dá»± Ã¡n, margin lá»›n) */
+    --space-3xl: 2.5rem;   /* 40px  - Khoáº£ng cÃ¡ch phÃ¢n Ä‘oáº¡n (gap layout, margin container) */
+    --space-4xl: 3rem;     /* 48px  - Khoáº£ng cÃ¡ch khá»‘i lá»›n (padding section chÃ­nh, gap trang) */
+
+    /* ==========================================================================
+       3. SHADOW, RADIUS & TRANSITION TOKENS
+       ========================================================================== */
+    --shadow-subtle: 0 1px 3px 0 var(--color-shadow-subtle);
+    --shadow-card: 0 10px 25px -5px var(--color-shadow-card), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+    --shadow-hover: 0 20px 35px -5px var(--color-primary-glow), 0 10px 15px -5px var(--color-shadow-card-dark);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-full: 9999px;
+    --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   RESET & TYPOGRAPHY CÆ  Báº¢N
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-gray-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   HEADER & THANH ÄIá»€U HÆ¯á»šNG (GLASSMORPHISM)
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-header-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--color-gray-light);
+    box-shadow: var(--shadow-subtle);
+    padding: var(--space-md) var(--space-3xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.header-brand h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-3xs);
+}
+
+.header-brand p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-gray-medium);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-gray-dark);
+    font-weight: 600;
+    font-size: 0.925rem;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   KHUNG Bá» Cá»¤C CHÃNH (MAIN CONTAINER)
+   ========================================================================== */
+main {
+    max-width: 1060px;
+    width: 100%;
+    margin: var(--space-3xl) auto;
+    padding: 0 var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+    flex: 1;
+}
+
+/* CÃ¡c Section dáº¡ng Card ná»•i khá»‘i thanh lá»‹ch */
+section {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4xl);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+section:hover {
+    box-shadow: 0 14px 30px -4px var(--color-shadow-card-dark);
+}
+
+/* TiÃªu Ä‘á» Section vá»›i gáº¡ch chÃ¢n Gradient */
+section h2 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--space-2xl);
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 55px;
+    height: 4px;
+    background: var(--gradient-accent);
+    border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   PHáº¦N GIá»šI THIá»†U (ABOUT ME SECTION)
+   ========================================================================== */
+#about {
+    display: flex;
+    flex-direction: column;
+}
+
+#about figure {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    padding: var(--space-3xs);
+    background: var(--gradient-accent);
+    box-shadow: 0 10px 25px var(--color-primary-shadow);
+    margin-bottom: var(--space-xs);
+    transition: var(--transition);
+}
+
+#about img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 15px 30px var(--color-secondary-shadow-lg);
+}
+
+#about figcaption {
+    font-size: 0.925rem;
+    font-weight: 600;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--space-2xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    display: inline-block;
+}
+
+#about p {
+    color: var(--color-gray-dark);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#about p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   BREAKPOINT CHALLENGE: KHU Vá»°C Dá»ŠCH Vá»¤ (CSS GRID + MEDIA QUERIES)
+   ========================================================================== */
+/* 1. Máº¶C Äá»ŠNH DESKTOP (>= 1024px): 4 Cá»˜T CSS GRID */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cá»™t trÃªn Desktop */
+    gap: var(--space-xl);
+}
+
+.service-card {
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-gray-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg) var(--space-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-primary-light);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-primary-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--space-xs);
+    line-height: 1.35;
+}
+
+.service-card p {
+    font-size: 0.925rem;
+    color: var(--color-gray-medium);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   PHáº¦N Ká»¸ NÄ‚NG & Dá»° ÃN (SKILLS & PROJECTS)
+   ========================================================================== */
+#skills-projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+}
+
+.skills-container h3,
+.projects-container h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--space-md);
+}
+
+/* Danh sÃ¡ch Ká»¹ nÄƒng: Dáº¡ng Badges/Pills */
+.skills-container ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.skills-container li {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary-border);
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: 0.925rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.skills-container li::before {
+    content: "âœ¦";
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+}
+
+.skills-container li:hover {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--color-primary-glow);
+}
+
+.skills-container li:hover::before {
+    color: var(--color-white);
+}
+
+/* LÆ°á»›i Dá»± Ã¡n tiÃªu biá»ƒu: Bá» Cá»¤C 2 Cá»˜T TRÃŠN DESKTOP (>= 768px) */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cá»™t cÃ¢n Ä‘á»‘i trÃªn Desktop */
+    gap: var(--space-xl);
+}
+
+.projects-container h3 {
+    grid-column: 1 / -1;
+}
+
+/* Tháº» Dá»± Ã¡n (Project Card) */
+.project-card {
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-gray-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-2xl);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-primary-light);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: var(--color-gray-medium);
+    margin-bottom: var(--space-xs);
+    line-height: 1.6;
+}
+
+.project-card strong {
+    color: var(--color-gray-dark);
+    font-weight: 600;
+}
+
+/* NÃºt liÃªn káº¿t trong card dá»± Ã¡n */
+.project-card a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-sm);
+    margin-right: var(--space-xs);
+    margin-top: var(--space-md);
+    transition: var(--transition);
+}
+
+/* NÃºt Xem Demo */
+.project-card a:first-of-type {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 12px var(--color-primary-glow);
+}
+
+.project-card a:first-of-type:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px var(--color-primary-glow);
+}
+
+/* NÃºt GitHub */
+.project-card a:last-of-type {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 1.5px solid var(--color-secondary);
+}
+
+.project-card a:last-of-type:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--color-secondary-shadow);
+}
+
+/* ==========================================================================
+   PHáº¦N LIÃŠN Há»† (CONTACT SECTION)
+   ========================================================================== */
+/* Bá» Cá»¤C 2 Cá»˜T TRÃŠN DESKTOP (>= 768px) */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr; /* 2 cá»™t: Cá»™t 1 Form, Cá»™t 2 Address */
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+}
+
+#contact form > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+}
+
+#contact label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+}
+
+#contact input,
+#contact textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 1.5px solid var(--color-gray-light);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-gray-dark);
+    background-color: var(--color-bg);
+    transition: var(--transition);
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: var(--color-gray-medium);
+    opacity: 0.75;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    outline: none;
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-glow);
+}
+
+#contact button[type="submit"] {
+    align-self: flex-start;
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-2xl);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 6px 18px var(--color-primary-glow);
+    margin-top: var(--space-xs);
+}
+
+#contact button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px var(--color-primary-shadow-lg);
+}
+
+/* ThÃ´ng tin liÃªn há»‡ phá»¥ (Address Card) */
+#contact address {
+    font-style: normal;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-gray-light);
+    border-left: 4px solid var(--color-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+#contact address p {
+    color: var(--color-gray-medium);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#contact address a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+#contact address a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   PHáº¦N CHÃ‚N TRANG (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: var(--color-bg-surface);
+    border-top: 1px solid var(--color-gray-light);
+    padding: var(--space-4xl) var(--space-xl) var(--space-2xl);
+    text-align: center;
+    color: var(--color-gray-medium);
+    font-size: 0.925rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-top: auto;
+}
+
+footer nav ul {
+    display: flex;
+    gap: var(--space-xl);
+    justify-content: center;
+    list-style: none;
+}
+
+footer nav a {
+    color: var(--color-gray-medium);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+footer nav a:hover {
+    color: var(--color-secondary);
+    background-color: var(--color-secondary-light);
+}
+
+footer a[href="#top"] {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: var(--space-xs) var(--space-lg);
+    border: 1.5px solid var(--color-gray-light);
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+    margin-top: var(--space-xs);
+}
+
+footer a[href="#top"]:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px var(--color-primary-glow);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   2. TABLET BREAKPOINT (768px - 1024px): CHUYá»‚N Dá»ŠCH Vá»¤ THÃ€NH 2 Cá»˜T
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cá»™t trÃªn Tablet */
+        gap: var(--space-xl);
+    }
+}
+
+/* ==========================================================================
+   3. MOBILE BREAKPOINT (< 768px): CHUYá»‚N TOÃ€N Bá»˜ Vá»€ 1 Cá»˜T TRÃŠN MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Dá»‹ch vá»¥: Chuyá»ƒn 4 cá»™t Desktop -> 2 cá»™t Tablet -> 1 Cá»˜T MOBILE */
+    .services-container {
+        grid-template-columns: 1fr; /* 1 cá»™t trÃªn Mobile < 768px */
+        gap: var(--space-lg);
+    }
+
+    /* 2. Dá»± Ã¡n tiÃªu biá»ƒu: Chuyá»ƒn tá»« 2 cá»™t Desktop thÃ nh 1 cá»™t Mobile */
+    .projects-container {
+        grid-template-columns: 1fr; /* Biáº¿n thÃ nh 1 cá»™t trÃªn Mobile < 768px */
+    }
+
+    /* 3. Khu vá»±c LiÃªn há»‡: Chuyá»ƒn tá»« 2 cá»™t Desktop thÃ nh 1 cá»™t Mobile */
+    .contact-layout {
+        grid-template-columns: 1fr; /* Biáº¿n thÃ nh 1 cá»™t trÃªn Mobile < 768px */
+        gap: var(--space-xl);
+    }
+
+    /* 4. Header & Menu: Chuyá»ƒn thÃ nh 1 cá»™t xáº¿p dá»c */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-md) var(--space-xl);
+        gap: var(--space-md);
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+        gap: var(--space-xs);
+    }
+
+    nav a {
+        padding: var(--space-2xs) var(--space-sm);
+        font-size: 0.85rem;
+    }
+
+    main {
+        margin: var(--space-xl) auto;
+        padding: 0 var(--space-md);
+        gap: var(--space-2xl);
+    }
+
+    section {
+        padding: var(--space-lg) var(--space-md);
+        border-radius: var(--radius-md);
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    #contact button[type="submit"] {
+        width: 100%;
+    }
+
+    #contact address {
+        gap: var(--space-sm);
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <div class="header-brand">
+            <h1>Nguyễn Lê Tuấn Khanh</h1>
+            <p>Junior Front-end Developer / Web Enthusiast</p>
+        </div>
+
+        <nav aria-label="Menu chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#services">Dịch vụ</a></li>
+                <li><a href="#skills-projects">Kỹ năng & Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            
+            <figure>
+                <img src="avatar.jpg" alt="Ảnh chân dung của Nguyễn Lê Tuấn Khanh" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';">
+                <figcaption>Nguyễn Lê Tuấn Khanh - Lập trình viên Front-end tương lai</figcaption>
+            </figure>
+
+            <p>
+                Xin chào! Tôi là một lập trình viên Front-end với niềm đam mê xây dựng giao diện web 
+                hiện đại, trực quan và chuẩn tiếp cận (Web Accessibility). Hiện tại tôi đang tập trung 
+                trau dồi HTML5, CSS3, JavaScript và các công nghệ web nền tảng.
+            </p>
+            <p>
+                Mục tiêu của tôi là tạo ra những trải nghiệm người dùng mượt mà, tối ưu hiệu suất và 
+                tuân thủ các tiêu chuẩn code sạch (Clean Code).
+            </p>
+        </section>
+
+        <!-- KHU VỰC DỊCH VỤ: BREAKPOINT CHALLENGE (4 CỘT -> 2 CỘT -> 1 CỘT) -->
+        <section id="services">
+            <h2>Dịch vụ cung cấp</h2>
+            <div class="services-container">
+                <article class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Thiết kế & Phát triển Web</h3>
+                    <p>Xây dựng website chuẩn Semantic HTML5, CSS3 hiện đại, tối ưu SEO và tốc độ tải trang nhanh chóng.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Giao diện Responsive</h3>
+                    <p>Đảm bảo giao diện hiển thị tối ưu, sắc nét và tương thích mượt mà trên mọi thiết bị Desktop, Tablet và Mobile.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Tối ưu hóa hiệu suất</h3>
+                    <p>Cải thiện chỉ số Core Web Vitals, tối ưu tài nguyên hình ảnh và mã nguồn giúp trải nghiệm người dùng mượt mà nhất.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Bảo trì & Nâng cấp UI</h3>
+                    <p>Sửa lỗi hiển thị trên đa trình duyệt, cập nhật tính năng mới và chuẩn hóa theo tiêu chuẩn tiếp cận Web (a11y).</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills-projects">
+            <h2>Kỹ năng & Dự án tiêu biểu</h2>
+
+            <div class="skills-container">
+                <h3>Kỹ năng chuyên môn</h3>
+                <ul>
+                    <li>Semantic HTML5 & Web Accessibility (a11y)</li>
+                    <li>CSS3, Flexbox, CSS Grid & Responsive Design</li>
+                    <li>JavaScript hiện đại (ES6+)</li>
+                    <li>Git & GitHub trong quản lý mã nguồn</li>
+                </ul>
+            </div>
+
+            <div class="projects-container">
+                <h3>Dự án tiêu biểu</h3>
+
+                <article class="project-card">
+                    <h4>Landing Page Doanh Nghiệp</h4>
+                    <p>Trang đích giới thiệu sản phẩm công nghệ với giao diện thân thiện và tốc độ tải trang nhanh.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3 Responsive</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo &rarr;</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
+
+                <article class="project-card">
+                    <h4>Trang Portfolio Cá Nhân</h4>
+                    <p>Website portfolio cá nhân xây dựng chuẩn Semantic HTML5, cấu trúc rõ ràng, tối ưu SEO.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> Semantic HTML5, CSS Grid</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo &rarr;</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Liên hệ với tôi</h2>
+            <p style="color: var(--color-gray-medium); margin-bottom: var(--space-xl);">Nếu bạn có câu hỏi hoặc muốn hợp tác, hãy để lại tin nhắn qua biểu mẫu bên dưới:</p>
+
+            <div class="contact-layout">
+                <form action="#" method="POST">
+                    <div>
+                        <label for="fullName">Họ và tên:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên..." required>
+                    </div>
+
+                    <div>
+                        <label for="email">Địa chỉ Email:</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+
+                    <div>
+                        <label for="message">Nội dung tin nhắn:</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Để lại lời nhắn của bạn..." required></textarea>
+                    </div>
+
+                    <button type="submit">Gửi tin nhắn</button>
+                </form>
+
+                <address>
+                    <p>📧 Email: <a href="mailto:nguyenletuankhanh@example.com">nguyenletuankhanh@gmail.com</a></p>
+                    <p>📞 Điện thoại: <a href="tel:+84123456789">(+84) 123 456 789</a></p>
+                    <p>📍 Địa chỉ: Biên Hòa, Việt Nam</p>
+                </address>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nguyễn Lê Tuấn Khanh. Bản quyền thuộc về tác giả.</p>
+
+        <nav aria-label="Liên kết mạng xã hội">
+            <ul>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            </ul>
+        </nav>
+
+        <p><a href="#top">Quay về đầu trang &uarr;</a></p>
+    </footer>
+
+</body>
+</html>
