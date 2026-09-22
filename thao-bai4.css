@@ -1,0 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    padding:30px;
+}
+
+.skills h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.skills-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.skill{
+    background:#d32f2f;
+    color:white;
+    padding:12px 20px;
+    border-radius:20px;
+    font-weight:bold;
+}

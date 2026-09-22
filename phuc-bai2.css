@@ -1,0 +1,53 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Căn giữa toàn bộ cụm Grid ra giữa màn hình */
+.page-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center; /* Căn giữa đồng thời 2 trục trong Grid */
+  background-color: #f8fafc;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Thiết lập CSS Grid 3 cột */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau (1fr mỗi cột) */
+  gap: 20px;                             /* Khoảng cách giữa các cột và hàng là 20px */
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Định dạng từng thẻ cột con */
+.grid-card {
+  background-color: #f1f3f5;             /* Màu nền xám nhạt */
+  border-radius: 10px;                  /* Bo góc 10px */
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.grid-card h3 {
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.grid-card p {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive: Tự động xuống 1 cột trên điện thoại */
+@media (max-width: 640px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

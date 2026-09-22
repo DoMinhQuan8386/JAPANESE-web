@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Layout CSS Grid & Flexbox Skills</title>
+    <link rel="stylesheet" href="Khanh-bai3.css">
+</head>
+<body>
+
+    <!-- Cấu trúc tổng thể sử dụng CSS Grid với grid-template-areas -->
+    <div class="grid-layout">
+        
+        <!-- Header: Chiếm toàn bộ chiều ngang trên cùng -->
+        <header class="header">
+            <h1>Trang Cá Nhân & Dự Án</h1>
+        </header>
+
+        <!-- Sidebar: Bên trái, rộng 250px -->
+        <aside class="sidebar">
+            <h2>Danh Mục</h2>
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Kỹ năng</a></li>
+                <li><a href="#">Dự án</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content: Chiếm phần còn lại (1fr) -->
+        <main class="main-content">
+            <h2>Nội Dung Chính</h2>
+            <p>Khu vực này được phân chia bằng CSS Grid (chiếm toàn bộ phần còn lại bên phải Sidebar).</p>
+
+            <!-- Khu vực kỹ năng: Dùng Flexbox với flex-wrap: wrap để tự động xuống dòng -->
+            <section class="skills-section">
+                <h3>Khu Vực Kỹ Năng (Flexbox Wrap)</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">CSS Grid</span>
+                    <span class="skill-tag">Flexbox</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Responsive Web</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer: Chiếm toàn bộ chiều ngang dưới cùng -->
+        <footer class="footer">
+            <p>&copy; 2026 - Bố cục hoàn chỉnh bằng CSS Grid và Flexbox</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
