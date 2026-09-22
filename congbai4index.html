@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tuần 3 - Nguyễn Thành Công | Bảng Mã Màu Thông Minh LHU</title>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon">TC</div>
+                <div class="brand-text">
+                    <h1>NGUYỄN THÀNH CÔNG</h1>
+                    <span>Đại Học Lạc Hồng • CNTT</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#gioi-thieu" class="nav-link">Giới Thiệu</a></li>
+                <li><a href="#bang-mau" class="nav-link active">Bảng Màu :root</a></li>
+                <li><a href="#thong-tin" class="nav-link">Thông Tin SV</a></li>
+                <li><a href="#dich-vu" class="nav-link">Dịch Vụ</a></li>
+                <li><a href="#du-an" class="nav-link">Dự Án</a></li>
+                <li><a href="#ky-nang" class="nav-link">Kỹ Năng</a></li>
+                <li><a href="#lien-he" class="nav-link">Liên Hệ</a></li>
+            </ul>
+            <a href="#lien-he" class="nav-btn">
+                <i class="fa-solid fa-paper-plane"></i> Kết Nối
+            </a>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section" id="gioi-thieu">
+        <div class="container">
+            <div class="hero-card">
+                <div class="hero-banner">
+                    <div class="school-tag">
+                        <i class="fa-solid fa-graduation-cap"></i> Đại Học Lạc Hồng (LHU)
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <div class="avatar-wrapper">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" 
+                             alt="Nguyễn Thành Công" 
+                             class="hero-avatar">
+                        <div class="status-badge" title="Đang trực tuyến"></div>
+                    </div>
+                    <div class="hero-text">
+                        <div class="student-tagline">
+                            <i class="fa-solid fa-code"></i> Sinh viên Kỹ Thuật Phần Mềm • Khóa 2022 - 2026
+                        </div>
+                        <h2 class="hero-title">NGUYỄN THÀNH CÔNG</h2>
+                        <p class="hero-bio">
+                            Chào mừng thầy cô và các bạn đến với Portfolio Tuần 3 của mình! Trang web này được xây dựng với hệ thống <strong>Bảng mã màu thông minh (CSS Variables tại :root)</strong> gồm màu chủ đạo LHU (Primary), màu phụ (Secondary), 3 mức độ xám tiêu chuẩn (Dark, Medium, Light) và hệ thống màu nền phân lớp giúp giao diện hiện đại, trực quan và chuẩn mực.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#bang-mau" class="btn-primary">
+                                <i class="fa-solid fa-palette"></i> Xem Bảng Mã Màu :root
+                            </a>
+                            <a href="#du-an" class="btn-secondary">
+                                <i class="fa-solid fa-diagram-project"></i> Xem Dự Án Tuần 3
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SMART COLOR SYSTEM SHOWCASE ================= -->
+    <section class="section" id="bang-mau">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fa-solid fa-check-double"></i> Yêu Cầu Tuần 3</span>
+                <h2 class="section-heading">Bảng Mã Màu Thông Minh (:root Variables)</h2>
+                <p class="section-subtitle">Khai báo khoa học tại <code>:root</code> cho primary, secondary, 3 mức xám và màu nền</p>
+            </div>
+
+            <div class="color-showcase">
+                <div class="palette-grid">
+                    <!-- 1. PRIMARY -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-primary">
+                            <span class="hex-code">#c92a2a</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-primary</span>
+                            <span class="var-label">Màu Chính (Primary)</span>
+                            <p class="var-desc">Sắc đỏ đặc trưng LHU, ứng dụng cho nút chính, logo, điểm nhấn thương hiệu.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. SECONDARY -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-secondary">
+                            <span class="hex-code">#0b4f8a</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-secondary</span>
+                            <span class="var-label">Màu Phụ (Secondary)</span>
+                            <p class="var-desc">Xanh dương học viện, bổ trợ hài hòa và tạo độ tin cậy cho giao diện.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.1 GRAY DARK -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-gray-dark">
+                            <span class="hex-code">#1e293b</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-dark</span>
+                            <span class="var-label">Xám Đậm (Mức 1)</span>
+                            <p class="var-desc">Độ tương phản cao nhất, chuyên dùng cho tiêu đề lớn (H1, H2) và văn bản chính.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.2 GRAY MEDIUM -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-gray-medium">
+                            <span class="hex-code">#64748b</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-medium</span>
+                            <span class="var-label">Xám Vừa (Mức 2)</span>
+                            <p class="var-desc">Dùng cho đoạn văn bản miêu tả, chú thích, nhãn phụ, giúp giảm mỏi mắt khi đọc.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.3 GRAY LIGHT -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-gray-light light-bg">
+                            <span class="hex-code">#e2e8f0</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-light</span>
+                            <span class="var-label">Xám Nhạt (Mức 3)</span>
+                            <p class="var-desc">Dùng cho các đường kẻ viền (border), vạch phân cách khối (divider).</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.1 BG PAGE -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-bg-page light-bg">
+                            <span class="hex-code">#f8fafc</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-page</span>
+                            <span class="var-label">Nền Trang (Page Bg)</span>
+                            <p class="var-desc">Màu nền dịu mắt trải khắp toàn bộ website, tạo nền tảng trực quan tinh tế.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.2 BG SURFACE -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-bg-surface light-bg">
+                            <span class="hex-code">#ffffff</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-surface</span>
+                            <span class="var-label">Nền Thẻ (Surface)</span>
+                            <p class="var-desc">Nền trắng tinh khiết cho các khối Card, Container nổi bật trên nền trang.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.3 BG SUBTLE -->
+                    <div class="palette-card">
+                        <div class="color-sample sample-bg-subtle light-bg">
+                            <span class="hex-code">#f1f5f9</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-subtle</span>
+                            <span class="var-label">Nền Phụ (Subtle Bg)</span>
+                            <p class="var-desc">Nền cho thẻ con, badge, pill kỹ năng và hiệu ứng hover nhẹ nhàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INFO & ABOUT SECTION ================= -->
+    <section class="section" id="thong-tin">
+        <div class="container">
+            <div class="info-row">
+                <!-- Box 1: Thông tin sinh viên -->
+                <div class="info-box">
+                    <h3 class="box-title">
+                        <i class="fa-solid fa-id-card-clip"></i> Thông Tin Sinh Viên LHU
+                    </h3>
+                    <div class="student-data-grid">
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-barcode"></i> Mã SV:</span>
+                            <span class="val">123456789</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-users"></i> Lớp học:</span>
+                            <span class="val">22CT111</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-laptop-code"></i> Chuyên ngành:</span>
+                            <span class="val">Kỹ thuật phần mềm</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-envelope"></i> Email:</span>
+                            <span class="val">thanhcong@lhu.edu.vn</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-location-dot"></i> Địa chỉ:</span>
+                            <span class="val">TP. Biên Hòa, Đồng Nai</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-phone"></i> Điện thoại:</span>
+                            <span class="val">0901 234 567</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 2: Giới thiệu bản thân -->
+                <div class="info-box">
+                    <h3 class="box-title">
+                        <i class="fa-solid fa-user-graduate"></i> Về Bản Thân & Mục Tiêu
+                    </h3>
+                    <p class="about-paragraph">
+                        Mình là <strong>Nguyễn Thành Công</strong>, sinh viên Khoa Công Nghệ Thông Tin tại Đại học Lạc Hồng. Mình có niềm đam mê đặc biệt với phát triển Web Frontend, thiết kế giao diện UI/UX và tư duy hệ thống màu Design Tokens. Mục tiêu trong kỳ học này là làm chủ hoàn toàn CSS Variables, Grid/Flexbox và xây dựng các sản phẩm thực tế có tính tương tác cao.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION (BREAKPOINT CHALLENGE) ================= -->
+    <section class="section" id="dich-vu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fa-solid fa-layer-group"></i> Breakpoint Challenge</span>
+                <h2 class="section-heading">Khu Vực Dịch Vụ</h2>
+                <p class="section-subtitle">Bố cục linh hoạt: 4 cột Desktop → 2 cột Tablet → 1 cột Mobile (CSS Grid)</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Dịch vụ 1 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <span class="service-tag">UI / UX</span>
+                    <h3 class="service-title">Thiết Kế Giao Diện</h3>
+                    <p class="service-desc">Thiết kế wireframe, prototype và giao diện web hiện đại, trực quan, tối ưu trải nghiệm người dùng với hệ màu thông minh.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> Chuẩn Design Tokens</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 2 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <span class="service-tag">Frontend</span>
+                    <h3 class="service-title">Lập Trình Web</h3>
+                    <p class="service-desc">Xây dựng ứng dụng web với HTML5, CSS3, JavaScript ES6+ và React, cấu trúc code sạch và tuân thủ chuẩn W3C.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> HTML5 / CSS3 / React</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 3 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <span class="service-tag">Responsive</span>
+                    <h3 class="service-title">Tối Ưu Responsive</h3>
+                    <p class="service-desc">Tương thích hoàn hảo trên mọi thiết bị: Desktop, Laptop, Tablet và Mobile bằng CSS Grid và Flexbox linh hoạt.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> 100% Cross-Device</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 4 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <span class="service-tag">Performance</span>
+                    <h3 class="service-title">Tối Ưu Tốc Độ</h3>
+                    <p class="service-desc">Nâng cao hiệu năng tải trang, nén tài nguyên, tối ưu SEO Onpage và nâng cao điểm số Core Web Vitals.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> Tải nhanh & Mượt mà</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECTS SHOWCASE SECTION ================= -->
+    <section class="section" id="du-an">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fa-solid fa-laptop-code"></i> Dự Án Tiêu Biểu</span>
+                <h2 class="section-heading">Dự Án Cá Nhân Tuần 3</h2>
+                <p class="section-subtitle">Các sản phẩm thực hành được áp dụng nhất quán bảng mã màu CSS Variables</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fa-solid fa-school"></i>
+                        <span class="project-badge">Web LHU</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Cổng Quản Lý Sinh Viên</h4>
+                        <p class="project-desc">Trang dashboard tra cứu lịch học, bảng điểm và học phần dành riêng cho sinh viên Đại học Lạc Hồng.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS Variables</span>
+                            <span class="project-tag">Flexbox</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header alt-gradient">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="project-badge">Frontend</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Trang Tin Khoa CNTT</h4>
+                        <p class="project-desc">Trang tin tức công nghệ cập nhật sự kiện, hội thảo và các hoạt động nghiên cứu khoa học của khoa.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">CSS Grid</span>
+                            <span class="project-tag">Responsive</span>
+                            <span class="project-tag">Design System</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="project-badge">Tiện ích</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Thời Khóa Biểu & Ghi Chú</h4>
+                        <p class="project-desc">Ứng dụng quản lý lịch trình học tập hàng tuần với khả năng lưu trữ thông tin nhanh gọn trên trình duyệt.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">LocalStorage</span>
+                            <span class="project-tag">CSS UI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SKILLS & HOBBIES SECTION ================= -->
+    <section class="section" id="ky-nang">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fa-solid fa-screwdriver-wrench"></i> Năng Lực Chuyên Môn</span>
+                <h2 class="section-heading">Kỹ Năng & Sở Thích</h2>
+                <p class="section-subtitle">Các công nghệ đã học và hoạt động rèn luyện bản thân</p>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5"></i>
+                    <span>HTML5 & Semantic</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <span>CSS3 & Variables</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript ES6+</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-react"></i>
+                    <span>React JS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-python"></i>
+                    <span>Python Dev</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <span>Git & GitHub</span>
+                </div>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Lập trình sáng tạo</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Đọc sách công nghệ</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-futbol"></i>
+                    <span>Bóng đá & Thể thao</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-music"></i>
+                    <span>Âm nhạc thư giãn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONNECT & CONTACT SECTION ================= -->
+    <section class="section" id="lien-he">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fa-solid fa-address-book"></i> Kết Nối Mạng Xã Hội</span>
+                <h2 class="section-heading">Liên Hệ Với Mình</h2>
+                <p class="section-subtitle">Sẵn sàng trao đổi học tập và kết nối cùng các bạn sinh viên LHU</p>
+            </div>
+
+            <div class="contact-section">
+                <div class="social-cards">
+                    <a href="https://facebook.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-facebook"></i>
+                        <div>
+                            <span class="soc-name">Facebook</span>
+                            <span class="soc-hint">Kết bạn trao đổi</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-github"></i>
+                        <div>
+                            <span class="soc-name">GitHub</span>
+                            <span class="soc-hint">Xem kho mã nguồn</span>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <div>
+                            <span class="soc-name">LinkedIn</span>
+                            <span class="soc-hint">Hồ sơ nghề nghiệp</span>
+                        </div>
+                    </a>
+                    <a href="mailto:thanhcong@lhu.edu.vn" class="social-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <span class="soc-name">Email SV</span>
+                            <span class="soc-hint">thanhcong@lhu.edu.vn</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-text">
+                © 2026 Bản quyền thuộc về <strong>Nguyễn Thành Công</strong> (Lớp 22CT111) - Đại Học Lạc Hồng (LHU).
+            </div>
+            <div class="footer-badge">
+                <i class="fa-solid fa-palette"></i> Portfolio Tuần 3 - CSS Variables
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
