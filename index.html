@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nguyễn Thành Công | Bài 5: Animation & Interaction</title>
+    <!-- CSS File chính -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Hoạt động 3: Thư viện AOS (Animate On Scroll) qua CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Bổ sung: Tối ưu 4 Hoạt động Tuần 5 -->
+    <style>
+        /* ========================================================
+           HOẠT ĐỘNG 1: NÚT BẤM CẢM XÚC (MICRO-INTERACTIONS)
+           ======================================================== */
+        .btn-emotion {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--color-primary, #c92a2a) 0%, #e03131 100%);
+            border: none;
+            border-radius: var(--radius-md, 14px);
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+
+            /* Micro-interaction & GPU acceleration */
+            transform: translateY(0) scale(1);
+            box-shadow: 0 4px 14px rgba(201, 42, 42, 0.28);
+            
+            /* Sử dụng hàm cubic-bezier tạo cảm giác đàn hồi tự nhiên */
+            transition: 
+                transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.25s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .btn-emotion i {
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* 1. Khi Hover: Nhấc lên 3px + Đổ bóng đậm sâu + Icon nghiêng nhẹ */
+        .btn-emotion:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover, #a61e1e) 0%, #c92a2a 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 28px -4px rgba(201, 42, 42, 0.45);
+        }
+
+        .btn-emotion:hover i {
+            transform: translateX(4px) rotate(-12deg);
+        }
+
+        /* 2. Khi Click (Active): Thu nhỏ lại tạo cảm giác "đã bấm" (Tactile Feedback) */
+        .btn-emotion:active {
+            transform: translateY(1px) scale(0.96);
+            box-shadow: 0 4px 10px rgba(201, 42, 42, 0.25);
+            transition-duration: 0.1s;
+        }
+
+        /* Mini Spinner bên trong nút khi đang gửi tin */
+        .btn-spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.75s linear infinite;
+            display: inline-block;
+        }
+
+        /* ========================================================
+           HOẠT ĐỘNG 2: VÒNG TRÒN LOADING SPINNER (@KEYFRAMES)
+           ======================================================== */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .portfolio-spinner-card {
+            background-color: var(--color-bg-surface, #ffffff);
+            border: 1px solid var(--color-gray-light, #e2e8f0);
+            border-radius: var(--radius-md, 14px);
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .portfolio-spinner {
+            width: 52px;
+            height: 52px;
+            /* Đường viền nền mờ */
+            border: 5px solid rgba(11, 79, 138, 0.12);
+            /* border-top-color khác biệt tạo hiệu ứng xoay 360 độ liên tục */
+            border-top-color: var(--color-primary, #c92a2a);
+            border-right-color: var(--color-secondary, #0b4f8a);
+            border-radius: 50%;
+            animation: spin 0.85s linear infinite;
+            will-change: transform;
+        }
+
+        .spinner-pulse-ring {
+            width: 52px;
+            height: 52px;
+            border: 4px solid transparent;
+            border-top: 4px solid var(--color-primary, #c92a2a);
+            border-bottom: 4px solid var(--color-secondary, #0b4f8a);
+            border-radius: 50%;
+            animation: spinPulse 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        }
+
+        @keyframes spinPulse {
+            0% { transform: rotate(0deg) scale(0.85); }
+            50% { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(0.85); }
+        }
+
+        /* ========================================================
+           HOẠT ĐỘNG 3: AOS - SCROLL REVEAL STYLES
+           ======================================================== */
+        .bai5-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 992px) {
+            .bai5-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .aos-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .aos-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 8px 6px;
+            background: var(--color-bg-subtle, #f1f5f9);
+            border: 1px solid var(--color-gray-light, #e2e8f0);
+            border-radius: var(--radius-sm, 8px);
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--color-secondary, #0b4f8a);
+            font-family: 'Fira Code', monospace;
+            text-align: center;
+        }
+
+        /* ========================================================
+           HOẠT ĐỘNG 4: REFACTORING PERFORMANCE SHOWCASE
+           ======================================================== */
+        .perf-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .perf-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .code-box {
+            background-color: #0f172a;
+            border-radius: 12px;
+            padding: 18px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .badge-bad {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .badge-good {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .perf-summary-banner {
+            margin-top: 20px;
+            background: var(--color-bg-subtle, #f1f5f9);
+            border-left: 4px solid var(--color-primary, #c92a2a);
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            color: var(--color-gray-dark, #1e293b);
+            line-height: 1.6;
+        }
+
+        /* Form Liên Hệ tích hợp nút bấm cảm xúc */
+        .contact-form-box {
+            background: var(--color-bg-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-gray-light);
+            box-shadow: var(--shadow-card);
+            padding: var(--space-8xl);
+            margin-top: var(--space-5xl);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--color-gray-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-gray-light);
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--color-gray-dark);
+            background: var(--color-bg-page);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-primary-glow);
+            background: #fff;
+        }
+
+        .form-alert {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .form-alert.success {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* ========================================================
+           CHẾ ĐỘ SÁNG / TỐI (LIGHT / DARK MODE SYSTEM)
+           ======================================================== */
+        /* Biến màu cho Chế Độ Tối (Dark Mode) */
+        [data-theme="dark"] {
+            /* 1. Mức xám & chữ */
+            --color-gray-dark: #f8fafc;        /* Chữ tiêu đề trắng sáng */
+            --color-gray-medium: #94a3b8;      /* Chữ mô tả xám bạc dễ chịu */
+            --color-gray-light: rgba(255, 255, 255, 0.12); /* Đường viền mờ tinh tế */
+
+            /* 2. Màu nền phân lớp trong Dark Mode */
+            --color-bg-page: #0b0f19;          /* Nền trang Deep Slate siêu sang */
+            --color-bg-surface: #131c2e;       /* Nền card Slate 900 nổi bật */
+            --color-bg-subtle: #1c273e;        /* Nền thẻ con, hover */
+
+            /* 3. Màu Navbar & Shadow */
+            --color-nav-bg: rgba(19, 28, 46, 0.92);
+            --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.7);
+
+            /* 4. Tinh chỉnh màu phụ */
+            --color-primary-light: rgba(201, 42, 42, 0.25);
+            --color-secondary-light: rgba(11, 79, 138, 0.3);
+        }
+
+        /* Tinh chỉnh phần tử khi ở chế độ Dark Mode */
+        [data-theme="dark"] body {
+            background-color: var(--color-bg-page);
+            color: var(--color-gray-dark);
+        }
+
+        [data-theme="dark"] .form-control {
+            background: #0b0f19;
+            color: #f8fafc;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="dark"] .form-control:focus {
+            background: #131c2e;
+            border-color: var(--color-primary);
+        }
+
+        [data-theme="dark"] .perf-summary-banner {
+            background: #1c273e;
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] .hero-banner {
+            background: linear-gradient(135deg, rgba(201, 42, 42, 0.85), rgba(11, 79, 138, 0.85));
+        }
+
+        [data-theme="dark"] .project-card,
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .info-box,
+        [data-theme="dark"] .palette-card,
+        [data-theme="dark"] .skill-card,
+        [data-theme="dark"] .hobby-card,
+        [data-theme="dark"] .contact-form-box,
+        [data-theme="dark"] .hero-card {
+            background-color: var(--color-bg-surface);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .social-box {
+            background-color: var(--color-bg-subtle);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .social-box:hover {
+            background-color: var(--color-bg-surface);
+            border-color: var(--color-primary);
+        }
+
+        [data-theme="dark"] .data-cell {
+            background-color: var(--color-bg-subtle);
+        }
+
+        /* Nút Chuyển Đổi Theme Trên Navbar */
+        .theme-toggle-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--color-bg-subtle);
+            border: 1px solid var(--color-gray-light);
+            color: var(--color-gray-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.15rem;
+            outline: none;
+            box-shadow: var(--shadow-sm);
+            transition: 
+                transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+            will-change: transform;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-2px) scale(1.08);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .theme-toggle-btn:active {
+            transform: translateY(1px) scale(0.92);
+        }
+
+        /* Nút Nổi (Floating Toggle) ở góc phải dưới màn hình */
+        .theme-floating-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-bg-surface);
+            border: 2px solid var(--color-gray-light);
+            color: var(--color-gray-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            z-index: 9999;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            transition: 
+                transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+            outline: none;
+            will-change: transform;
+        }
+
+        .theme-floating-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+        }
+
+        .theme-floating-btn:active {
+            transform: translateY(1px) scale(0.94);
+        }
+
+        [data-theme="dark"] .theme-toggle-btn,
+        [data-theme="dark"] .theme-floating-btn {
+            background: #1c273e;
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fbbf24; /* Biểu tượng mặt trời vàng rực */
+            box-shadow: 0 4px 16px rgba(251, 191, 36, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon">TC</div>
+                <div class="brand-text">
+                    <h1>NGUYỄN THÀNH CÔNG</h1>
+                    <span>Đại Học Lạc Hồng • CNTT</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#gioi-thieu" class="nav-link">Giới Thiệu</a></li>
+                <li><a href="#bang-mau" class="nav-link">Bảng Màu :root</a></li>
+                <li><a href="#thong-tin" class="nav-link">Thông Tin SV</a></li>
+                <li><a href="#dich-vu" class="nav-link">Dịch Vụ</a></li>
+                <li><a href="#du-an" class="nav-link">Dự Án</a></li>
+                <li><a href="#ky-nang" class="nav-link">Kỹ Năng</a></li>
+                <li><a href="#bai-5" class="nav-link active">Bài 5: Animation</a></li>
+                <li><a href="#lien-he" class="nav-link">Liên Hệ</a></li>
+            </ul>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
+                <!-- NÚT CHUYỂN ĐỔI CHẾ ĐỘ SÁNG / TỐI -->
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#lien-he" class="nav-btn btn-emotion">
+                    <i class="fa-solid fa-paper-plane"></i> Kết Nối
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION (AOS Fade-Down) ================= -->
+    <section class="hero-section" id="gioi-thieu">
+        <div class="container">
+            <div class="hero-card" data-aos="fade-down" data-aos-duration="900">
+                <div class="hero-banner">
+                    <div class="school-tag">
+                        <i class="fa-solid fa-graduation-cap"></i> Đại Học Lạc Hồng (LHU)
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <div class="avatar-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" 
+                             alt="Nguyễn Thành Công" 
+                             class="hero-avatar">
+                        <div class="status-badge" title="Đang trực tuyến"></div>
+                    </div>
+                    <div class="hero-text" data-aos="fade-left" data-aos-delay="300">
+                        <div class="student-tagline">
+                            <i class="fa-solid fa-code"></i> Sinh viên Kỹ Thuật Phần Mềm • Lớp 25CT111
+                        </div>
+                        <h2 class="hero-title">NGUYỄN THÀNH CÔNG</h2>
+                        <p class="hero-bio">
+                            Chào mừng thầy cô và các bạn đến với Portfolio của mình! Trang web tích hợp trọn vẹn <strong>Hệ màu Design Tokens (:root)</strong> cùng chuyên đề <strong>Bài 5: Micro-interactions, CSS Spinner, Thư viện AOS và Kỹ thuật tối ưu GPU (Refactoring Performance)</strong> giúp trang web vận hành mượt mà 60-120 FPS trên mọi thiết bị.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#bai-5" class="btn-emotion">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Khám Phá Bài 5 (Animation)
+                            </a>
+                            <a href="#bang-mau" class="btn-secondary">
+                                <i class="fa-solid fa-palette"></i> Bảng Mã Màu :root
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SMART COLOR SYSTEM SHOWCASE (AOS Fade-Up) ================= -->
+    <section class="section" id="bang-mau">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-check-double"></i> Yêu Cầu Design System</span>
+                <h2 class="section-heading">Bảng Mã Màu Thông Minh (:root Variables)</h2>
+                <p class="section-subtitle">Khai báo khoa học tại <code>:root</code> cho primary, secondary, 3 mức xám và màu nền</p>
+            </div>
+
+            <div class="color-showcase">
+                <div class="palette-grid">
+                    <!-- 1. PRIMARY -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="color-sample sample-primary">
+                            <span class="hex-code">#c92a2a</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-primary</span>
+                            <span class="var-label">Màu Chính (Primary)</span>
+                            <p class="var-desc">Sắc đỏ đặc trưng LHU, ứng dụng cho nút chính, logo, điểm nhấn thương hiệu.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. SECONDARY -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="color-sample sample-secondary">
+                            <span class="hex-code">#0b4f8a</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-secondary</span>
+                            <span class="var-label">Màu Phụ (Secondary)</span>
+                            <p class="var-desc">Xanh dương học viện, bổ trợ hài hòa và tạo độ tin cậy cho giao diện.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.1 GRAY DARK -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="color-sample sample-gray-dark">
+                            <span class="hex-code">#1e293b</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-dark</span>
+                            <span class="var-label">Xám Đậm (Mức 1)</span>
+                            <p class="var-desc">Độ tương phản cao nhất, chuyên dùng cho tiêu đề lớn (H1, H2) và văn bản chính.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.2 GRAY MEDIUM -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="color-sample sample-gray-medium">
+                            <span class="hex-code">#64748b</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-medium</span>
+                            <span class="var-label">Xám Vừa (Mức 2)</span>
+                            <p class="var-desc">Dùng cho đoạn văn bản miêu tả, chú thích, nhãn phụ, giúp giảm mỏi mắt khi đọc.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3.3 GRAY LIGHT -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="color-sample sample-gray-light light-bg">
+                            <span class="hex-code">#e2e8f0</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-gray-light</span>
+                            <span class="var-label">Xám Nhạt (Mức 3)</span>
+                            <p class="var-desc">Dùng cho các đường kẻ viền (border), vạch phân cách khối (divider).</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.1 BG PAGE -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="color-sample sample-bg-page light-bg">
+                            <span class="hex-code">#f8fafc</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-page</span>
+                            <span class="var-label">Nền Trang (Page Bg)</span>
+                            <p class="var-desc">Màu nền dịu mắt trải khắp toàn bộ website, tạo nền tảng trực quan tinh tế.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.2 BG SURFACE -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="color-sample sample-bg-surface light-bg">
+                            <span class="hex-code">#ffffff</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-surface</span>
+                            <span class="var-label">Nền Thẻ (Surface)</span>
+                            <p class="var-desc">Nền trắng tinh khiết cho các khối Card, Container nổi bật trên nền trang.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4.3 BG SUBTLE -->
+                    <div class="palette-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="color-sample sample-bg-subtle light-bg">
+                            <span class="hex-code">#f1f5f9</span>
+                        </div>
+                        <div class="color-details">
+                            <span class="var-name">--color-bg-subtle</span>
+                            <span class="var-label">Nền Phụ (Subtle Bg)</span>
+                            <p class="var-desc">Nền cho thẻ con, badge, pill kỹ năng và hiệu ứng hover nhẹ nhàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INFO & ABOUT SECTION (AOS Stagger) ================= -->
+    <section class="section" id="thong-tin">
+        <div class="container">
+            <div class="info-row">
+                <!-- Box 1: Thông tin sinh viên (Fade-Right) -->
+                <div class="info-box" data-aos="fade-right" data-aos-duration="800">
+                    <h3 class="box-title">
+                        <i class="fa-solid fa-id-card-clip"></i> Thông Tin Sinh Viên LHU
+                    </h3>
+                    <div class="student-data-grid">
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-barcode"></i> Mã SV:</span>
+                            <span class="val">125000360</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-users"></i> Lớp học:</span>
+                            <span class="val">25CT111</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-laptop-code"></i> Chuyên ngành:</span>
+                            <span class="val">Kỹ thuật phần mềm</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-envelope"></i> Email:</span>
+                            <span class="val">cong214165@gmail.com</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-location-dot"></i> Địa chỉ:</span>
+                            <span class="val">TP. Biên Hòa, Đồng Nai</span>
+                        </div>
+                        <div class="data-cell">
+                            <span class="label"><i class="fa-solid fa-phone"></i> Điện thoại:</span>
+                            <span class="val">0375199493</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 2: Giới thiệu bản thân (Fade-Left) -->
+                <div class="info-box" data-aos="fade-left" data-aos-duration="800">
+                    <h3 class="box-title">
+                        <i class="fa-solid fa-user-graduate"></i> Về Bản Thân & Mục Tiêu
+                    </h3>
+                    <p class="about-paragraph">
+                        Mình là <strong>Nguyễn Thành Công</strong>, sinh viên Khoa Công Nghệ Thông Tin tại Đại học Lạc Hồng. Mình có niềm đam mê đặc biệt với phát triển Web Frontend, thiết kế giao diện UI/UX và tối ưu hóa hiệu năng chuyển động. Mục tiêu học phần này là làm chủ CSS Animations, Keyframes, Micro-interactions và thư viện Animate On Scroll.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BÀI 5: CHUYÊN ĐỀ 4 HOẠT ĐỘNG (ANIMATION & PERFORMANCE) ================= -->
+    <section class="section" id="bai-5">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Chuyên Đề Bài 5</span>
+                <h2 class="section-heading">Bài 5: Animations, Micro-interactions & GPU Performance</h2>
+                <p class="section-subtitle">Tổng hợp đầy đủ 4 hoạt động theo chuẩn thiết kế web hiện đại</p>
+            </div>
+
+            <!-- Khối 3 Card: Hoạt động 1, Hoạt động 2, Hoạt động 3 -->
+            <div class="bai5-cards-grid">
+                <!-- Card Hoạt động 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon-box" style="color: var(--color-primary);">
+                        <i class="fa-regular fa-hand-pointer"></i>
+                    </div>
+                    <span class="service-tag">Hoạt Động 1</span>
+                    <h3 class="service-title">"Micro-interactions" Nút Bấm Cảm Xúc</h3>
+                    <p class="service-desc">
+                        Nút <strong>"Gửi tin nhắn"</strong> phản hồi xúc giác: Hover nâng 3px, đổ bóng sâu, dùng timing <code>cubic-bezier</code>; khi Click thì thu nhỏ <code>scale(0.96)</code> tạo cảm giác nút cơ học thật.
+                    </p>
+                    <div style="margin-top: 18px; text-align: center;">
+                        <button class="btn-emotion" onclick="testEmotionButton(this)">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <span class="btn-label">Thử Bấm Nút</span>
+                            <span class="btn-spinner" style="display: none;"></span>
+                        </button>
+                    </div>
+                    <div class="service-footer" style="margin-top: 16px;">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> cubic-bezier(0.34, 1.56, 0.64, 1)</span>
+                    </div>
+                </div>
+
+                <!-- Card Hoạt động 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon-box" style="color: var(--color-secondary);">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </div>
+                    <span class="service-tag">Hoạt Động 2</span>
+                    <h3 class="service-title">"Loading Master" Tạo Spinner CSS</h3>
+                    <p class="service-desc">
+                        Sử dụng <code>@keyframes spin</code> xoay 360 độ vô hạn. Đổi màu <code>border-top-color</code> khác biệt để tạo ảo giác xoay liên tục cho Portfolio.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 16px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div class="portfolio-spinner"></div>
+                            <span style="font-size: 0.78rem; color: var(--color-gray-medium);">Standard Ring</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div class="spinner-pulse-ring"></div>
+                            <span style="font-size: 0.78rem; color: var(--color-gray-medium);">Pulse Dual Ring</span>
+                        </div>
+                    </div>
+                    <div class="service-footer" style="margin-top: 16px;">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> @keyframes spin 360deg</span>
+                    </div>
+                </div>
+
+                <!-- Card Hoạt động 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon-box" style="color: #8b5cf6;">
+                        <i class="fa-solid fa-scroll"></i>
+                    </div>
+                    <span class="service-tag">Hoạt Động 3</span>
+                    <h3 class="service-title">"AOS - Scroll Reveal" Cuộn Trang Mượt</h3>
+                    <p class="service-desc">
+                        Tích hợp thư viện <strong>AOS (Animate On Scroll)</strong> qua CDN. Khi người dùng cuộn trang, các khối nội dung sẽ hiện ra tự động với <code>data-aos</code> và độ trễ so le <code>data-aos-delay</code>.
+                    </p>
+                    <div class="aos-demo-grid">
+                        <span class="aos-pill" data-aos="fade-right" data-aos-delay="100"><i class="fa-solid fa-arrow-right"></i> fade-right</span>
+                        <span class="aos-pill" data-aos="zoom-in" data-aos-delay="200"><i class="fa-solid fa-magnifying-glass-plus"></i> zoom-in</span>
+                        <span class="aos-pill" data-aos="fade-left" data-aos-delay="300"><i class="fa-solid fa-arrow-left"></i> fade-left</span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button class="btn-emotion" style="padding: 10px 20px; font-size: 0.88rem;" onclick="triggerAOSDemo(this)">
+                            <i class="fa-solid fa-rotate"></i>
+                            <span>Test Animation AOS</span>
+                        </button>
+                    </div>
+                    <div class="service-footer" style="margin-top: 16px;">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> CDN AOS + data-aos=""</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Hoạt động 4: Refactoring Performance -->
+            <div class="info-box" style="width: 100%;" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="box-title" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-gauge-high"></i> Hoạt Động 4: "Refactoring Performance" (Tối Ưu Hiệu Năng GPU)
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--color-gray-medium); margin-bottom: 16px;">
+                    Giảng viên hướng dẫn thay đổi thuộc tính <code>top/left</code> thành <code>transform: translate</code> để AI và lập trình viên sinh ra code không gây giật lag trên điện thoại:
+                </p>
+
+                <div class="perf-grid">
+                    <!-- Bad Code -->
+                    <div class="code-box">
+                        <span class="badge-bad"><i class="fa-solid fa-triangle-exclamation"></i> Kém Hiệu Năng (Lag Mobile)</span>
+                        <pre style="margin: 0;"><code>/* ❌ Dùng top/left gây Reflow/Layout */
+.card-item {
+  position: relative;
+  top: 0;
+  transition: top 0.3s ease;
+}
+
+.card-item:hover {
+  top: -5px; 
+  /* Buộc CPU tính lại tọa độ
+     toàn bộ cây DOM -> Tụt FPS */
+}</code></pre>
+                    </div>
+
+                    <!-- Good Code -->
+                    <div class="code-box">
+                        <span class="badge-good"><i class="fa-solid fa-circle-check"></i> Đã Refactor (Mượt 60-120 FPS)</span>
+                        <pre style="margin: 0;"><code>/* ✅ Dùng transform đẩy lên GPU */
+.card-item {
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(...);
+  will-change: transform;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+  /* Bỏ qua Layout & Paint!
+     GPU Composite xử lý siêu mượt */
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="perf-summary-banner">
+                    <strong><i class="fa-solid fa-microchip"></i> Bản chất kiến trúc:</strong> Thuộc tính <code>top/left</code> kích hoạt chu kỳ đầy đủ: <em>Layout &rarr; Paint &rarr; Composite</em> trên Main Thread (CPU). Khi refactor sang <code>transform: translateY()</code>, trình duyệt bỏ qua bước Layout và Paint, giao thẳng cho <strong>GPU Compositor Thread</strong> xử lý, triệt tiêu giật lag trên thiết bị di động.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION (AOS Staggered Reveal) ================= -->
+    <section class="section" id="dich-vu">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-layer-group"></i> Breakpoint Challenge</span>
+                <h2 class="section-heading">Khu Vực Dịch Vụ</h2>
+                <p class="section-subtitle">Bố cục linh hoạt: 4 cột Desktop → 2 cột Tablet → 1 cột Mobile (CSS Grid)</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Dịch vụ 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <span class="service-tag">UI / UX</span>
+                    <h3 class="service-title">Thiết Kế Giao Diện</h3>
+                    <p class="service-desc">Thiết kế wireframe, prototype và giao diện web hiện đại, trực quan, tối ưu trải nghiệm người dùng với hệ màu thông minh.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> Chuẩn Design Tokens</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <span class="service-tag">Frontend</span>
+                    <h3 class="service-title">Lập Trình Web</h3>
+                    <p class="service-desc">Xây dựng ứng dụng web với HTML5, CSS3, JavaScript ES6+ và React, cấu trúc code sạch và tuân thủ chuẩn W3C.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> HTML5 / CSS3 / React</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <span class="service-tag">Responsive</span>
+                    <h3 class="service-title">Tối Ưu Responsive</h3>
+                    <p class="service-desc">Tương thích hoàn hảo trên mọi thiết bị: Desktop, Laptop, Tablet và Mobile bằng CSS Grid và Flexbox linh hoạt.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> 100% Cross-Device</span>
+                    </div>
+                </div>
+
+                <!-- Dịch vụ 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <span class="service-tag">Performance</span>
+                    <h3 class="service-title">Tối Ưu Tốc Độ</h3>
+                    <p class="service-desc">Nâng cao hiệu năng tải trang, nén tài nguyên, tối ưu SEO Onpage và nâng cao điểm số Core Web Vitals.</p>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-circle-check"></i> Tải nhanh & Mượt mà</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECTS SHOWCASE SECTION (AOS Zoom-In) ================= -->
+    <section class="section" id="du-an">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-laptop-code"></i> Dự Án Tiêu Biểu</span>
+                <h2 class="section-heading">Dự Án Cá Nhân</h2>
+                <p class="section-subtitle">Các sản phẩm thực hành được áp dụng nhất quán bảng mã màu CSS Variables & hiệu ứng mượt mà</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="project-header">
+                        <i class="fa-solid fa-school"></i>
+                        <span class="project-badge">Web LHU</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Cổng Quản Lý Sinh Viên</h4>
+                        <p class="project-desc">Trang dashboard tra cứu lịch học, bảng điểm và học phần dành riêng cho sinh viên Đại học Lạc Hồng.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS Variables</span>
+                            <span class="project-tag">Flexbox</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-header alt-gradient">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="project-badge">Frontend</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Trang Tin Khoa CNTT</h4>
+                        <p class="project-desc">Trang tin tức công nghệ cập nhật sự kiện, hội thảo và các hoạt động nghiên cứu khoa học của khoa.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">CSS Grid</span>
+                            <span class="project-tag">Responsive</span>
+                            <span class="project-tag">Design System</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="project-header">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="project-badge">Tiện ích</span>
+                    </div>
+                    <div class="project-body">
+                        <h4 class="project-title">Thời Khóa Biểu & Ghi Chú</h4>
+                        <p class="project-desc">Ứng dụng quản lý lịch trình học tập hàng tuần với khả năng lưu trữ thông tin nhanh gọn trên trình duyệt.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">LocalStorage</span>
+                            <span class="project-tag">CSS UI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fa-solid fa-eye"></i> Xem Demo</a>
+                            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Mã nguồn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SKILLS & HOBBIES SECTION (AOS Staggered) ================= -->
+    <section class="section" id="ky-nang">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-screwdriver-wrench"></i> Năng Lực Chuyên Môn</span>
+                <h2 class="section-heading">Kỹ Năng & Sở Thích</h2>
+                <p class="section-subtitle">Các công nghệ đã học và hoạt động rèn luyện bản thân</p>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="50">
+                    <i class="fa-brands fa-html5"></i>
+                    <span>HTML5 & Semantic</span>
+                </div>
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="100">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <span>CSS3 & Animations</span>
+                </div>
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="150">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript ES6+</span>
+                </div>
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="200">
+                    <i class="fa-brands fa-react"></i>
+                    <span>React JS</span>
+                </div>
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="250">
+                    <i class="fa-brands fa-python"></i>
+                    <span>Python Dev</span>
+                </div>
+                <div class="skill-card" data-aos="flip-up" data-aos-delay="300">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <span>Git & GitHub</span>
+                </div>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="hobbies-grid">
+                <div class="hobby-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Lập trình sáng tạo</span>
+                </div>
+                <div class="hobby-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Đọc sách công nghệ</span>
+                </div>
+                <div class="hobby-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-futbol"></i>
+                    <span>Bóng đá & Thể thao</span>
+                </div>
+                <div class="hobby-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-music"></i>
+                    <span>Âm nhạc thư giãn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONNECT & CONTACT SECTION (TÍCH HỢP NÚT GỬI TIN NHẮN & SPINNER) ================= -->
+    <section class="section" id="lien-he">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-address-book"></i> Kết Nối & Tương Tác</span>
+                <h2 class="section-heading">Liên Hệ & Gửi Tin Nhắn</h2>
+                <p class="section-subtitle">Sẵn sàng trao đổi học tập và kết nối cùng các bạn sinh viên LHU</p>
+            </div>
+
+            <div class="contact-section">
+                <!-- Danh sách mạng xã hội -->
+                <div class="social-cards" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://facebook.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-facebook"></i>
+                        <div>
+                            <span class="soc-name">Facebook</span>
+                            <span class="soc-hint">Kết bạn trao đổi</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-github"></i>
+                        <div>
+                            <span class="soc-name">GitHub</span>
+                            <span class="soc-hint">Xem kho mã nguồn</span>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-box">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <div>
+                            <span class="soc-name">LinkedIn</span>
+                            <span class="soc-hint">Hồ sơ nghề nghiệp</span>
+                        </div>
+                    </a>
+                    <a href="mailto:cong214165@gmail.com" class="social-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <span class="soc-name">Email SV</span>
+                            <span class="soc-hint">cong214165@gmail.com</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Form Liên Hệ Thực Hành Hoạt Động 1: Nút Bấm Cảm Xúc -->
+                <div class="contact-form-box" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-gray-dark); margin-bottom: 20px;">
+                        <i class="fa-solid fa-paper-plane" style="color: var(--color-primary); margin-right: 8px;"></i>
+                        Gửi Tin Nhắn Trực Tiếp Cho Mình
+                    </h3>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="senderName">Họ và tên của bạn:</label>
+                                <input type="text" id="senderName" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderEmail">Địa chỉ Email:</label>
+                                <input type="email" id="senderEmail" class="form-control" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="messageContent">Nội dung tin nhắn:</label>
+                            <textarea id="messageContent" class="form-control" rows="4" placeholder="Nhập lời nhắn hoặc phản hồi về bài tập tại đây..." required></textarea>
+                        </div>
+
+                        <!-- NÚT GỬI TIN NHẮN CHUẨN MICRO-INTERACTION -->
+                        <div style="text-align: right; margin-top: 10px;">
+                            <button type="submit" class="btn-emotion" id="btnSubmitMessage">
+                                <i class="fa-regular fa-paper-plane"></i>
+                                <span class="btn-text">Gửi tin nhắn</span>
+                                <span class="btn-spinner" style="display: none;"></span>
+                            </button>
+                        </div>
+
+                        <!-- Alert phản hồi khi gửi thành công -->
+                        <div class="form-alert success" id="formSuccessAlert">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Tin nhắn của bạn đã được gửi thành công! Mình sẽ phản hồi sớm nhất.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer" data-aos="fade-in">
+        <div class="container footer-content">
+            <div class="footer-text">
+                © 2026 Bản quyền thuộc về <strong>Nguyễn Thành Công</strong> (Lớp 25CT111) - Đại Học Lạc Hồng (LHU).
+            </div>
+            <div class="footer-badge">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Bài 5: Animations & Performance
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hoạt động 3: Thư viện AOS JS qua CDN & Khởi Tạo -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // 1. Khởi tạo hiệu ứng cuộn trang AOS
+        AOS.init({
+            duration: 800,           // Thời lượng animation (ms)
+            easing: 'ease-out-cubic',// Gia tốc tự nhiên
+            once: false,             // Animation kích hoạt mỗi khi cuộn qua
+            offset: 80               // Kích hoạt sớm 80px trước khi phần tử chạm đáy màn hình
+        });
+
+        // 2. Kích hoạt thử nghiệm hiệu ứng AOS cho Hoạt động 3
+        function triggerAOSDemo(btn) {
+            const icon = btn.querySelector('i');
+            const span = btn.querySelector('span');
+            icon.className = 'fa-solid fa-arrows-rotate fa-spin';
+            span.textContent = 'Đang kích hoạt...';
+
+            // Kích hoạt lại animation của AOS
+            AOS.refreshHard();
+
+            setTimeout(() => {
+                icon.className = 'fa-solid fa-check';
+                span.textContent = 'Đã kích hoạt AOS!';
+                setTimeout(() => {
+                    icon.className = 'fa-solid fa-rotate';
+                    span.textContent = 'Test Animation AOS';
+                }, 1500);
+            }, 600);
+        }
+
+        // 3. Xử lý nút thử bấm tại Bài 5 (Kết hợp Hoạt động 1 & 2)
+        function testEmotionButton(button) {
+            const icon = button.querySelector('i');
+            const label = button.querySelector('.btn-label');
+            const spinner = button.querySelector('.btn-spinner');
+
+            icon.style.display = 'none';
+            label.textContent = 'Đang xử lý...';
+            spinner.style.display = 'inline-block';
+            button.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                icon.className = 'fa-solid fa-check';
+                icon.style.display = 'inline-block';
+                label.textContent = 'Thành công!';
+
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-paper-plane';
+                    label.textContent = 'Thử Bấm Nút';
+                    button.style.pointerEvents = 'auto';
+                }, 1800);
+            }, 1200);
+        }
+
+        // 4. Xử lý gửi Form liên hệ (Micro-interaction + Spinner)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmitMessage');
+            const icon = btn.querySelector('i');
+            const text = btn.querySelector('.btn-text');
+            const spinner = btn.querySelector('.btn-spinner');
+            const alert = document.getElementById('formSuccessAlert');
+
+            // Bật trạng thái Loading Spinner
+            icon.style.display = 'none';
+            text.textContent = 'Đang gửi tin...';
+            spinner.style.display = 'inline-block';
+            btn.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                icon.className = 'fa-solid fa-circle-check';
+                icon.style.display = 'inline-block';
+                text.textContent = 'Đã gửi thành công!';
+                alert.style.display = 'flex';
+
+                // Reset form sau 2 giây
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    icon.className = 'fa-regular fa-paper-plane';
+                    text.textContent = 'Gửi tin nhắn';
+                    btn.style.pointerEvents = 'auto';
+                }, 2500);
+            }, 1200);
+        }
+
+        // 5. Quản lý Chế độ Sáng / Tối (Light / Dark Mode System)
+        const themeToggleNav = document.getElementById('themeToggleBtn');
+        const themeToggleFloat = document.getElementById('themeFloatingBtn');
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('portfolio-theme', 'dark');
+                updateThemeUI(true);
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('portfolio-theme', 'light');
+                updateThemeUI(false);
+            }
+        }
+
+        function updateThemeUI(isDark) {
+            const buttons = [themeToggleNav, themeToggleFloat].filter(Boolean);
+            buttons.forEach(btn => {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    if (isDark) {
+                        icon.className = 'fa-solid fa-sun';
+                        btn.title = 'Chuyển sang chế độ Sáng (Light Mode)';
+                    } else {
+                        icon.className = 'fa-solid fa-moon';
+                        btn.title = 'Chuyển sang chế độ Tối (Dark Mode)';
+                    }
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        if (themeToggleNav) themeToggleNav.addEventListener('click', toggleTheme);
+        if (themeToggleFloat) themeToggleFloat.addEventListener('click', toggleTheme);
+
+        // Khởi tạo trạng thái theme ban đầu từ localStorage hoặc thiết bị người dùng
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            applyTheme('dark');
+        }
+    </script>
+
+    <!-- Nút Nổi Chuyển Đổi Chế Độ Sáng / Tối (Floating Theme Toggle Button) -->
+    <button id="themeFloatingBtn" class="theme-floating-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+</body>
+</html>
