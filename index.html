@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nút Gửi Tin Nhắn - Demo</title>
+  <style>
+    /* Reset & Căn giữa màn hình để hiển thị */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #f8fafc, #e2e8f0);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ========================================================
+       THIẾT KẾ NÚT "GỬI TIN NHẮN"
+       ======================================================== */
+    .btn-send {
+      /* Bố cục & Kích thước */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+
+      /* Màu sắc & Viền */
+      color: #ffffff;
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+
+      /* Trạng thái mặc định */
+      transform: translateY(0) scale(1);
+      will-change: transform;
+      box-shadow: 0 4px 10px -2px rgba(79, 70, 229, 0.3),
+                  0 2px 4px -2px rgba(79, 70, 229, 0.15);
+
+      /* Chuyển động mượt mà với cubic-bezier */
+      transition: 
+        transform 0.25s cubic-bezier(0.34, 1.45, 0.64, 1),
+        box-shadow 0.25s cubic-bezier(0.34, 1.45, 0.64, 1),
+        background 0.25s ease;
+    }
+
+    /* Icon mũi tên gửi */
+    .btn-send svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.25s cubic-bezier(0.34, 1.45, 0.64, 1);
+    }
+
+    /* ========================================================
+       1. HIỆU ỨNG HOVER (RÊ CHUỘT)
+       - Nâng lên 3px (-3px)
+       - Đổi màu gradient sáng hơn
+       - Bóng đổ sâu & lan tỏa rộng hơn
+       ======================================================== */
+    .btn-send:hover {
+      /* Nhấc nút lên 3px */
+      transform: translateY(-3px);
+
+      /* Đổi màu tươi hơn */
+      background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
+
+      /* Đổ bóng sâu, màu đổ bóng mang sắc xanh của nút */
+      box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.45),
+                  0 6px 10px -4px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Di chuyển nhẹ icon khi hover */
+    .btn-send:hover svg {
+      transform: translateX(3px) translateY(-1px);
+    }
+
+    /* ========================================================
+       2. HIỆU ỨNG ACTIVE / CLICK (KHI BẤM XUỐNG)
+       - Nén nút xuống (scale 0.97)
+       - Hạ độ cao (nhích xuống)
+       - Bóng đổ co sát thân nút
+       ======================================================== */
+    .btn-send:active {
+      transform: translateY(1px) scale(0.97);
+
+      /* Thu nhỏ bóng đổ sát thân nút */
+      box-shadow: 0 3px 6px -1px rgba(79, 70, 229, 0.35),
+                  0 1px 2px -1px rgba(79, 70, 229, 0.2);
+
+      /* Thời gian phản hồi click cực nhanh (0.08s) để không bị trễ tay */
+      transition-duration: 0.08s;
+    }
+
+    /* ========================================================
+       3. TRẠNG THÁI FOCUS (Hỗ trợ truy cập phím Tab)
+       ======================================================== */
+    .btn-send:focus-visible {
+      outline: 3px solid #a5b4fc;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-send" type="button">
+    <span>Gửi tin nhắn</span>
+    <!-- SVG Icon Paper Plane -->
+    <svg viewBox="0 0 24 24">
+      <line x1="22" y1="2" x2="11" y2="13"></line>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+    </svg>
+  </button>
+
+</body>
+</html>
