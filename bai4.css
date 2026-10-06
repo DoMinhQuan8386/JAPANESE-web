@@ -1,0 +1,35 @@
+/* BÀI 4: CSS CHO PARALLAX BACKGROUND */
+.parallax-section {
+    position: relative;
+    /* Ảnh nền phong cảnh / công nghệ chất lượng cao */
+    background-image: url('https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80');
+    background-attachment: fixed;      /* Cố định ảnh nền khi cuộn trang */
+    background-position: center;       /* Căn giữa ảnh nền */
+    background-size: cover;            /* Bao phủ toàn bộ khung nền */
+    background-repeat: no-repeat;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7); /* Lớp phủ sẫm màu để chữ dễ đọc */
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+/* Responsive: Chuyển sang scroll trên thiết bị di động để tránh giật lag */
+@media (max-width: 768px) {
+    .parallax-section {
+        background-attachment: scroll;
+    }
+}

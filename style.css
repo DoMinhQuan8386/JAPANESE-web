@@ -1,57 +1,38 @@
 /* =========================================
-   HOẠT ĐỘNG 1
-   BẢNG MÀU THÔNG MINH - CSS VARIABLES
+   BẢNG MÀU THÔNG MINH - ĐỎ, HỒNG & TRẮNG
    ========================================= */
+:root {
+    /* Bộ màu Đỏ Ruby & Hồng Sakura */
+    --primary-color: #e11d48;       /* Đỏ Ruby tươi tắn */
+    --primary-hover: #be123c;       /* Đỏ đậm khi hover */
+    --accent-pink: #fb7185;         /* Hồng hoa anh đào */
+    --pink-light: #fff1f2;          /* Hồng phấn nhẹ */
+    --pink-border: #fecdd3;         /* Viền hồng nhạt tinh tế */
 
-   :root {
+    /* Nền & Thẻ */
+    --bg-color: #fff5f6;            /* Nền trang: Trắng ánh hồng phấn cực dịu mắt */
+    --card-bg: #ffffff;             /* Thẻ card: Trắng tinh khiết */
 
-    /* Màu chính */
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
+    /* Chữ */
+    --text-main: #1f2937;           /* Chữ chính: Xám đậm rõ nét */
+    --text-muted: #6b7280;          /* Chữ phụ */
 
-    /* Màu phụ */
-    --secondary-color: #0f172a;
-
-    /* 3 mức màu xám */
-    --gray-100: #f8fafc;
-    --gray-200: #e2e8f0;
-    --gray-500: #64748b;
-
-    /* Màu nền */
-    --bg-color: #f8fafc;
-    --card-bg: #ffffff;
-
-    /* Màu chữ */
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-
-    /* Border */
-    --border-color: #e2e8f0;
-
-    /* Khoảng cách */
+    /* Khoảng cách & Bo góc */
     --spacing-small: 10px;
     --spacing-medium: 20px;
     --spacing-large: 40px;
+    --border-radius: 16px;
 
-    /* Bo góc */
-    --border-radius: 12px;
+    /* Đổ bóng mềm mại tông hồng */
+    --shadow-soft: 0 10px 25px rgba(225, 29, 72, 0.08);
+    --shadow-hover: 0 15px 35px rgba(225, 29, 72, 0.16);
 
-    /* Font */
-    --font-family:
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
-
 
 /* =========================================
    CÀI ĐẶT CHUNG
    ========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -69,729 +50,773 @@ body {
     line-height: 1.7;
 }
 
-
-/* =========================================
-   CONTAINER
-   ========================================= */
-
 .container {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-
 /* =========================================
-   HEADER
+   HEADER: GRADIENT ĐỎ - HỒNG
    ========================================= */
-
 header {
-
-    background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--primary-hover)
-    );
-
-    color: white;
-
-    padding: var(--spacing-large) 0;
-
-    box-shadow:
-        0 4px 15px
-        rgba(0, 0, 0, 0.1);
-
+    background: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%);
+    color: #ffffff;
+    padding: 26px 0;
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-
-header h1 {
-
-    text-align: center;
-
-    font-size: 36px;
-
-    margin-bottom: var(--spacing-medium);
-
-}
-
-
-/* =========================================
-   NAV
-   ========================================= */
-
-nav {
-
+.header-container {
     display: flex;
-
-    justify-content: center;
-
+    justify-content: space-between;
     align-items: center;
-
-    gap: var(--spacing-medium);
-
     flex-wrap: wrap;
-
+    gap: 15px;
 }
 
+.header-brand h1 {
+    font-size: 28px;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* -----------------------------------------
+   BÀI 3: TYPING EFFECT (MÁY ĐÁNH CHỮ)
+   ----------------------------------------- */
+.typing-container {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.typing-text {
+    display: inline-block;
+    color: #ffe4e6;                  /* Hồng phấn sáng */
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;             /* Giữ chữ trên một dòng */
+    overflow: hidden;                /* Ẩn phần chữ chưa gõ */
+    border-right: 3px solid #ffffff; /* Con trỏ nhấp nháy */
+    width: 0;
+    animation:
+        typing 3.8s steps(38, end) infinite alternate,
+        blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 100% { border-color: #ffffff; }
+    50% { border-color: transparent; }
+}
+
+/* -----------------------------------------
+   NAV & BÀI 5: HAMBURGER MENU
+   ----------------------------------------- */
+nav {
+    display: flex;
+    gap: 18px;
+}
 
 nav a {
-
-    color: white;
-
+    color: #ffffff;
     text-decoration: none;
-
     font-weight: 600;
-
-    padding: 8px 14px;
-
-    border-radius: 8px;
-
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
-
 
 nav a:hover {
-
-    background-color:
-        rgba(255, 255, 255, 0.2);
-
-    /* HOẠT ĐỘNG 4 */
-    /* Dùng transform thay cho top/left */
-
-    transform:
-        translateY(-2px);
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);     /* GPU Acceleration */
 }
 
+/* Nút Hamburger 3 gạch */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Xoay thành chữ X khi active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
 
 /* =========================================
-   MAIN
+   MAIN & SECTION
    ========================================= */
-
 main {
-
     padding-top: var(--spacing-large);
-
     padding-bottom: var(--spacing-large);
-
 }
-
-
-/* =========================================
-   SECTION
-   ========================================= */
 
 section {
-
     background-color: var(--card-bg);
-
-    margin-bottom: 30px;
-
-    padding: 35px;
-
+    margin-bottom: 40px;
+    padding: 40px;
     border-radius: var(--border-radius);
-
-    border: 1px solid var(--border-color);
-
-    box-shadow:
-        0 5px 20px
-        rgba(15, 23, 42, 0.06);
-
+    border: 1px solid var(--pink-border);
+    box-shadow: var(--shadow-soft);
 }
 
-
-section h2 {
-
+.section-title {
     color: var(--primary-color);
-
     font-size: 28px;
-
-    margin-bottom: var(--spacing-medium);
-
-    border-bottom:
-        3px solid
-        var(--primary-color);
-
-    padding-bottom: 8px;
-
+    text-align: center;
+    margin-bottom: 35px;
+    position: relative;
 }
 
-
-section h3 {
-
-    font-size: 21px;
-
-    margin: 18px 0 10px;
-
+.section-title::after {
+    content: "🌸";
+    display: block;
+    font-size: 18px;
+    margin-top: 6px;
 }
 
+/* =========================================
+   SECTION 1: GIỚI THIỆU & BÀI 2 (CARD FLIP)
+   ========================================= */
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
 
-section h4 {
-
+.about-info h3 {
+    font-size: 22px;
     color: var(--primary-color);
-
-    margin-top: var(--spacing-medium);
-
-    margin-bottom: 8px;
-
-}
-
-
-section p {
     margin-bottom: 12px;
 }
 
+.about-info p {
+    color: #4b5563;
+    margin-bottom: 12px;
+}
 
-/* =========================================
-   THÔNG TIN CÁ NHÂN
-   ========================================= */
-
-#about p strong {
+.about-info strong {
     color: var(--primary-color);
 }
 
-
-/* =========================================
-   HOẠT ĐỘNG 2
-   LOADING SPINNER
-   ========================================= */
-
-.learning-status {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 20px;
-
-    padding: 12px 15px;
-
-    background-color: var(--gray-100);
-
-    border-radius: 8px;
-
-    color: var(--gray-500);
-
+.profile-details {
+    background: var(--pink-light);
+    padding: 18px 22px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    margin: 20px 0;
 }
 
+.profile-details p {
+    margin-bottom: 8px;
+    color: #374151;
+}
 
-/* Vòng tròn Loading */
+.profile-details i {
+    color: var(--primary-color);
+    width: 25px;
+}
+
+/* Loading Spinner */
+.learning-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
 
 .loading-spinner {
-
-    width: 22px;
-
-    height: 22px;
-
-    border:
-        3px solid
-        var(--gray-200);
-
-    border-top-color:
-        var(--primary-color);
-
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--pink-border);
+    border-top-color: var(--primary-color);
     border-radius: 50%;
-
-    /*
-        HOẠT ĐỘNG 2:
-        Xoay liên tục 360 độ
-    */
-
-    animation:
-        spinner 1s linear infinite;
-
+    animation: spinner 1s linear infinite;
 }
-
-
-/* Keyframes */
 
 @keyframes spinner {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    to { transform: rotate(360deg); }
 }
 
+/* -----------------------------------------
+   BÀI 2: CARD FLIP EFFECT (THẺ LẬT MẶT)
+   ----------------------------------------- */
+.flip-card {
+    perspective: 1000px;
+    width: 310px;
+    height: 420px;
+    margin: 0 auto;
+}
 
-/* =========================================
-   KỸ NĂNG
-   ========================================= */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
 
-.skill-list {
+/* Hover xoay 180 độ */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
 
-    list-style: none;
-
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
     display: flex;
-
-    flex-wrap: wrap;
-
-    gap: var(--spacing-small);
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--pink-border);
+    box-shadow: var(--shadow-soft);
 }
 
+/* Mặt trước: Trắng viền đỏ hồng */
+.card-front {
+    background: linear-gradient(180deg, #ffffff 0%, var(--pink-light) 100%);
+}
 
-.skill-list li {
+.avatar-box {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-pink));
+    margin-bottom: 16px;
+    box-shadow: 0 6px 15px rgba(225, 29, 72, 0.25);
+}
 
-    flex: 1 1 45%;
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-    background-color: var(--gray-100);
+.card-front h3 {
+    font-size: 22px;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
 
-    padding: 14px;
+.role-badge {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
 
-    border-left:
-        4px solid
-        var(--primary-color);
+.flip-hint {
+    font-size: 13px;
+    color: var(--accent-pink);
+    font-weight: 500;
+}
 
+/* Mặt sau: Nền Đỏ Ruby Gradient */
+.card-back {
+    background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
+    color: #ffffff;
+    transform: rotateY(180deg);
+}
+
+.card-back h3 {
+    color: #ffe4e6;
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.card-back p {
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 13px !important;
+    color: #fecdd3 !important;
+    margin: 16px 0 !important;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
     border-radius: 8px;
-
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease;
-
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
-
-.skill-list li:hover {
-
-    background-color: #dbeafe;
-
-    /* HOẠT ĐỘNG 4 */
-    /* transform thay cho top/left */
-
-    transform:
-        translateY(-3px);
-
+.social-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
+.social-btn.fb { background: #1877f2; }
+.social-btn.gh { background: #1e293b; }
 
 /* =========================================
-   HOẠT ĐỘNG 3
-   BREAKPOINT CHALLENGE
-   CSS GRID
-   Desktop: 4 cột
+   SECTION 2: KỸ NĂNG & BÀI 6 (SKILL BAR)
    ========================================= */
-
-.services-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: var(--spacing-medium);
-
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
 
-/* Card dịch vụ */
+.skill-info i {
+    color: var(--primary-color);
+    margin-right: 6px;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 14px;
+    background-color: var(--pink-light);
+    border: 1px solid var(--pink-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    border-radius: 20px;
+    width: 0%;
+    /* Gradient Đỏ sang Hồng tươi */
+    background: linear-gradient(90deg, #e11d48, #fb7185);
+    animation: fillBar 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: var(--skill-width); }
+}
+
+/* =========================================
+   BÀI 4: PARALLAX BACKGROUND (SAKURA NHẬT BẢN)
+   ========================================= */
+.parallax-section {
+    position: relative;
+    /* Ảnh hoa anh đào Sakura Nhật Bản tông đỏ hồng rực rỡ */
+    background-image: url('https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1920&q=80');
+    background-attachment: fixed;       /* Cố định ảnh khi cuộn */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 45px 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(225, 29, 72, 0.65), rgba(15, 23, 42, 0.65));
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 750px;
+    color: #ffffff;
+}
+
+.parallax-content h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.parallax-content p {
+    font-size: 18px;
+    color: #ffe4e6;
+    margin-bottom: 20px;
+}
+
+.parallax-tag {
+    display: inline-block;
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    backdrop-filter: blur(5px);
+}
+
+/* =========================================
+   SECTION 3: DỊCH VỤ (KÈM ẢNH ĐẸP)
+   ========================================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
 .service-card {
-
-    background-color: var(--gray-100);
-
-    padding: var(--spacing-medium);
-
-    border:
-        1px solid
-        var(--border-color);
-
+    background-color: #ffffff;
+    border: 1px solid var(--pink-border);
     border-radius: var(--border-radius);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-
+    overflow: hidden;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .service-card:hover {
-
-    /* HOẠT ĐỘNG 4 */
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 8px 20px
-        rgba(15, 23, 42, 0.1);
-
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-pink);
 }
 
+.service-img-wrap {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+
+.service-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-thumb {
+    transform: scale(1.08);
+}
 
 .service-card h3 {
-
     color: var(--primary-color);
-
     font-size: 18px;
-
+    margin: 15px 15px 8px;
 }
 
+.service-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 0 15px;
+}
 
 /* =========================================
-   DỰ ÁN
+   SECTION 4: DỰ ÁN
    ========================================= */
-
 .projects-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 24px;
-
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
 }
-
-
-/* Mỗi dự án là một ô riêng */
 
 .project-card {
-
-    background-color: var(--gray-100);
-
-    padding: 25px;
-
+    background-color: #ffffff;
     border-radius: var(--border-radius);
-
-    border:
-        1px solid
-        var(--border-color);
-
-    min-height: 320px;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-
+    border: 1px solid var(--pink-border);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-
-/* Tiêu đề dự án */
-
-.project-card h3 {
-
-    color: var(--primary-color);
-
-    font-size: 22px;
-
-    margin-bottom: 15px;
-
-}
-
-
-/* Tiêu đề nhỏ */
-
-.project-card h4 {
-
-    color: var(--primary-color);
-
-    margin-top: 18px;
-
-    margin-bottom: 8px;
-
-}
-
-
-/* Nội dung */
-
-.project-card p {
-
-    line-height: 1.7;
-
-    margin-bottom: 12px;
-
-}
-
-
-/* Danh sách */
-
-.project-card ul {
-
-    padding-left: 25px;
-
-    line-height: 1.7;
-
-}
-
-
-/* Icon */
-
-.project-icon {
-
-    font-size: 35px;
-
-    margin-bottom: 10px;
-
-}
-
-
-/* Hiệu ứng rê chuột */
 
 .project-card:hover {
-
-    /* HOẠT ĐỘNG 4 */
-    /* Dùng transform thay cho top/left */
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--primary-color);
-
-    box-shadow:
-        0 8px 20px
-        rgba(0, 0, 0, 0.08);
-
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
 }
 
+.project-thumb {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(225, 29, 72, 0.9);
+    color: #ffffff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.project-content {
+    padding: 24px;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.project-card h4 {
+    color: var(--primary-color);
+    margin: 14px 0 6px;
+}
+
+.project-card p {
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.project-card ul {
+    padding-left: 20px;
+    color: #4b5563;
+}
+
+.project-tech {
+    margin-top: 14px;
+    border-top: 1px solid var(--pink-border);
+    padding-top: 10px;
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
 
 /* =========================================
-   TABLET
+   SECTION 5: FORM LIÊN HỆ
    ========================================= */
+.contact-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form p {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--pink-border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    background-color: var(--pink-light);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.12);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-pink));
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(225, 29, 72, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(225, 29, 72, 0.35);
+}
+
+/* =========================================
+   BÀI 1: FLOATING ACTION BUTTON (FAB ĐỎ HỒNG)
+   - position: fixed cố định góc dưới bên phải
+   - @keyframes pulse co giãn scale(1) -> 1.1
+   - box-shadow đỏ hồng tỏa sáng lan tỏa
+   ========================================= */
+.floating-action-button {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 62px;
+    height: 62px;
+    background: linear-gradient(135deg, #e11d48, #f43f5e);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    z-index: 9999;
+    cursor: pointer;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.65);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 18px rgba(225, 29, 72, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+    }
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    background: linear-gradient(135deg, #881337 0%, #4c0519 100%);
+    color: #ffe4e6;
+    text-align: center;
+    padding: 32px 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 6px 0;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================= */
+@media (max-width: 900px) {
+    .about-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 @media (max-width: 768px) {
+    .header-brand h1 {
+        font-size: 22px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        padding-top: 15px;
+        gap: 10px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        text-align: center;
+    }
 
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
-}
-
-
-/* =========================================
-   FORM
-   ========================================= */
-
-form {
-
-    margin-top: var(--spacing-medium);
-
-}
-
-
-form p {
-    margin-bottom: 18px;
-}
-
-
-label {
-
-    display: block;
-
-    font-weight: 600;
-
-    margin-bottom: 6px;
-
-}
-
-
-input,
-textarea {
-
-    width: 100%;
-
-    padding: 12px 14px;
-
-    border:
-        1px solid
-        var(--border-color);
-
-    border-radius: 8px;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    outline: none;
-
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-
-}
-
-
-input:focus,
-textarea:focus {
-
-    border-color:
-        var(--primary-color);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(37, 99, 235, 0.15);
-
-}
-
-
-textarea {
-    resize: vertical;
-}
-
-
-/* =========================================
-   BUTTON
-   ========================================= */
-
-button {
-
-    background-color:
-        var(--primary-color);
-
-    color: white;
-
-    border: none;
-
-    padding: 12px 24px;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease;
-
-}
-
-
-button:hover {
-
-    background-color:
-        var(--primary-hover);
-
-    /* HOẠT ĐỘNG 4 */
-
-    transform:
-        translateY(-2px);
-
-}
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-
-    background-color:
-        var(--secondary-color);
-
-    color: white;
-
-    text-align: center;
-
-    padding: 30px 20px;
-
-}
-
-
-footer p {
-    margin: 5px 0;
-}
-
-
-/* =========================================
-   RESPONSIVE PORTFOLIO
-   ========================================= */
-
-
-/* TABLET
-   4 cột → 2 cột
-*/
-
-@media (max-width: 900px) {
-
-    .services-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-}
-
-
-/* MOBILE
-   2 cột → 1 cột
-*/
-
-@media (max-width: 768px) {
-
-    header h1 {
-        font-size: 28px;
-    }
-
-    nav {
-        gap: 8px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-    section {
-        padding: 25px;
-    }
-
-    .skill-list li {
-        flex: 1 1 100%;
-    }
-
-    /* Dịch vụ thành 1 cột */
-
     .services-grid {
         grid-template-columns: 1fr;
     }
 
-}
-
-
-/* =========================================
-   MOBILE NHỎ
-   ========================================= */
-
-@media (max-width: 480px) {
-
-    .container {
-        width: 94%;
+    .parallax-section {
+        background-attachment: scroll;
     }
-
-    header {
-        padding: 25px 0;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    section {
-        padding: 20px;
-    }
-
-    section h2 {
-        font-size: 24px;
-    }
-
-    nav a {
-        padding: 6px 8px;
-    }
-
-    button {
-        width: 100%;
-    }
-
 }

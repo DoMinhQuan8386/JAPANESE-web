@@ -1,0 +1,39 @@
+/* BÀI 3: CSS CHO TYPING EFFECT (KHÔNG DÙNG JAVASCRIPT) */
+.typing-container {
+    display: inline-block;
+}
+
+.typing-text {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2563eb;
+    white-space: nowrap;              /* Giữ văn bản trên một dòng */
+    overflow: hidden;                 /* Ẩn các ký tự chưa chạy đến */
+    border-right: 3px solid #2563eb;  /* Tạo con trỏ đánh chữ */
+    width: 0;
+    /* steps(38) tạo cảm giác gõ từng ký tự ngắt quãng như máy gõ thật */
+    animation: 
+        typing 3.5s steps(38, end) infinite alternate,
+        blink 0.75s step-end infinite;
+}
+
+/* Keyframes thay đổi width từ 0 đến 100% */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Keyframes nhấp nháy con trỏ */
+@keyframes blink {
+    0%, 100% {
+        border-color: #2563eb;
+    }
+    50% {
+        border-color: transparent;
+    }
+}

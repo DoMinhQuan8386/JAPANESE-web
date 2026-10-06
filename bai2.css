@@ -1,0 +1,69 @@
+/* BÀI 2: CSS CHO CARD FLIP EFFECT */
+.flip-card {
+    perspective: 1000px;             /* Tạo chiều sâu không gian 3D */
+    width: 300px;
+    height: 400px;
+    margin: 20px auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); /* Chuyển động lật mượt */
+    transform-style: preserve-3d;    /* Giữ hiệu ứng 3D cho các thẻ con */
+}
+
+/* Khi hover vào thẻ: xoay 180 độ theo trục Y */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;     /* Ẩn mặt sau khi nhìn góc đối diện */
+    border-radius: 14px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mặt trước */
+.card-front {
+    background: #ffffff;
+    color: #1e293b;
+}
+
+.card-front .avatar-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #2563eb;
+}
+
+/* Mặt sau */
+.card-back {
+    background: linear-gradient(135deg, #2563eb, #0f172a);
+    color: #ffffff;
+    transform: rotateY(180deg);       /* Xoay sẵn 180 độ */
+}
+
+.card-back .social-links a {
+    display: inline-block;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    margin: 6px 4px;
+    border-radius: 6px;
+    text-decoration: none;
+}

@@ -3,497 +3,377 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Đỗ Minh Quân | 25CT111</title>
 
-    <title>Portfolio - Đỗ Minh Quân</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- HOẠT ĐỘNG 3: Thư viện AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <!-- Kết nối file CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- HOẠT ĐỘNG 3: Thư viện AOS -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-    >
 </head>
 
 <body>
 
     <!--
-        HEADER:
-        Phần đầu của trang Portfolio.
-        Dùng để hiển thị tên và thanh điều hướng.
+        HEADER: Tông màu Đỏ - Hồng Gradient
+        Tích hợp BÀI 3 (Typing Effect) và BÀI 5 (Hamburger Menu)
     -->
-
     <header>
+        <div class="container header-container">
+            <div class="header-brand">
+                <h1>Portfolio - Đỗ Minh Quân</h1>
 
-        <div class="container">
+                <!-- ============================================
+                     BÀI 3: TYPING EFFECT (HIỆU ỨNG MÁY ĐÁNH CHỮ)
+                     ============================================ -->
+                <div class="typing-container">
+                    <p class="typing-text">Tôi là sinh viên Công nghệ thông tin</p>
+                </div>
+            </div>
 
-            <h1>Portfolio - Đỗ Minh Quân</h1>
+            <!-- ============================================
+                 BÀI 5: MODERN HAMBURGER MENU (3 gạch thành dấu X)
+                 ============================================ -->
+            <button class="hamburger" aria-label="Mở menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <!--
-                NAV:
-                Thanh điều hướng giúp người dùng
-                di chuyển đến các phần của trang.
-            -->
-
-            <nav>
-
+            <!-- NAV: Thanh điều hướng -->
+            <nav class="main-nav">
                 <a href="#about">Giới thiệu</a>
-
                 <a href="#skills">Kỹ năng</a>
-
                 <a href="#services">Dịch vụ</a>
-
                 <a href="#projects">Dự án</a>
-
                 <a href="#contact">Liên hệ</a>
-
             </nav>
-
         </div>
-
     </header>
 
-
-    <!--
-        MAIN:
-        Chứa toàn bộ nội dung chính của Portfolio.
-    -->
-
+    <!-- MAIN: Toàn bộ nội dung chính -->
     <main class="container">
-
 
         <!-- =========================
              SECTION 1 - GIỚI THIỆU
+             Tích hợp BÀI 2 (Card Flip Effect)
              ========================= -->
-
-        <!-- HOẠT ĐỘNG 3: Scroll Reveal -->
-
         <section id="about" data-aos="fade-up">
+            <h2 class="section-title">Giới thiệu bản thân</h2>
 
-            <h2>Giới thiệu bản thân</h2>
+            <div class="about-wrapper">
+                <div class="about-info">
+                    <h3>Xin chào! Tôi là Đỗ Minh Quân 👋</h3>
+                    <p>Tôi là sinh viên ngành Công nghệ thông tin tại <strong>Trường Đại học Lạc Hồng</strong>.</p>
+                    <p>Tôi yêu thích lập trình Web và luôn muốn tìm hiểu những công nghệ mới để nâng cao kỹ năng của bản thân. Bên cạnh việc học lập trình, tôi cũng có sở thích học tiếng Nhật và khám phá văn hóa Nhật Bản.</p>
 
-            <h3>Xin chào! Tôi là Đỗ Minh Quân 👋</h3>
+                    <div class="profile-details">
+                        <p><i class="fa-regular fa-calendar-days"></i> <strong>Ngày sinh:</strong> 15/04/2007</p>
+                        <p><i class="fa-solid fa-graduation-cap"></i> <strong>Lớp:</strong> 25CT111</p>
+                        <p><i class="fa-solid fa-school"></i> <strong>Trường:</strong> Đại học Lạc Hồng</p>
+                        <p><i class="fa-solid fa-laptop-code"></i> <strong>Ngành:</strong> Công nghệ thông tin</p>
+                    </div>
 
-            <p>
-                Tôi là sinh viên ngành Công nghệ thông tin
-                tại Trường Đại học Lạc Hồng.
-            </p>
+                    <h3>Mục tiêu</h3>
+                    <p>Mục tiêu của tôi là xây dựng nền tảng lập trình Web vững chắc, đặc biệt là HTML, CSS và JavaScript, đồng thời phát triển khả năng làm việc với Git và GitHub.</p>
 
-            <p>
-                Tôi yêu thích lập trình Web và luôn muốn tìm hiểu
-                những công nghệ mới để nâng cao kỹ năng của bản thân.
-                Bên cạnh việc học lập trình, tôi cũng có sở thích
-                học tiếng Nhật và khám phá văn hóa Nhật Bản.
-            </p>
+                    <!-- HOẠT ĐỘNG 2: Loading Spinner -->
+                    <div class="learning-status">
+                        <span class="loading-spinner"></span>
+                        <span>Đang học tập và phát triển kỹ năng...</span>
+                    </div>
+                </div>
 
-            <p>
-                <strong>Ngày sinh:</strong> 15/04/2007
-            </p>
+                <!-- ============================================
+                     BÀI 2: CARD FLIP EFFECT (THẺ LẬT MẶT 3D)
+                     ============================================ -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <!-- Mặt trước -->
+                        <div class="card-front">
+                            <div class="avatar-box">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Avatar Đỗ Minh Quân" class="avatar-img">
+                            </div>
+                            <h3>Đỗ Minh Quân</h3>
+                            <p class="role-badge">Sinh viên CNTT • Lạc Hồng</p>
+                            <span class="flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Di chuột để lật thẻ</span>
+                        </div>
 
-            <p>
-                <strong>Lớp:</strong> 25CT111
-            </p>
+                        <!-- Mặt sau: Nền Gradient Đỏ Hồng -->
+                        <div class="card-back">
+                            <h3>Thông tin của tôi</h3>
+                            <p><i class="fa-solid fa-graduation-cap"></i> Lớp: 25CT111</p>
+                            <p><i class="fa-solid fa-school"></i> Đại học Lạc Hồng</p>
+                            <p class="quote">"Học từng chữ - Nhớ từng câu - Tiến bộ từng ngày!"</p>
 
-            <p>
-                <strong>Trường:</strong> Đại học Lạc Hồng
-            </p>
-
-            <p>
-                <strong>Ngành:</strong> Công nghệ thông tin
-            </p>
-
-            <h3>Mục tiêu</h3>
-
-            <p>
-                Mục tiêu của tôi là xây dựng nền tảng lập trình Web
-                vững chắc, đặc biệt là HTML, CSS và JavaScript,
-                đồng thời phát triển khả năng làm việc với Git và GitHub.
-            </p>
-
-
-            <!--
-                HOẠT ĐỘNG 2:
-                Loading Spinner được đặt vào phần giới thiệu.
-                Phù hợp với Portfolio vì thể hiện trạng thái
-                đang học tập và phát triển kỹ năng.
-            -->
-
-            <div class="learning-status">
-
-                <span class="loading-spinner"></span>
-
-                <span>
-                    Đang học tập và phát triển kỹ năng...
-                </span>
-
+                            <div class="social-links">
+                                <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                                </a>
+                                <a href="https://github.com" target="_blank" class="social-btn gh">
+                                    <i class="fa-brands fa-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </section>
-
 
         <!-- =========================
              SECTION 2 - KỸ NĂNG
+             Tích hợp BÀI 6 (Skill Bar Animation)
              ========================= -->
-
-        <!-- HOẠT ĐỘNG 3: Scroll Reveal -->
-
         <section id="skills" data-aos="fade-up">
+            <h2 class="section-title">Kỹ năng chuyên môn</h2>
 
-            <h2>Kỹ năng</h2>
-
-            <ul class="skill-list">
-
-                <li>
-                    HTML5 - Xây dựng cấu trúc website
-                </li>
-
-                <li>
-                    CSS3 - Thiết kế giao diện website
-                </li>
-
-                <li>
-                    JavaScript - Tạo tính năng tương tác
-                </li>
-
-                <li>
-                    Python - Lập trình cơ bản
-                </li>
-
-                <li>
-                    SQL Server - Quản lý cơ sở dữ liệu
-                </li>
-
-                <li>
-                    Git & GitHub - Quản lý mã nguồn
-                </li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- =========================
-             SECTION 3 - DỊCH VỤ
-             =========================
-
-             Phần này dùng để thực hành
-             CSS Grid + Responsive.
-        -->
-
-        <!-- HOẠT ĐỘNG 3: Scroll Reveal -->
-
-        <section id="services" data-aos="fade-up">
-
-            <h2>Dịch vụ</h2>
-
-            <div class="services-grid">
-
-
-                <!-- Dịch vụ 1 -->
-
-                <article class="service-card">
-
-                    <h3>🌐 Thiết kế Web</h3>
-
-                    <p>
-                        Xây dựng giao diện website bằng HTML và CSS
-                        với bố cục rõ ràng và dễ sử dụng.
-                    </p>
-
-                </article>
-
-
-                <!-- Dịch vụ 2 -->
-
-                <article class="service-card">
-
-                    <h3>🎨 Thiết kế giao diện</h3>
-
-                    <p>
-                        Tạo giao diện hiện đại, màu sắc hài hòa
-                        và phù hợp với nhiều kích thước màn hình.
-                    </p>
-
-                </article>
-
-
-                <!-- Dịch vụ 3 -->
-
-                <article class="service-card">
-
-                    <h3>💻 Lập trình</h3>
-
-                    <p>
-                        Sử dụng JavaScript để xây dựng các chức năng
-                        tương tác cơ bản cho website.
-                    </p>
-
-                </article>
-
-
-                <!-- Dịch vụ 4 -->
-
-                <article class="service-card">
-
-                    <h3>📚 Hỗ trợ học tập</h3>
-
-                    <p>
-                        Xây dựng các website hỗ trợ học tập,
-                        ví dụ như website học tiếng Nhật cơ bản.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SECTION 4 - DỰ ÁN
-             ========================= -->
-
-        <!-- HOẠT ĐỘNG 3: Scroll Reveal -->
-
-        <section id="projects" data-aos="fade-up">
-
-            <h2 class="section-title">
-                Dự án
-            </h2>
-
-            <div class="projects-grid">
-
-
-                <!-- DỰ ÁN 1 -->
-
-                <article class="project-card">
-
-                    <div class="project-icon">
-                        🇯🇵
+            <!-- ============================================
+                 BÀI 6: SKILL BAR ANIMATION (THANH ĐO TỰ CHẠY)
+                 ============================================ -->
+            <div class="skills-container">
+                <!-- HTML5 (90%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-brands fa-html5"></i> HTML5 - Xây dựng cấu trúc website</span>
+                        <span>90%</span>
                     </div>
-
-                    <h3>
-                        Website học tiếng Nhật cơ bản
-                    </h3>
-
-                    <p>
-                        Đây là dự án Website hỗ trợ người mới
-                        bắt đầu học tiếng Nhật.
-                    </p>
-
-                    <h4>
-                        Nội dung website
-                    </h4>
-
-                    <ul>
-
-                        <li>
-                            Học bảng chữ cái Hiragana.
-                        </li>
-
-                        <li>
-                            Học bảng chữ cái Katakana.
-                        </li>
-
-                        <li>
-                            Ô học thuộc giúp luyện nhớ chữ.
-                        </li>
-
-                        <li>
-                            Học từ vựng tiếng Nhật N5.
-                        </li>
-
-                        <li>
-                            Học ngữ pháp cơ bản N5.
-                        </li>
-
-                    </ul>
-
-                    <p class="project-tech">
-
-                        <strong>Công nghệ:</strong>
-
-                        HTML5, CSS3, JavaScript
-
-                    </p>
-
-                </article>
-
-
-                <!-- DỰ ÁN 2 -->
-
-                <article class="project-card">
-
-                    <div class="project-icon">
-                        🛒
+                    <div class="skill-bar">
+                        <div class="skill-progress html" style="--skill-width: 90%;"></div>
                     </div>
+                </div>
 
-                    <h3>
-                        Website Thương mại điện tử Mini
-                    </h3>
+                <!-- CSS3 (85%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-brands fa-css3-alt"></i> CSS3 - Thiết kế giao diện website</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress css" style="--skill-width: 85%;"></div>
+                    </div>
+                </div>
 
-                    <p>
-                        Website bán hàng trực tuyến mô phỏng
-                        một hệ thống thương mại điện tử cơ bản.
-                    </p>
+                <!-- JavaScript (70%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-brands fa-square-js"></i> JavaScript - Tạo tính năng tương tác</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress javascript" style="--skill-width: 70%;"></div>
+                    </div>
+                </div>
 
-                    <h4>
-                        Chức năng chính
-                    </h4>
+                <!-- Python (65%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-brands fa-python"></i> Python - Lập trình cơ bản</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress python" style="--skill-width: 65%;"></div>
+                    </div>
+                </div>
 
-                    <ul>
+                <!-- SQL Server (70%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-solid fa-database"></i> SQL Server - Quản lý cơ sở dữ liệu</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress sql" style="--skill-width: 70%;"></div>
+                    </div>
+                </div>
 
-                        <li>
-                            Hiển thị danh sách sản phẩm.
-                        </li>
-
-                        <li>
-                            Phân loại sản phẩm theo danh mục.
-                        </li>
-
-                        <li>
-                            Xem thông tin và giá sản phẩm.
-                        </li>
-
-                        <li>
-                            Thêm sản phẩm vào giỏ hàng.
-                        </li>
-
-                        <li>
-                            Quản lý số lượng sản phẩm.
-                        </li>
-
-                    </ul>
-
-                    <p class="project-tech">
-
-                        <strong>Công nghệ:</strong>
-
-                        HTML5, CSS3, JavaScript
-
-                    </p>
-
-                </article>
-
+                <!-- Git & GitHub (75%) -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span><i class="fa-brands fa-github"></i> Git & GitHub - Quản lý mã nguồn</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress git" style="--skill-width: 75%;"></div>
+                    </div>
+                </div>
             </div>
-
-        </section>
-
-
-        <!-- =========================
-             SECTION 5 - LIÊN HỆ
-             ========================= -->
-
-        <!-- HOẠT ĐỘNG 3: Scroll Reveal -->
-
-        <section id="contact" data-aos="fade-up">
-
-            <h2>Liên hệ</h2>
-
-            <p>
-                Nếu bạn muốn trao đổi về học tập hoặc dự án,
-                hãy gửi tin nhắn cho tôi.
-            </p>
-
-
-            <!-- Form liên hệ -->
-
-            <form>
-
-                <p>
-
-                    <label for="name">
-                        Họ và tên:
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                    >
-
-                </p>
-
-
-                <p>
-
-                    <label for="email">
-                        Email:
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                    >
-
-                </p>
-
-
-                <p>
-
-                    <label for="message">
-                        Nội dung:
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="5"
-                    ></textarea>
-
-                </p>
-
-
-                <button type="submit">
-                    Gửi liên hệ
-                </button>
-
-            </form>
-
         </section>
 
     </main>
 
+    <!-- ============================================
+         BÀI 4: PARALLAX BACKGROUND (ẢNH SAKURA NHẬT BẢN ĐỎ - HỒNG)
+         background-attachment: fixed tạo cảm giác chiều sâu 3D
+         ============================================ -->
+    <section class="parallax-section" data-aos="fade-up">
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h2>Hành trình học tập & Khát vọng</h2>
+            <p>"Không ngừng học hỏi, thực hành và phát triển kỹ năng lập trình mỗi ngày."</p>
+            <span class="parallax-tag">🌸 ĐẠI HỌC LẠC HỒNG • 25CT111 🌸</span>
+        </div>
+    </section>
 
-    <!--
-        FOOTER:
-        Phần cuối của trang Portfolio.
-    -->
+    <main class="container">
 
+        <!-- =========================
+             SECTION 3 - DỊCH VỤ (THÊM ẢNH MINH HỌA)
+             ========================= -->
+        <section id="services" data-aos="fade-up">
+            <h2 class="section-title">Dịch vụ cung cấp</h2>
+
+            <div class="services-grid">
+                <!-- Dịch vụ 1 -->
+                <article class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80" alt="Thiết kế Web" class="service-thumb">
+                    </div>
+                    <h3>🌐 Thiết kế Web</h3>
+                    <p>Xây dựng giao diện website bằng HTML và CSS với bố cục rõ ràng và dễ sử dụng.</p>
+                </article>
+
+                <!-- Dịch vụ 2 -->
+                <article class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=400&q=80" alt="Thiết kế giao diện" class="service-thumb">
+                    </div>
+                    <h3>🎨 Thiết kế giao diện</h3>
+                    <p>Tạo giao diện hiện đại, màu sắc hài hòa và phù hợp với nhiều kích thước màn hình.</p>
+                </article>
+
+                <!-- Dịch vụ 3 -->
+                <article class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Lập trình" class="service-thumb">
+                    </div>
+                    <h3>💻 Lập trình</h3>
+                    <p>Sử dụng JavaScript để xây dựng các chức năng tương tác cơ bản cho website.</p>
+                </article>
+
+                <!-- Dịch vụ 4 -->
+                <article class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=400&q=80" alt="Hỗ trợ học tập" class="service-thumb">
+                    </div>
+                    <h3>📚 Hỗ trợ học tập</h3>
+                    <p>Xây dựng các website hỗ trợ học tập, ví dụ như website học tiếng Nhật cơ bản.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================
+             SECTION 4 - DỰ ÁN (ẢNH ĐẸP ĐỎ HỒNG)
+             ========================= -->
+        <section id="projects" data-aos="fade-up">
+            <h2 class="section-title">Dự án tiêu biểu</h2>
+
+            <div class="projects-grid">
+                <!-- DỰ ÁN 1 -->
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Website tiếng Nhật" class="project-img">
+                        <span class="project-badge">🇯🇵 Tiếng Nhật</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Website học tiếng Nhật cơ bản</h3>
+                        <p>Dự án hỗ trợ người mới bắt đầu học tiếng Nhật với giao diện trực quan và dễ tiếp thu.</p>
+                        <h4>Nội dung website:</h4>
+                        <ul>
+                            <li>Học bảng chữ cái Hiragana & Katakana.</li>
+                            <li>Ô học thuộc giúp luyện nhớ mặt chữ.</li>
+                            <li>Học từ vựng và ngữ pháp cơ bản N5.</li>
+                        </ul>
+                        <p class="project-tech"><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript</p>
+                    </div>
+                </article>
+
+                <!-- DỰ ÁN 2 -->
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80" alt="Website TMĐT" class="project-img">
+                        <span class="project-badge">🛒 E-Commerce</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Website Thương mại điện tử Mini</h3>
+                        <p>Website bán hàng trực tuyến mô phỏng hệ thống danh mục sản phẩm và giỏ hàng hiện đại.</p>
+                        <h4>Chức năng chính:</h4>
+                        <ul>
+                            <li>Hiển thị và phân loại sản phẩm theo danh mục.</li>
+                            <li>Xem chi tiết thông tin và giá sản phẩm.</li>
+                            <li>Thêm sản phẩm và quản lý số lượng giỏ hàng.</li>
+                        </ul>
+                        <p class="project-tech"><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================
+             SECTION 5 - LIÊN HỆ
+             ========================= -->
+        <section id="contact" data-aos="fade-up">
+            <h2 class="section-title">Liên hệ</h2>
+            <p class="contact-subtitle">Nếu bạn muốn trao đổi về học tập hoặc dự án, hãy gửi tin nhắn cho tôi.</p>
+
+            <form class="contact-form">
+                <p>
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name" placeholder="Ví dụ: Đỗ Minh Quân" required>
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                </p>
+                <p>
+                    <label for="message">Nội dung:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Để lại tin nhắn cho tôi tại đây..." required></textarea>
+                </p>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-regular fa-paper-plane"></i> Gửi liên hệ
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         BÀI 1: FLOATING ACTION BUTTON (FAB)
+         Nút đỏ hồng nổi bật, co giãn pulse với sóng đổ bóng lan tỏa
+         ============================================ -->
+    <a href="https://m.me/yourusername" target="_blank" class="floating-action-button" aria-label="Liên hệ Messenger" title="Nhắn tin Messenger">
+        <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+
+    <!-- FOOTER -->
     <footer>
-
-        <p>
-            © 2026 Đỗ Minh Quân - Portfolio cá nhân
-        </p>
-
-        <p>
-            🇯🇵 Học từng chữ - Nhớ từng câu - Tiến bộ từng ngày!
-        </p>
-
+        <p>© 2026 Đỗ Minh Quân - Portfolio cá nhân | Lớp 25CT111 - Đại học Lạc Hồng</p>
+        <p>🌸 Học từng chữ - Nhớ từng câu - Tiến bộ từng ngày! 🌸</p>
     </footer>
 
-
-    <!-- =========================================
-         HOẠT ĐỘNG 3
-         AOS - ANIMATE ON SCROLL
-         ========================================= -->
-
+    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script>
-
         AOS.init({
             duration: 800,
             easing: "ease-out",
             once: true
         });
+    </script>
 
+    <!-- BÀI 5: HAMBURGER MENU JS -->
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const nav = document.querySelector(".main-nav");
+
+        hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
     </script>
 
 </body>
-
 </html>

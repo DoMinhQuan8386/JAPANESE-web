@@ -1,0 +1,35 @@
+/* BÀI 1: CSS CHO FLOATING ACTION BUTTON (FAB) */
+.floating-action-button {
+    position: fixed;                 /* Cố định vị trí trên màn hình */
+    bottom: 30px;                    /* Cách mép dưới 30px */
+    right: 30px;                     /* Cách mép phải 30px */
+    width: 60px;
+    height: 60px;
+    background-color: #0084ff;       /* Màu xanh Messenger */
+    color: #ffffff;
+    border-radius: 50%;              /* Tạo nút hình tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    z-index: 9999;
+    cursor: pointer;
+    animation: pulse 2s infinite ease-in-out; /* Co giãn liên tục */
+}
+
+/* Keyframes pulse: thay đổi scale 1 -> 1.1 và box-shadow lan tỏa */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7);
+    }
+    50% {
+        transform: scale(1.1);       /* Co giãn phóng to nhẹ lên 1.1 */
+        box-shadow: 0 0 0 16px rgba(0, 132, 255, 0); /* Bóng lan tỏa ra ngoài */
+    }
+    100% {
+        transform: scale(1);         /* Thu về kích thước ban đầu */
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0);
+    }
+}
