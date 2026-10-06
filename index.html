@@ -466,6 +466,366 @@
             color: #fbbf24; /* Biểu tượng mặt trời vàng rực */
             box-shadow: 0 4px 16px rgba(251, 191, 36, 0.25);
         }
+
+        /* ========================================================
+           CHUYÊN ĐỀ 6 BÀI TẬP THIẾT KẾ WEB: ANIMATIONS & INTERACTIONS
+           ======================================================== */
+
+        /* --- BÀI 1: FLOATING ACTION BUTTON (FAB) & PULSE ANIMATION --- */
+        .fab-contact-wrapper {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fab-contact-btn {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary, #c92a2a) 0%, #e03131 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(201, 42, 42, 0.45);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .fab-contact-btn:hover {
+            transform: scale(1.12) rotate(10deg);
+            box-shadow: 0 12px 28px rgba(201, 42, 42, 0.6);
+        }
+
+        .fab-contact-btn::before,
+        .fab-contact-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: inherit;
+            transform: translate(-50%, -50%) scale(1);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .fab-contact-btn::before {
+            animation: fabPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+
+        .fab-contact-btn::after {
+            animation: fabPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite 0.75s;
+        }
+
+        @keyframes fabPulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+            70% { transform: translate(-50%, -50%) scale(1.75); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
+        }
+
+        .fab-contact-label {
+            background: var(--color-gray-dark, #1e293b);
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* --- BÀI 2: CARD FLIP EFFECT (3D ROTATE 180 DEGREE) --- */
+        .card-flip-wrap {
+            width: 100%;
+            max-width: 320px;
+            height: 420px;
+            perspective: 1200px;
+            margin: 0 auto;
+        }
+
+        .card-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            border-radius: var(--radius-lg, 22px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .card-flip-wrap:hover .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-flip-front,
+        .card-flip-back {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: var(--radius-lg, 22px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            box-sizing: border-box;
+            border: 1px solid var(--color-gray-light, #e2e8f0);
+        }
+
+        .card-flip-front {
+            background: var(--color-bg-surface, #ffffff);
+            color: var(--color-gray-dark);
+        }
+
+        .card-flip-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            margin-bottom: 16px;
+        }
+
+        .card-flip-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+        }
+
+        .card-flip-back {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            transform: rotateY(180deg);
+            align-items: stretch;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .card-flip-back h4 {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #ffffff;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+        }
+
+        /* --- BÀI 3: TYPING EFFECT (CSS THUẦN - NO JAVASCRIPT) --- */
+        .typing-box {
+            display: inline-flex;
+            align-items: center;
+            margin: 8px 0 16px;
+            padding: 6px 14px;
+            background: var(--color-bg-subtle, #f1f5f9);
+            border-radius: 8px;
+            border: 1px solid var(--color-gray-light, #e2e8f0);
+        }
+
+        .typing-text-css {
+            display: inline-block;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-primary, #c92a2a);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid var(--color-primary, #c92a2a);
+            width: 0;
+            animation: 
+                typingAnim 4s steps(27, end) infinite alternate,
+                caretAnim 0.75s step-end infinite;
+        }
+
+        @keyframes typingAnim {
+            0% { width: 0; }
+            60%, 100% { width: 27ch; }
+        }
+
+        @keyframes caretAnim {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--color-primary, #c92a2a); }
+        }
+
+        /* --- BÀI 4: PARALLAX IMAGE (BACKGROUND-ATTACHMENT: FIXED) --- */
+        .parallax-showcase-banner {
+            position: relative;
+            min-height: 360px;
+            background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            margin: 40px 0;
+            border-radius: var(--radius-lg, 22px);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .parallax-showcase-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(201, 42, 42, 0.7));
+        }
+
+        .parallax-showcase-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 20px;
+            max-width: 680px;
+        }
+
+        /* --- BÀI 5: MODERN HAMBURGER MENU (CSS TRANSITIONS) --- */
+        .hamburger-btn {
+            display: flex;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--color-bg-subtle, #f1f5f9);
+            border: 1px solid var(--color-gray-light, #e2e8f0);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            outline: none;
+            transition: all 0.28s ease;
+        }
+
+        .hamburger-btn .bar {
+            width: 22px;
+            height: 2.8px;
+            background-color: var(--color-gray-dark, #1e293b);
+            border-radius: 4px;
+            transition: 
+                transform 0.35s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+                opacity 0.25s ease,
+                background-color 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger-btn.active .bar:nth-child(1) {
+            transform: translateY(7.8px) rotate(45deg);
+            background-color: var(--color-primary);
+        }
+
+        .hamburger-btn.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.active .bar:nth-child(3) {
+            transform: translateY(-7.8px) rotate(-45deg);
+            background-color: var(--color-primary);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger-btn {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: 0;
+                right: 0;
+                background: var(--color-bg-surface, #ffffff);
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                border-bottom: 1px solid var(--color-gray-light);
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all 0.35s ease;
+            }
+            .nav-links.open {
+                max-height: 480px;
+                opacity: 1;
+            }
+        }
+
+        /* --- BÀI 6: SKILL BAR ANIMATION (0% -> TARGET VALUE) --- */
+        .skill-bars-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 24px;
+            background: var(--color-bg-surface);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-gray-light);
+        }
+
+        .skill-bar-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .skill-bar-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--color-gray-dark);
+        }
+
+        .skill-bar-track {
+            width: 100%;
+            height: 12px;
+            background-color: var(--color-bg-subtle, #e2e8f0);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            width: 0%; /* Ban đầu luôn 0% */
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+            transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: barShine 2.2s infinite;
+        }
+
+        @keyframes barShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
     </style>
 </head>
 <body>
@@ -480,14 +840,15 @@
                     <span>Đại Học Lạc Hồng • CNTT</span>
                 </div>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="mainNavLinks">
                 <li><a href="#gioi-thieu" class="nav-link">Giới Thiệu</a></li>
                 <li><a href="#bang-mau" class="nav-link">Bảng Màu :root</a></li>
                 <li><a href="#thong-tin" class="nav-link">Thông Tin SV</a></li>
+                <li><a href="#chuyen-de-6-bai" class="nav-link" style="color: var(--color-primary); font-weight: 700;"><i class="fa-solid fa-fire"></i> 6 Bài Tập</a></li>
                 <li><a href="#dich-vu" class="nav-link">Dịch Vụ</a></li>
                 <li><a href="#du-an" class="nav-link">Dự Án</a></li>
                 <li><a href="#ky-nang" class="nav-link">Kỹ Năng</a></li>
-                <li><a href="#bai-5" class="nav-link active">Bài 5: Animation</a></li>
+                <li><a href="#bai-5" class="nav-link">Bài 5: Micro-UI</a></li>
                 <li><a href="#lien-he" class="nav-link">Liên Hệ</a></li>
             </ul>
             <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
@@ -498,6 +859,12 @@
                 <a href="#lien-he" class="nav-btn btn-emotion">
                     <i class="fa-solid fa-paper-plane"></i> Kết Nối
                 </a>
+                <!-- BÀI 5: MODERN HAMBURGER MENU (CSS TRANSITIONS) -->
+                <button class="hamburger-btn" id="navbarHamburger" aria-label="Menu" title="Menu (Bài 5: Hamburger Animation)">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -523,12 +890,19 @@
                             <i class="fa-solid fa-code"></i> Sinh viên Kỹ Thuật Phần Mềm • Lớp 25CT111
                         </div>
                         <h2 class="hero-title">NGUYỄN THÀNH CÔNG</h2>
+                        <!-- BÀI 3: TYPING EFFECT CSS THUẦN (KHÔNG DÙNG JS) -->
+                        <div class="typing-box" title="Bài 3: Hiệu ứng chữ tự gõ thuần CSS">
+                            <span class="typing-text-css">Tôi là một Web Developer...</span>
+                        </div>
                         <p class="hero-bio">
                             Chào mừng thầy cô và các bạn đến với Portfolio của mình! Trang web tích hợp trọn vẹn <strong>Hệ màu Design Tokens (:root)</strong> cùng chuyên đề <strong>Bài 5: Micro-interactions, CSS Spinner, Thư viện AOS và Kỹ thuật tối ưu GPU (Refactoring Performance)</strong> giúp trang web vận hành mượt mà 60-120 FPS trên mọi thiết bị.
                         </p>
-                        <div class="hero-cta">
+                        <div class="hero-cta" style="display: flex; flex-wrap: wrap; gap: 12px;">
+                            <a href="bai-tap-animations.html" class="btn-emotion" style="background: linear-gradient(135deg, #0b4f8a 0%, #083b66 100%);">
+                                <i class="fa-solid fa-layer-group"></i> 6 Bài Tập Animation Mới
+                            </a>
                             <a href="#bai-5" class="btn-emotion">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Khám Phá Bài 5 (Animation)
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Bài 5 (Micro-interactions)
                             </a>
                             <a href="#bang-mau" class="btn-secondary">
                                 <i class="fa-solid fa-palette"></i> Bảng Mã Màu :root
@@ -654,7 +1028,7 @@
     <!-- ================= INFO & ABOUT SECTION (AOS Stagger) ================= -->
     <section class="section" id="thong-tin">
         <div class="container">
-            <div class="info-row">
+            <div class="info-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch;">
                 <!-- Box 1: Thông tin sinh viên (Fade-Right) -->
                 <div class="info-box" data-aos="fade-right" data-aos-duration="800">
                     <h3 class="box-title">
@@ -695,6 +1069,200 @@
                     </h3>
                     <p class="about-paragraph">
                         Mình là <strong>Nguyễn Thành Công</strong>, sinh viên Khoa Công Nghệ Thông Tin tại Đại học Lạc Hồng. Mình có niềm đam mê đặc biệt với phát triển Web Frontend, thiết kế giao diện UI/UX và tối ưu hóa hiệu năng chuyển động. Mục tiêu học phần này là làm chủ CSS Animations, Keyframes, Micro-interactions và thư viện Animate On Scroll.
+                    </p>
+                </div>
+
+                <!-- Box 3: Bài 2: Thẻ Nhân Sự / Profile Card 3D Lật 180° (Fade-Up) -->
+                <div class="info-box" data-aos="fade-up" data-aos-duration="800" style="padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <i class="fa-solid fa-arrows-rotate"></i> Bài 2: Profile Card Lật 180°
+                    </div>
+                    <div class="card-flip-wrap" style="height: 330px; max-width: 280px;">
+                        <div class="card-flip-inner">
+                            <!-- Mặt trước -->
+                            <div class="card-flip-front" style="padding: 20px;">
+                                <div class="card-flip-avatar" style="width: 85px; height: 85px; margin-bottom: 12px;">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" alt="Nguyễn Thành Công">
+                                </div>
+                                <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 4px;">Nguyễn Thành Công</h4>
+                                <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Frontend Developer</div>
+                                <span style="background: var(--color-bg-subtle); padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--color-gray-medium);">Lớp 25CT111 • ĐH Lạc Hồng</span>
+                                <div style="margin-top: 18px; font-size: 0.76rem; color: var(--color-gray-medium); display: flex; align-items: center; gap: 6px;">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Rê chuột để lật thẻ
+                                </div>
+                            </div>
+                            <!-- Mặt sau -->
+                            <div class="card-flip-back" style="padding: 20px;">
+                                <div>
+                                    <h4 style="font-size: 0.95rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 6px; margin-bottom: 12px; text-align: center;">KẾT NỐI LIÊN HỆ</h4>
+                                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.8rem;">
+                                        <div><i class="fa-solid fa-envelope" style="color: #f87171; width: 18px;"></i> cong214165@gmail.com</div>
+                                        <div><i class="fa-solid fa-phone" style="color: #f87171; width: 18px;"></i> 0375.199.493</div>
+                                        <div><i class="fa-solid fa-location-dot" style="color: #f87171; width: 18px;"></i> TP. Biên Hòa, Đồng Nai</div>
+                                        <div><i class="fa-solid fa-code" style="color: #f87171; width: 18px;"></i> Kỹ thuật phần mềm LHU</div>
+                                    </div>
+                                </div>
+                                <a href="#lien-he" class="btn-emotion" style="padding: 8px 14px; font-size: 0.8rem; text-align: center; text-decoration: none;">
+                                    <i class="fa-solid fa-paper-plane"></i> Gửi Tin Nhắn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CHUYÊN ĐỀ 6 BÀI TẬP: ANIMATIONS & INTERACTIONS ================= -->
+    <section class="section" id="chuyen-de-6-bai">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge"><i class="fa-solid fa-fire"></i> Chuyên Đề Thực Hành</span>
+                <h2 class="section-heading">Tổng Hợp 6 Bài Tập Animation & Micro-Interactions</h2>
+                <p class="section-subtitle">Toàn bộ 6 bài tập thiết kế web theo yêu cầu được tích hợp trực tiếp, hoạt động tương tác 100%</p>
+            </div>
+
+            <!-- Grid cho các bài tập -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 30px;">
+                
+                <!-- BÀI 1: FAB PULSE ANIMATION -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="service-tag" style="background: rgba(201,42,42,0.1); color: var(--color-primary);">Bài 1</span>
+                    <h3 class="service-title">Floating Action Button (FAB)</h3>
+                    <p class="service-desc">
+                        Nút tròn "Liên hệ" luôn ghim cố định ở <strong>góc dưới trái màn hình</strong> (xem nút màu đỏ đang phát sóng bên dưới) với hiệu ứng phập phồng (pulse animation) lan tỏa thu hút sự chú ý.
+                    </p>
+                    <div style="margin: 20px 0; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: var(--color-bg-subtle); border-radius: 12px;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-gray-dark);">Mô phỏng:</span>
+                        <div class="fab-contact-btn" style="position: relative; width: 48px; height: 48px; font-size: 20px;" title="Thử hover tôi">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-check"></i> position: fixed + @keyframes pulse</span>
+                    </div>
+                </div>
+
+                <!-- BÀI 2: CARD FLIP EFFECT (LẬT 180 ĐỘ) -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" style="grid-row: span 2;">
+                    <span class="service-tag" style="background: rgba(11,79,138,0.1); color: var(--color-secondary);">Bài 2</span>
+                    <h3 class="service-title">Card Flip Effect (Lật Thẻ 180°)</h3>
+                    <p class="service-desc">
+                        Rê chuột (hover) vào thẻ nhân sự bên dưới để thẻ lật 180° theo không gian 3D, hiển thị đầy đủ thông tin liên hệ ở mặt sau.
+                    </p>
+                    <div style="margin: 16px auto;">
+                        <!-- THẺ LẬT 3D -->
+                        <div class="card-flip-wrap">
+                            <div class="card-flip-inner">
+                                <!-- Mặt trước -->
+                                <div class="card-flip-front">
+                                    <div class="card-flip-avatar">
+                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Nhân sự">
+                                    </div>
+                                    <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Trần Hoàng Mai</h4>
+                                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">Senior UI/UX Designer</div>
+                                    <span style="background: var(--color-bg-subtle); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--color-gray-medium);">Phòng Thiết Kế Web</span>
+                                    <div style="margin-top: 24px; font-size: 0.78rem; color: var(--color-gray-medium); display: flex; align-items: center; gap: 6px;">
+                                        <i class="fa-solid fa-arrows-rotate"></i> Rê chuột để lật thẻ
+                                    </div>
+                                </div>
+                                <!-- Mặt sau -->
+                                <div class="card-flip-back">
+                                    <div>
+                                        <h4>THÔNG TIN LIÊN HỆ</h4>
+                                        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; margin-top: 14px;">
+                                            <div><i class="fa-solid fa-envelope" style="color: #f87171; width: 20px;"></i> mai.tran@company.vn</div>
+                                            <div><i class="fa-solid fa-phone" style="color: #f87171; width: 20px;"></i> (+84) 912.345.678</div>
+                                            <div><i class="fa-solid fa-location-dot" style="color: #f87171; width: 20px;"></i> Tòa nhà Bitexco, Q.1</div>
+                                            <div><i class="fa-brands fa-linkedin" style="color: #f87171; width: 20px;"></i> /in/hoangmai-uiux</div>
+                                        </div>
+                                    </div>
+                                    <a href="mailto:mai.tran@company.vn" class="btn-emotion" style="padding: 10px 16px; font-size: 0.88rem; text-align: center; text-decoration: none;">
+                                        <i class="fa-solid fa-paper-plane"></i> Gửi Tin Nhắn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-check"></i> perspective 1200px + rotateY(180deg)</span>
+                    </div>
+                </div>
+
+                <!-- BÀI 3: TYPING EFFECT CSS THUẦN -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="service-tag" style="background: rgba(16,185,129,0.1); color: #10b981;">Bài 3</span>
+                    <h3 class="service-title">CSS Typing Effect (Không Dùng JS)</h3>
+                    <p class="service-desc">
+                        Hiệu ứng chữ tự gõ cho dòng: <em>"Tôi là một Web Developer..."</em> sử dụng CSS thuần với hàm <code>steps(27)</code> và con trỏ chuột nhấp nháy (đã gắn cả trên Hero section).
+                    </p>
+                    <div style="margin: 18px 0; padding: 18px; background: #0f172a; border-radius: 12px; text-align: center;">
+                        <span class="typing-text-css" style="color: #38bdf8;">Tôi là một Web Developer...</span>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-check"></i> steps(27) + border-right blink</span>
+                    </div>
+                </div>
+
+                <!-- BÀI 5: MODERN HAMBURGER MENU -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <span class="service-tag" style="background: rgba(245,158,11,0.1); color: #d97706;">Bài 5</span>
+                    <h3 class="service-title">Modern Hamburger Menu (3 Gạch &rarr; X)</h3>
+                    <p class="service-desc">
+                        Biến đổi biểu tượng 3 gạch ngang thành dấu "X" một cách mượt mà qua CSS Transitions. Đã tích hợp trực tiếp trên thanh Navbar trên cùng của trang web!
+                    </p>
+                    <div style="margin: 16px 0; display: flex; align-items: center; justify-content: center; gap: 16px;">
+                        <button class="hamburger-btn" style="display: flex;" onclick="this.classList.toggle('active')" title="Bấm vào để test chuyển đổi thành dấu X">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                        <span style="font-size: 0.85rem; color: var(--color-gray-medium);">Bấm nút để xem biến đổi 3 gạch &harr; "X"</span>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-check"></i> transform: rotate & translateY</span>
+                    </div>
+                </div>
+
+                <!-- BÀI 6: SKILL BAR ANIMATION -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <span class="service-tag" style="background: rgba(139,92,246,0.1); color: #8b5cf6;">Bài 6</span>
+                    <h3 class="service-title">Skill Bar Animation (0% &rarr; Đích)</h3>
+                    <p class="service-desc">
+                        Khi trang web tải xong, các thanh kỹ năng sẽ tự động tăng tiến từ 0% đến giá trị đích (HTML 90%, CSS 85%, JS 80%...) với gia tốc chuyển động mượt mà.
+                    </p>
+                    <div style="margin: 14px 0;">
+                        <div style="font-size: 0.85rem; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span>HTML5 / CSS3</span>
+                            <span style="color: var(--color-primary);">90%</span>
+                        </div>
+                        <div class="skill-bar-track" style="margin-bottom: 12px;">
+                            <div class="skill-bar-fill" data-progress="90%"></div>
+                        </div>
+                        <div style="font-size: 0.85rem; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span>JavaScript / Animations</span>
+                            <span style="color: var(--color-primary);">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-progress="85%"></div>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-more"><i class="fa-solid fa-check"></i> transition: width 1.8s onload</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4: PARALLAX IMAGE BANNER (background-attachment: fixed) -->
+            <div class="parallax-showcase-banner" data-aos="zoom-in" data-aos-duration="800">
+                <div class="parallax-showcase-overlay"></div>
+                <div class="parallax-showcase-content">
+                    <span style="display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); padding: 5px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.3);"><i class="fa-solid fa-mountain"></i> Bài 4: Parallax Image Banner</span>
+                    <h3 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; line-height: 1.25; color: #ffffff; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
+                        KHÁM PHÁ HIỆU ỨNG CUỘN TRANG PARALLAX
+                    </h3>
+                    <p style="font-size: 1.05rem; color: #e2e8f0; line-height: 1.6;">
+                        Ảnh nền được cố định vào màn hình trình duyệt nhờ <code>background-attachment: fixed</code>, di chuyển chậm hơn nội dung khi cuộn trang, tạo nên chiều sâu không gian quang học chân thực.
                     </p>
                 </div>
             </div>
@@ -1016,6 +1584,54 @@
                 </div>
             </div>
 
+            <!-- BÀI 6: THANH TIẾN TRÌNH KỸ NĂNG (SKILL BAR ANIMATION 0% -> ĐÍCH) -->
+            <div class="skill-bars-container" data-aos="fade-up" data-aos-delay="150" style="margin-top: 30px; margin-bottom: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-weight: 800; font-size: 1.05rem; color: var(--color-primary);"><i class="fa-solid fa-chart-line"></i> Bài 6: Đánh Giá Kỹ Năng (Animated Skill Bars)</span>
+                    <button onclick="runSkillBars()" class="btn-emotion" style="padding: 6px 14px; font-size: 0.8rem; cursor: pointer; border-radius: 8px;"><i class="fa-solid fa-rotate-right"></i> Phát lại Animation</button>
+                </div>
+                <!-- HTML5 -->
+                <div class="skill-bar-row">
+                    <div class="skill-bar-meta">
+                        <span><i class="fa-brands fa-html5" style="color: #e34f26;"></i> HTML5 Semantic</span>
+                        <span style="color: var(--color-primary); font-family: monospace;">90%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-progress="90%"></div>
+                    </div>
+                </div>
+                <!-- CSS3 -->
+                <div class="skill-bar-row">
+                    <div class="skill-bar-meta">
+                        <span><i class="fa-brands fa-css3-alt" style="color: #1572b6;"></i> CSS3 & Animations</span>
+                        <span style="color: var(--color-primary); font-family: monospace;">85%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-progress="85%"></div>
+                    </div>
+                </div>
+                <!-- JavaScript -->
+                <div class="skill-bar-row">
+                    <div class="skill-bar-meta">
+                        <span><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript ES6+</span>
+                        <span style="color: var(--color-primary); font-family: monospace;">80%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-progress="80%"></div>
+                    </div>
+                </div>
+                <!-- UI/UX -->
+                <div class="skill-bar-row">
+                    <div class="skill-bar-meta">
+                        <span><i class="fa-solid fa-palette" style="color: #8b5cf6;"></i> UI/UX Design System</span>
+                        <span style="color: var(--color-primary); font-family: monospace;">75%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-progress="75%"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Hobbies -->
             <div class="hobbies-grid">
                 <div class="hobby-card" data-aos="fade-up" data-aos-delay="100">
@@ -1271,7 +1887,46 @@
         } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             applyTheme('dark');
         }
+
+        // ==========================================
+        // 6. XỬ LÝ NÚT HAMBURGER (BÀI 5: CSS TRANSITIONS)
+        // ==========================================
+        const navHamburger = document.getElementById('navbarHamburger');
+        const mainNav = document.getElementById('mainNavLinks');
+        if (navHamburger) {
+            navHamburger.addEventListener('click', () => {
+                navHamburger.classList.toggle('active');
+                if (mainNav) mainNav.classList.toggle('open');
+            });
+        }
+
+        // ==========================================
+        // 7. XỬ LÝ THANH KỸ NĂNG (BÀI 6: 0% -> ĐÍCH KHI LOAD)
+        // ==========================================
+        function runSkillBars() {
+            const fills = document.querySelectorAll('.skill-bar-fill');
+            fills.forEach(fill => {
+                fill.style.width = '0%';
+            });
+            setTimeout(() => {
+                fills.forEach(fill => {
+                    const target = fill.getAttribute('data-progress');
+                    fill.style.width = target;
+                });
+            }, 150);
+        }
+        window.addEventListener('load', () => {
+            setTimeout(runSkillBars, 300);
+        });
     </script>
+
+    <!-- ================= BÀI 1: FLOATING ACTION BUTTON (FAB) CỐ ĐỊNH GÓC MÀN HÌNH ================= -->
+    <div class="fab-contact-wrapper" title="Bài 1: Floating Action Button với Pulse Animation">
+        <span class="fab-contact-label"><i class="fa-solid fa-comment-dots"></i> Liên hệ</span>
+        <a href="#lien-he" class="fab-contact-btn" aria-label="Liên hệ">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
 
     <!-- Nút Nổi Chuyển Đổi Chế Độ Sáng / Tối (Floating Theme Toggle Button) -->
     <button id="themeFloatingBtn" class="theme-floating-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle theme">
